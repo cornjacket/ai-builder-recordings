@@ -9,5 +9,5 @@ See `ai-builder/tests/regression/README.md` for full documentation.
 
 | Test | Branch | What it exercises |
 |------|--------|-------------------|
-| user-service | [user-service](../../tree/user-service) | TM single-level decomposition |
+| user-service | [user-service](https://github.com/cornjacket/ai-builder-recordings/commits/user-service/) | TM single-level decomposition |
 
