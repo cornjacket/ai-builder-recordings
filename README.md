@@ -27,6 +27,7 @@ tested in isolation at zero token cost.
 | Test | Commits | What it exercises |
 |------|---------|-------------------|
 | user-service | [user-service](https://github.com/cornjacket/ai-builder-recordings/commits/user-service/) | TM single-level decomposition — service decomposed into 3 components |
+| platform-monolith | [platform-monolith](https://github.com/cornjacket/ai-builder-recordings/commits/platform-monolith/) | TM two-level decomposition — IAM + metrics services in one monolith |
 
 When adding a new replay regression, add a row to this table. Branch link
 format: `https://github.com/cornjacket/ai-builder-recordings/commits/<test-name>/`
