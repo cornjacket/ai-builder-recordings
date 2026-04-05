@@ -1,0 +1,34 @@
+The output directory contains subdirectories `handlers/` and `store/`, so this is **decompose mode**.
+
+- `handlers/` — atomic (only `handlers.go` + `handlers_test.go`)
+- `store/` — atomic (only `store.go` + `store_test.go`)
+- No parent-level source files at the `userservice/` level (only the stub `README.md`)
+- Test files skipped in both subdirs
+
+<response>
+  <outcome>DOC_ARCHITECT_DECOMPOSITION_READY</outcome>
+  <handoff>The userservice/ output directory contains two subdirectories: handlers/ (atomic — handlers.go only, handlers_test.go skipped) and store/ (atomic — store.go only, store_test.go skipped). No parent-level source files exist at the userservice/ level; only a stub README.md placeholder is present. The integrate step must produce a README.md for the userservice/ directory describing both sub-packages and their relationship.</handoff>
+  <components>
+    <component>
+      <name>handlers</name>
+      <complexity>atomic</complexity>
+      <source_dir>handlers</source_dir>
+      <description>HTTP CRUD handlers for the user service, wired to the store layer</description>
+    </component>
+    <component>
+      <name>store</name>
+      <complexity>atomic</complexity>
+      <source_dir>store</source_dir>
+      <description>In-memory data access layer managing user records</description>
+    </component>
+    <component>
+      <name>integrate-userservice</name>
+      <complexity>atomic</complexity>
+      <source_dir>.</source_dir>
+      <description>Cross-component synthesis: README.md for the userservice/ directory covering package layout, the handlers/store relationship, and any cross-cutting invariants</description>
+    </component>
+  </components>
+</response>
+
+OUTCOME: DONE
+HANDOFF: Decomposed the `userservice/` output directory into three components: `handlers` (atomic — `handlers.go`), `store` (atomic — `store.go`), and `integrate-userservice` (atomic, source_dir `.`) for the directory-level `README.md`. Test files were skipped in both subdirs. No parent-level source files exist at this level. The next agents should document `handlers/` and `store/` atomically, then run the integrate step to produce the `userservice/README.md` synthesising both sub-packages.
