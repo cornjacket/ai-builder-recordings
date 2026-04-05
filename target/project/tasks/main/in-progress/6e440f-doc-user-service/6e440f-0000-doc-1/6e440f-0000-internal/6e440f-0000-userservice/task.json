@@ -17,7 +17,7 @@
   "subtasks": [
     {
       "name": "6e440f-0000-handlers",
-      "complete": false
+      "complete": true
     },
     {
       "name": "6e440f-0001-store",
