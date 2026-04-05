@@ -1,0 +1,34 @@
+Let me read the source files and logs to understand the current state.
+The output directory contains subdirectories (`internal/`, `logs/`), so this is **decompose mode**.
+
+**Analysis:**
+- `internal/` — composite subdirectory containing `userservice/handlers/` and `userservice/store/`
+- `logs/` — pipeline logs, skip (not source code)
+- `main.go` — parent-level source file, to be documented by DOC_INTEGRATOR at the integrate step
+- Skip: `main_test.go` (test file), `go.mod`, `go.sum`, `current-job.txt`, `execution.log` (non-source)
+
+No documentation files are written in decompose mode.
+
+```xml
+<response>
+  <outcome>DOC_ARCHITECT_DECOMPOSITION_READY</outcome>
+  <handoff>One subdirectory warrants documentation: `internal/` (composite), which nests `userservice/handlers/` (atomic — handlers.go) and `userservice/store/` (atomic — store.go). The `logs/` directory is a pipeline artefact and is skipped. One parent-level source file exists at the root: `main.go` (entry point that wires store and handlers into a ServeMux on :8080); it has no companion `.md` yet and must be documented by the integrate step. Skipped at root: `main_test.go`, `go.mod`, `go.sum`, `current-job.txt`, `execution.log`.</handoff>
+  <components>
+    <component>
+      <name>internal</name>
+      <complexity>composite</complexity>
+      <source_dir>internal</source_dir>
+      <description>Composite subtree containing the userservice package with handlers and store sub-packages</description>
+    </component>
+    <component>
+      <name>integrate-user-service</name>
+      <complexity>atomic</complexity>
+      <source_dir>.</source_dir>
+      <description>Cross-component synthesis: main.go.md companion doc, data-flow.md describing end-to-end request flow, and README.md for the root directory</description>
+    </component>
+  </components>
+</response>
+```
+
+OUTCOME: DONE
+HANDOFF: Decompose mode. The output root contains one documentable subdirectory — `internal/` (composite, nesting `userservice/handlers/` and `userservice/store/`) — and one parent-level source file `main.go` that has no companion `.md` yet. The `logs/` directory and all non-source files (`go.mod`, `go.sum`, `current-job.txt`, `execution.log`, `main_test.go`) were skipped. Two components emitted: `internal` (composite, to be further decomposed) and `integrate-user-service` (atomic, source_dir `.`, to produce `main.go.md`, `data-flow.md`, and root `README.md`). No documentation files were written in this step.
