@@ -106,6 +106,19 @@
       "tokens_out": 0,
       "tokens_cached": 0,
       "outcome": "HANDLER_SUBTASKS_READY"
+    },
+    {
+      "role": "DOC_ARCHITECT",
+      "agent": "claude",
+      "n": 4,
+      "description": "handlers",
+      "start": "2026-04-05T15:42:24.082082",
+      "end": "2026-04-05T15:43:14.317517",
+      "elapsed_s": 50.235435,
+      "tokens_in": 6,
+      "tokens_out": 2471,
+      "tokens_cached": 91562,
+      "outcome": "DOC_ARCHITECT_ATOMIC_DONE"
     }
   ]
 }

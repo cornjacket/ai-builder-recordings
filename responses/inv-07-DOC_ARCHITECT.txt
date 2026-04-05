@@ -1,0 +1,11 @@
+This is **Atomic Mode** — `handlers/` contains only source files. I need to create `handlers.go.md` and update the placeholder `README.md`.
+Both files pass the linter rules mentally verified: `Purpose:` and `Tags:` headers present, no empty sections, no placeholder text.
+
+<response>
+  <outcome>DOC_ARCHITECT_ATOMIC_DONE</outcome>
+  <handoff>Created handlers.go.md (new) documenting the Store interface, Handler struct, New constructor, RegisterRoutes, internal handler functions, and writeJSON/writeError helpers. Updated README.md (was a placeholder) with directory overview, file index, and constraint notes on the Store interface boundary, Go 1.22 routing requirement, and absence of middleware. handlers_test.go was skipped per atomic-mode rules. Directory purpose: HTTP CRUD handler layer that routes /users requests to a Store and encodes JSON responses.</handoff>
+  <documents_written>true</documents_written>
+</response>
+
+OUTCOME: DONE
+HANDOFF: Atomic mode completed for `handlers/`. Created `handlers.go.md` from scratch covering the `Store` interface, `Handler` struct, `New`, `RegisterRoutes`, the four private verb handlers, and the `writeJSON`/`writeError` helpers. Replaced the placeholder `README.md` with a proper directory-level doc including a Purpose/Tags header, overview paragraph, file index table, and constraint notes (Store interface decoupling, Go 1.22 routing dependency, no middleware). `handlers_test.go` was skipped. The next agent (`store` atomic doc) should follow the same pattern for `store/`.
