@@ -7,17 +7,30 @@
   "priority": "\u2014",
   "created_at": "2026-04-05",
   "completed_at": null,
-  "next-subtask-id": "0000",
+  "next-subtask-id": "0003",
   "complexity": "composite",
   "level": "INTERNAL",
   "depth": 2,
   "last-task": false,
   "stop-after": false,
   "components": [],
-  "subtasks": [],
+  "subtasks": [
+    {
+      "name": "f8673c-0000-authz",
+      "complete": false
+    },
+    {
+      "name": "f8673c-0001-lifecycle",
+      "complete": false
+    },
+    {
+      "name": "f8673c-0002-integrate-iam",
+      "complete": false
+    }
+  ],
   "name": "iam",
   "goal": "IAM package \u2014 contains lifecycle and authz sub-packages alongside a parent-level iam.go; pre-existing README.md is present",
   "context": "### Level 1 \u2014 f8673c-0000-doc-1\n\n### Level 2 \u2014 f8673c-0001-internal\nInternal service packages subtree \u2014 contains `metrics` (event store + HTTP handlers) and `iam` (lifecycle + authz) as composite sub-packages",
   "output_dir": "/Users/david/Go/src/github.com/cornjacket/ai-builder/establish-regression-recordings/sandbox/regressions/doc-platform-monolith/output/internal/iam",
-  "active_role": "DOC_ARCHITECT"
+  "active_role": "DECOMPOSE_HANDLER"
 }

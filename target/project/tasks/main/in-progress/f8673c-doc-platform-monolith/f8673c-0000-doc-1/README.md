@@ -17,6 +17,7 @@
 | 11 | DOC_ARCHITECT | claude | internal | 15:28:00 | 45s | 7 | 2,153 | 107,715 |
 | 12 | DECOMPOSE_HANDLER | internal | internal | 15:28:01 | 0s | 0 | 0 | 0 |
 | 13 | DOC_ARCHITECT | claude | iam | 15:28:38 | 36s | 5 | 1,775 | 70,270 |
+| 14 | DECOMPOSE_HANDLER | internal | iam | 15:28:39 | 0s | 0 | 0 | 0 |
 
 ## Subtasks
 

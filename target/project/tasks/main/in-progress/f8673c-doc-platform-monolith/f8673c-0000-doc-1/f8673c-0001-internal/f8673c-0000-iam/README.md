@@ -11,3 +11,9 @@ IAM package — contains lifecycle and authz sub-packages alongside a parent-lev
 ### Level 2 — f8673c-0001-internal
 Internal service packages subtree — contains `metrics` (event store + HTTP handlers) and `iam` (lifecycle + authz) as composite sub-packages
 
+## Subtasks
+
+- [ ] f8673c-0000-authz
+- [ ] f8673c-0001-lifecycle
+- [ ] f8673c-0002-integrate-iam
+
