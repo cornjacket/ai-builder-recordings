@@ -1,0 +1,5 @@
+Now write the companion `.md` file:<response>
+  <outcome>IMPLEMENTOR_IMPLEMENTATION_DONE</outcome>
+  <handoff>Implemented the authz package at internal/iam/authz with two files: authz.go (handler struct with sync.RWMutex guarding roleStore and userRoles maps, Handler() constructor returning a *http.ServeMux with three registered patterns, and five endpoint methods covering POST/GET /roles, POST/GET /users/{id}/roles, and POST /authz/check) and authz_test.go (twelve table-driven httptest tests covering all acceptance criteria including idempotent role assignment, unknown-user authz check, and empty-array list responses). Companion doc authz.go.md documents mutex strategy, routing approach, and endpoint behaviour. Compile check passed with go build ./…. The next agent (integrate-iam) should import this package, call authz.Handler(), and mount the returned mux on the IAM listener's ServeMux — no sub-path prefix is required as the routes are registered as bare paths.</handoff>
+  <documents_written>true</documents_written>
+</response>
