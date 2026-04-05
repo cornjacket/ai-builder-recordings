@@ -292,3 +292,8 @@ HANDOFF: ran on-task-complete.sh → NEXT /Users/david/Go/src/github.com/cornjac
 [2026-04-05T02:20:35.893501] ARCHITECT/claude
 OUTCOME: ARCHITECT_DESIGN_READY
 HANDOFF: The authz package is a single-file Go component at internal/iam/authz. It owns two in-memory stores — RoleStore (map[string]Role) and UserRoles (map[string][]string) — both guarded by one sync.RWMutex on the handler struct. Handler() is the sole public entry point, returning a *http.ServeMux with five routes registered as bare paths (Go 1.21; no method-prefix mux patterns). Role IDs are uuid.New().String(). POST /users/{id}/roles returns 404 when the roleId is not in RoleStore (user ID is not validated). POST /authz/check always returns 200 with {"allowed":bool}; the walk skips stale role IDs silently. Only dependency is github.com/google/uuid, already in go.mod. One source file (authz.go) and one test file (authz_test.go).
+
+============================================================
+[2026-04-05T02:20:36.121646] DOCUMENTER_POST_ARCHITECT/internal
+OUTCOME: DOCUMENTER_DONE
+HANDOFF: indexed 1 doc(s) into README.md (1 design, 0 implementation)

@@ -35,3 +35,11 @@ Role IDs are generated with `github.com/google/uuid` (v4). All response bodies a
 - `github.com/google/uuid` — already in `go.mod`; used for role ID generation
 
 See [api.md](api.md) for the full endpoint contract.
+
+## Documentation
+
+### Design
+| File | Description |
+|------|-------------|
+| api.md | Defines the HTTP request and response contract for all five authz endpoints |
+

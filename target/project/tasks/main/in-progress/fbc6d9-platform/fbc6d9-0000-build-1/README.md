@@ -24,6 +24,7 @@
 | 18 | TESTER | internal | lifecycle | 02:19:09 | 3m 04s | 0 | 0 | 0 |
 | 19 | LEAF_COMPLETE_HANDLER | internal | lifecycle | 02:19:10 | 0s | 0 | 0 | 0 |
 | 20 | ARCHITECT | claude | authz | 02:20:35 | 1m 25s | 11 | 4,890 | 187,022 |
+| 21 | DOCUMENTER_POST_ARCHITECT | internal | authz | 02:20:36 | 0s | 0 | 0 | 0 |
 
 ## Subtasks
 
