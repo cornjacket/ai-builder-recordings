@@ -9,6 +9,7 @@
 | 3 | DECOMPOSE_HANDLER | internal | build-1 | 01:15:33 | 1s | 0 | 0 | 0 |
 | 4 | ARCHITECT | claude | store | 01:16:41 | 1m 07s | 9 | 3,513 | 138,372 |
 | 5 | DOCUMENTER_POST_ARCHITECT | internal | store | 01:16:41 | 0s | 0 | 0 | 0 |
+| 6 | IMPLEMENTOR | claude | store | 01:17:48 | 1m 07s | 9 | 3,839 | 154,964 |
 
 ## Subtasks
 
