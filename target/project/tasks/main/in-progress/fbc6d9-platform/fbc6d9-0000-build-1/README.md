@@ -38,6 +38,7 @@
 | 32 | TESTER | internal | integrate-iam | 02:25:59 | 12s | 0 | 0 | 0 |
 | 33 | LEAF_COMPLETE_HANDLER | internal | integrate-iam | 02:25:59 | 0s | 0 | 0 | 0 |
 | 34 | ARCHITECT | claude | integrate-platform | 02:27:49 | 1m 49s | 735 | 6,422 | 102,527 |
+| 35 | DOCUMENTER_POST_ARCHITECT | internal | integrate-platform | 02:27:49 | 0s | 0 | 0 | 0 |
 
 ## Subtasks
 

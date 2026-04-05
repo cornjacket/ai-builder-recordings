@@ -493,6 +493,19 @@
       "tokens_out": 6422,
       "tokens_cached": 102527,
       "outcome": "ARCHITECT_DESIGN_READY"
+    },
+    {
+      "role": "DOCUMENTER_POST_ARCHITECT",
+      "agent": "internal",
+      "n": 5,
+      "description": "integrate-platform",
+      "start": "2026-04-05T02:27:49.794944",
+      "end": "2026-04-05T02:27:49.795253",
+      "elapsed_s": 0.000309,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "tokens_cached": 0,
+      "outcome": "DOCUMENTER_DONE"
     }
   ]
 }
