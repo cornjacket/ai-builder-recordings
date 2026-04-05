@@ -17,7 +17,7 @@
   "subtasks": [
     {
       "name": "f8673c-0000-cmd",
-      "complete": false
+      "complete": true
     },
     {
       "name": "f8673c-0001-internal",
@@ -149,6 +149,19 @@
       "tokens_out": 0,
       "tokens_cached": 0,
       "outcome": "POST_DOC_HANDLER_INTEGRATE_PASS"
+    },
+    {
+      "role": "LEAF_COMPLETE_HANDLER",
+      "agent": "internal",
+      "n": 2,
+      "description": "integrate-cmd",
+      "start": "2026-04-05T15:27:14.145575",
+      "end": "2026-04-05T15:27:15.286309",
+      "elapsed_s": 1.140734,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "tokens_cached": 0,
+      "outcome": "HANDLER_SUBTASKS_READY"
     }
   ]
 }

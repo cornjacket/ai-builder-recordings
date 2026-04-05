@@ -1,12 +1,12 @@
 {
   "task-type": "PIPELINE-SUBTASK",
-  "status": "\u2014",
+  "status": "complete",
   "epic": "main",
   "parent": "f8673c-0000-doc-1",
   "tags": "\u2014",
   "priority": "\u2014",
   "created_at": "2026-04-05",
-  "completed_at": null,
+  "completed_at": "2026-04-05",
   "next-subtask-id": "0002",
   "complexity": "composite",
   "level": "INTERNAL",
@@ -21,7 +21,7 @@
     },
     {
       "name": "f8673c-0001-integrate-cmd",
-      "complete": false
+      "complete": true
     }
   ],
   "name": "cmd",
