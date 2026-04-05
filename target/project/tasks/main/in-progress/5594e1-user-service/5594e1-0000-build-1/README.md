@@ -19,6 +19,7 @@
 | 13 | IMPLEMENTOR | claude | handlers | 01:20:48 | 1m 14s | 9 | 4,706 | 162,751 |
 | 14 | DOCUMENTER_POST_IMPLEMENTOR | internal | handlers | 01:20:48 | 0s | 0 | 0 | 0 |
 | 15 | SPEC_COVERAGE_CHECKER | internal | handlers | 01:20:48 | 0s | 0 | 0 | 0 |
+| 16 | TESTER | internal | handlers | 01:20:50 | 2s | 0 | 0 | 0 |
 
 ## Subtasks
 
