@@ -146,3 +146,8 @@ HANDOFF: ran on-task-complete.sh → NEXT /Users/david/Go/src/github.com/cornjac
 [2026-04-05T15:44:10.852352] DOC_ARCHITECT/claude
 OUTCOME: DOC_ARCHITECT_ATOMIC_DONE
 HANDOFF: Created store.go.md (new) documenting the User model, Store struct, New constructor, and all four CRUD methods (Create/Get/Update/Delete) including their locking strategy. Updated README.md (was a placeholder) with directory overview, file index, and constraint notes on ID assignment, Update ID-preservation behaviour, in-process-only persistence, and RWMutex read/write strategy. store_test.go was skipped per atomic-mode rules. Directory purpose: thread-safe in-memory CRUD store for User records, UUID-keyed, consumed by the handlers package via its Store interface.
+
+============================================================
+[2026-04-05T15:44:11.063231] POST_DOC_HANDLER/internal
+OUTCOME: POST_DOC_HANDLER_ATOMIC_PASS
+HANDOFF: linted 2 file(s) — all passed

@@ -158,6 +158,19 @@
       "tokens_out": 2133,
       "tokens_cached": 90649,
       "outcome": "DOC_ARCHITECT_ATOMIC_DONE"
+    },
+    {
+      "role": "POST_DOC_HANDLER",
+      "agent": "internal",
+      "n": 2,
+      "description": "store",
+      "start": "2026-04-05T15:44:11.061367",
+      "end": "2026-04-05T15:44:11.063120",
+      "elapsed_s": 0.001753,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "tokens_cached": 0,
+      "outcome": "POST_DOC_HANDLER_ATOMIC_PASS"
     }
   ]
 }
