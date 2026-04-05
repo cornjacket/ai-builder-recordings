@@ -58,3 +58,8 @@ HANDOFF: decomposed into 2 components (level=TOP), first: 6e440f-0000-internal
 [2026-04-05T15:41:54.877087] DOC_ARCHITECT/claude
 OUTCOME: DOC_ARCHITECT_DECOMPOSITION_READY
 HANDOFF: The `internal/` output directory contains one subdirectory: `userservice/`, which is composite (it nests `handlers/` and `store/`). No parent-level source files exist at the `internal/` level — only a stub `README.md` placeholder. The `logs/` directory is a pipeline artefact absent from the output tree and needs no action. The integrate step must produce a `README.md` for `internal/` describing the overall internal package layout.
+
+============================================================
+[2026-04-05T15:41:55.575707] DECOMPOSE_HANDLER/internal
+OUTCOME: HANDLER_SUBTASKS_READY
+HANDOFF: decomposed into 2 components (level=INTERNAL), first: 6e440f-0000-userservice

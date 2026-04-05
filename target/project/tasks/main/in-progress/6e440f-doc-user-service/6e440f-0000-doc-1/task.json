@@ -67,6 +67,19 @@
       "tokens_out": 2107,
       "tokens_cached": 104995,
       "outcome": "DOC_ARCHITECT_DECOMPOSITION_READY"
+    },
+    {
+      "role": "DECOMPOSE_HANDLER",
+      "agent": "internal",
+      "n": 2,
+      "description": "internal",
+      "start": "2026-04-05T15:41:54.987158",
+      "end": "2026-04-05T15:41:55.575281",
+      "elapsed_s": 0.588123,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "tokens_cached": 0,
+      "outcome": "HANDLER_SUBTASKS_READY"
     }
   ]
 }

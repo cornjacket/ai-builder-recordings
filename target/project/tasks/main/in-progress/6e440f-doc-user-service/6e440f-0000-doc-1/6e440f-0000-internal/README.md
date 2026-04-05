@@ -9,3 +9,8 @@ Composite subtree containing the userservice package with handlers and store sub
 ### Level 1 — 6e440f-0000-doc-1
 
 
+## Subtasks
+
+- [ ] 6e440f-0000-userservice
+- [ ] 6e440f-0001-integrate-internal
+
