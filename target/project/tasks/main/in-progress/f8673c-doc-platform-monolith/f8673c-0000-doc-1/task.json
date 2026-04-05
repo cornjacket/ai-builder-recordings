@@ -136,6 +136,19 @@
       "tokens_out": 2625,
       "tokens_cached": 125372,
       "outcome": "DOC_INTEGRATOR_DONE"
+    },
+    {
+      "role": "POST_DOC_HANDLER",
+      "agent": "internal",
+      "n": 2,
+      "description": "integrate-cmd",
+      "start": "2026-04-05T15:27:13.974649",
+      "end": "2026-04-05T15:27:13.976741",
+      "elapsed_s": 0.002092,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "tokens_cached": 0,
+      "outcome": "POST_DOC_HANDLER_INTEGRATE_PASS"
     }
   ]
 }

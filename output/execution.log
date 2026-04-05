@@ -113,3 +113,8 @@ HANDOFF: ran on-task-complete.sh → NEXT /Users/david/Go/src/github.com/cornjac
 [2026-04-05T15:27:13.737323] DOC_INTEGRATOR/claude
 OUTCOME: DOC_INTEGRATOR_DONE
 HANDOFF: Wrote cmd/README.md (replaced the placeholder stub with a proper directory index: Purpose/Tags header, 1-sentence composite description, component table linking to platform/README.md, and a link to the synthesis doc) and cmd/data-flow.md (ASCII diagrams covering startup wiring and request routing through both HTTP servers, plus failure propagation notes). The cmd composite provides the single runnable binary that wires internal/metrics (:8081) and internal/iam (:8082) together.
+
+============================================================
+[2026-04-05T15:27:13.976971] POST_DOC_HANDLER/internal
+OUTCOME: POST_DOC_HANDLER_INTEGRATE_PASS
+HANDOFF: linted 2 file(s) — all passed
