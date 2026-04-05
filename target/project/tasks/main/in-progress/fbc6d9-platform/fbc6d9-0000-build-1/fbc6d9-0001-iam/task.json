@@ -7,7 +7,7 @@
   "priority": "\u2014",
   "created_at": "2026-04-05",
   "completed_at": null,
-  "next-subtask-id": "0000",
+  "next-subtask-id": "0003",
   "complexity": "composite",
   "level": "INTERNAL",
   "depth": 1,
@@ -33,10 +33,23 @@
       "description": "Wire lifecycle and authz handlers into a single http.ServeMux and expose it for the platform main.go. Create iam.go (package iam) in the output directory. It must instantiate lifecycle.New() and authz.New(), register their routes on a shared mux (route prefixes: /users and /auth go to lifecycle; /roles, /authz, and /users/ sub-paths for roles go to authz \u2014 use pattern matching carefully so /users/{id}/roles routes to authz while /users/{id} routes to lifecycle), and return the mux via a NewMux() function. No port binding here \u2014 the platform main.go calls http.ListenAndServe(\":8082\", iam.NewMux()). Task Level: INTERNAL."
     }
   ],
-  "subtasks": [],
+  "subtasks": [
+    {
+      "name": "fbc6d9-0000-lifecycle",
+      "complete": false
+    },
+    {
+      "name": "fbc6d9-0001-authz",
+      "complete": false
+    },
+    {
+      "name": "fbc6d9-0002-integrate-iam",
+      "complete": false
+    }
+  ],
   "name": "iam",
   "goal": "Identity and access management listener (port 8082) composed of two sub-components \u2014 lifecycle (user CRUD and authentication) and authz-rbac (roles and permission checks) \u2014 that together handle all ten IAM HTTP endpoints.",
   "context": "### Level 1 \u2014 fbc6d9-0000-build-1\n",
   "output_dir": "/Users/david/Go/src/github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/platform-monolith/output/internal/iam",
-  "active_role": "ARCHITECT"
+  "active_role": "DECOMPOSE_HANDLER"
 }

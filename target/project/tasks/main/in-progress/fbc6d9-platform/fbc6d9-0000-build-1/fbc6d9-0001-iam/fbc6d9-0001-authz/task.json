@@ -1,0 +1,22 @@
+{
+  "task-type": "PIPELINE-SUBTASK",
+  "status": "\u2014",
+  "epic": "main",
+  "parent": "fbc6d9-0001-iam",
+  "tags": "\u2014",
+  "priority": "\u2014",
+  "created_at": "2026-04-05",
+  "completed_at": null,
+  "next-subtask-id": "0000",
+  "complexity": "atomic",
+  "level": "INTERNAL",
+  "depth": 2,
+  "last-task": false,
+  "stop-after": false,
+  "components": [],
+  "subtasks": [],
+  "name": "authz",
+  "goal": "In-memory role store and RBAC permission-check handler for the IAM listener.\n\nEndpoints:\nPOST /roles {\"name\":string,\"permissions\":[]string} \u2192 201 {\"id\":string,\"name\":string,\"permissions\":[]string} or 400;\nGET /roles \u2192 200 [{\"id\":string,\"name\":string,\"permissions\":[]string}];\nPOST /users/{id}/roles {\"roleId\":string} \u2192 201 or 404;\nGET /users/{id}/roles \u2192 200 [{\"id\":string,\"name\":string,\"permissions\":[]string}];\nPOST /authz/check {\"userId\":string,\"permission\":string} \u2192 200 {\"allowed\":bool}.\n\nIn-memory stores: RoleStore map[id]\u2192{id string, name string, permissions []string}, UserRoles map[userID]\u2192[]roleID. Permission check walks the user's assigned roles and returns allowed:true if any role's permissions slice contains the requested permission. Exposes an http.Handler (or *http.ServeMux) for registration by integrate-iam.",
+  "context": "### Level 1 \u2014 fbc6d9-0000-build-1\n\n### Level 2 \u2014 fbc6d9-0001-iam\nIdentity and access management listener (port 8082) composed of two sub-components \u2014 lifecycle (user CRUD and authentication) and authz-rbac (roles and permission checks) \u2014 that together handle all ten IAM HTTP endpoints.",
+  "output_dir": "/Users/david/Go/src/github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/platform-monolith/output/internal/iam/internal/iam/authz"
+}

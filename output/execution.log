@@ -162,3 +162,8 @@ HANDOFF: ran on-task-complete.sh → NEXT /Users/david/Go/src/github.com/cornjac
 [2026-04-05T02:11:38.189892] ARCHITECT/claude
 OUTCOME: ARCHITECT_DECOMPOSITION_READY
 HANDOFF: The iam composite decomposes into two atomic sub-packages — lifecycle (user CRUD and token-based authentication) and authz (role management and RBAC permission checks) — plus an integrate-iam wiring step. Each sub-package owns its own in-memory state and is registered on a shared http.ServeMux by integrate-iam. No inter-package dependencies exist at compile time. Documentation written to internal/iam/.
+
+============================================================
+[2026-04-05T02:11:39.404346] DECOMPOSE_HANDLER/internal
+OUTCOME: HANDLER_SUBTASKS_READY
+HANDOFF: decomposed into 3 components (level=INTERNAL), first: fbc6d9-0000-lifecycle
