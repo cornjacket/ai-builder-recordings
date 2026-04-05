@@ -487,6 +487,19 @@
       "tokens_out": 3127,
       "tokens_cached": 118701,
       "outcome": "DOC_INTEGRATOR_DONE"
+    },
+    {
+      "role": "POST_DOC_HANDLER",
+      "agent": "internal",
+      "n": 9,
+      "description": "integrate-internal",
+      "start": "2026-04-05T15:37:00.303055",
+      "end": "2026-04-05T15:37:00.305027",
+      "elapsed_s": 0.001972,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "tokens_cached": 0,
+      "outcome": "POST_DOC_HANDLER_INTEGRATE_PASS"
     }
   ]
 }

@@ -455,3 +455,8 @@ HANDOFF: ran on-task-complete.sh → NEXT /Users/david/Go/src/github.com/cornjac
 [2026-04-05T15:37:00.151842] DOC_INTEGRATOR/claude
 OUTCOME: DOC_INTEGRATOR_DONE
 HANDOFF: Wrote 2 files to output/internal/: (1) README.md — replaced the placeholder stub with a proper directory index including Purpose/Tags header, 1-sentence composite description, component table linking to iam/README.md and metrics/README.md, and a link to data-flow.md; (2) data-flow.md — ASCII diagrams covering startup construction (how cmd/platform calls each service's New() and mounts the returned http.Handler on distinct ports) and request-time routing through both iam (:8082) and metrics (:8081), plus a cross-service isolation note explaining that neither service imports the other and the client is the only integration point between lifecycle user IDs and authz. The internal composite provides two independent http.Handler services (iam and metrics) that share no Go-level coupling and are coordinated only by the cmd/platform binary.
+
+============================================================
+[2026-04-05T15:37:00.305188] POST_DOC_HANDLER/internal
+OUTCOME: POST_DOC_HANDLER_INTEGRATE_PASS
+HANDOFF: linted 2 file(s) — all passed
