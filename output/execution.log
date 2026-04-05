@@ -27,3 +27,8 @@ HANDOFF: Wrote acceptance-spec.md and acceptance-spec.json to /Users/david/Go/sr
 [2026-04-05T02:06:10.430503] ARCHITECT/claude
 OUTCOME: ARCHITECT_DECOMPOSITION_READY
 HANDOFF: The platform decomposes into three top-level components: (1) metrics — an atomic in-memory event-recording service serving two endpoints on port 8081; (2) iam — a composite identity-and-access-management service serving ten endpoints on port 8082, itself requiring further decomposition into lifecycle and authz-rbac sub-components; and (3) integrate-platform — the TOP-level atomic wiring step that produces cmd/platform/main.go, starts both listeners in goroutines, and runs end-to-end acceptance tests against all 12 endpoints. The common parent directory is internal/, a Go convention directory, so no composite-level README or theory-of-operation is written at this pass — each child produces its own documentation when decomposed.
+
+============================================================
+[2026-04-05T02:06:11.633696] DECOMPOSE_HANDLER/internal
+OUTCOME: HANDLER_SUBTASKS_READY
+HANDOFF: decomposed into 3 components (level=TOP), first: fbc6d9-0000-metrics

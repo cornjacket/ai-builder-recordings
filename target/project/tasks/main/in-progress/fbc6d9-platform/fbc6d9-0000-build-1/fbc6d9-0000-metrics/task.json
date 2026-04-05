@@ -1,0 +1,22 @@
+{
+  "task-type": "PIPELINE-SUBTASK",
+  "status": "\u2014",
+  "epic": "main",
+  "parent": "fbc6d9-0000-build-1",
+  "tags": "\u2014",
+  "priority": "\u2014",
+  "created_at": "2026-04-05",
+  "completed_at": null,
+  "next-subtask-id": "0000",
+  "complexity": "atomic",
+  "level": "INTERNAL",
+  "depth": 1,
+  "last-task": false,
+  "stop-after": false,
+  "components": [],
+  "subtasks": [],
+  "name": "metrics",
+  "goal": "In-memory metrics service for recording and listing frontend user interaction events. Serves on port 8081.\n\nHTTP API (verbatim from spec):\nPOST /events \u2014 body: {\"type\":\"click-mouse\"|\"submit-form\",\"userId\":\"<string>\",\"payload\":{}} \u2192 201 with event object {\"id\":\"<string>\",\"type\":\"<string>\",\"userId\":\"<string>\",\"payload\":{}};\nGET /events \u2192 200 JSON array of event objects, each with fields: id, type, userId, payload.\n\nData model: Event{id string, type string, userId string, payload map[string]interface{}}.\nStore: thread-safe in-memory slice; IDs are generated UUIDs on POST.\nPackage layout: store.go (EventStore with Add/List), handlers.go (PostEvent, GetEvents), routes.go (returns http.Handler).\nUnit tests must cover store and handler logic; handler tests use net/http/httptest.",
+  "context": "### Level 1 \u2014 fbc6d9-0000-build-1\n",
+  "output_dir": "/Users/david/Go/src/github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/platform-monolith/output/internal/metrics"
+}

@@ -1,0 +1,22 @@
+{
+  "task-type": "PIPELINE-SUBTASK",
+  "status": "\u2014",
+  "epic": "main",
+  "parent": "fbc6d9-0000-build-1",
+  "tags": "\u2014",
+  "priority": "\u2014",
+  "created_at": "2026-04-05",
+  "completed_at": null,
+  "next-subtask-id": "0000",
+  "complexity": "composite",
+  "level": "INTERNAL",
+  "depth": 1,
+  "last-task": false,
+  "stop-after": false,
+  "components": [],
+  "subtasks": [],
+  "name": "iam",
+  "goal": "Identity and access management listener (port 8082) composed of two sub-components \u2014 lifecycle (user CRUD and authentication) and authz-rbac (roles and permission checks) \u2014 that together handle all ten IAM HTTP endpoints.",
+  "context": "### Level 1 \u2014 fbc6d9-0000-build-1\n",
+  "output_dir": "/Users/david/Go/src/github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/platform-monolith/output/internal/iam"
+}

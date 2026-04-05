@@ -7,7 +7,7 @@
   "priority": "\u2014",
   "created_at": "2026-04-05",
   "completed_at": null,
-  "next-subtask-id": "0000",
+  "next-subtask-id": "0003",
   "complexity": "\u2014",
   "level": "TOP",
   "depth": 0,
@@ -33,11 +33,24 @@
       "description": "Wire the metrics and iam components into a single binary at cmd/platform/main.go. The binary starts the metrics HTTP listener on port 8081 and the IAM HTTP listener on port 8082 in separate goroutines, then blocks until a shutdown signal. There must be exactly one main package in the entire codebase.\n\nEnd-to-end acceptance tests (net/http against live listeners started in TestMain or a helper) must cover all 12 endpoints verbatim from the spec:\n\nMetrics listener (port 8081):\nPOST /events body:{\"type\":\"click-mouse\",\"userId\":\"<string>\",\"payload\":{}} \u2192 201 {\"id\":\"<string>\",\"type\":\"<string>\",\"userId\":\"<string>\",\"payload\":{}};\nPOST /events body:{\"type\":\"submit-form\",\"userId\":\"<string>\",\"payload\":{}} \u2192 201 (same shape);\nGET /events \u2192 200 JSON array containing previously posted events.\n\nIAM listener (port 8082):\nPOST /users body:{\"username\":\"<string>\",\"password\":\"<string>\"} \u2192 201 {\"id\":\"<string>\",\"username\":\"<string>\"} (no password field);\nGET /users/{id} \u2192 200 {\"id\":\"<string>\",\"username\":\"<string>\"} or 404;\nDELETE /users/{id} \u2192 200/204 on existing user or 404 on missing;\nPOST /auth/login body:{\"username\":\"<string>\",\"password\":\"<string>\"} \u2192 200 {\"token\":\"<string>\"};\nPOST /auth/logout header:Authorization:Bearer <token> \u2192 200/204;\nPOST /roles body:{\"name\":\"<string>\",\"permissions\":[\"<string>\"]} \u2192 201 {\"id\":\"<string>\",\"name\":\"<string>\",\"permissions\":[\"<string>\"]};\nGET /roles \u2192 200 JSON array;\nPOST /users/{id}/roles body:{\"roleId\":\"<string>\"} \u2192 200/201;\nGET /users/{id}/roles \u2192 200 JSON array;\nPOST /authz/check body:{\"userId\":\"<string>\",\"permission\":\"<string>\"} \u2192 200 {\"allowed\":<bool>}."
     }
   ],
-  "subtasks": [],
+  "subtasks": [
+    {
+      "name": "fbc6d9-0000-metrics",
+      "complete": false
+    },
+    {
+      "name": "fbc6d9-0001-iam",
+      "complete": false
+    },
+    {
+      "name": "fbc6d9-0002-integrate-platform",
+      "complete": false
+    }
+  ],
   "goal": "Build a networked monolith platform in Go. A networked monolith is a single\nprocess with a single binary entry point (`cmd/platform/main.go`). The single\nprocess starts two HTTP listeners on separate ports \u2014 one for metrics ingestion\nand one for IAM. There is exactly one `main` package and one binary.\n\n**Metrics listener (port 8081)**\n\nRecords frontend user interaction events.\n\nAPI:\n- `POST /events` \u2014 record an event; body: `{\"type\": \"click-mouse\"|\"submit-form\", \"userId\": \"<string>\", \"payload\": {}}` \u2192 201 with event object (includes generated `id`)\n- `GET /events`  \u2014 list all recorded events \u2192 200 with JSON array\n\n**IAM listener (port 8082)**\n\nIdentity and access management. Internally composed of two logical components:\n(a) user authentication and lifecycle, and (b) authorisation/RBAC.\n\nAPI:\n- User lifecycle:\n  - `POST /users`        \u2014 register user; body: `{\"username\": \"<string>\", \"password\": \"<string>\"}` \u2192 201 with user object (includes `id`, no password in response)\n  - `GET /users/{id}`    \u2014 get user by ID \u2192 200 or 404\n  - `DELETE /users/{id}` \u2014 delete user \u2192 200/204 or 404\n- Authentication:\n  - `POST /auth/login`   \u2014 authenticate; body: `{\"username\": \"<string>\", \"password\": \"<string>\"}` \u2192 200 with token object (includes `token` field)\n  - `POST /auth/logout`  \u2014 invalidate token; header: `Authorization: Bearer <token>` \u2192 200/204\n- RBAC:\n  - `POST /roles`             \u2014 create role; body: `{\"name\": \"<string>\", \"permissions\": [\"<string>\"]}` \u2192 201 with role object (includes `id`)\n  - `GET /roles`              \u2014 list roles \u2192 200 with JSON array\n  - `POST /users/{id}/roles`  \u2014 assign role to user; body: `{\"roleId\": \"<string>\"}` \u2192 200/201\n  - `GET /users/{id}/roles`   \u2014 list user's roles \u2192 200 with JSON array\n  - `POST /authz/check`       \u2014 check permission; body: `{\"userId\": \"<string>\", \"permission\": \"<string>\"}` \u2192 200 with `{\"allowed\": <bool>}`",
   "context": "This is a regression test for the ai-builder multi-level decomposition pipeline.\nThe platform is a networked monolith: one process, one binary, two listeners.\nThe IAM listener is itself internally composed of two components (auth-lifecycle\nand authz-rbac). The pipeline must traverse this multi-level tree, implementing\nand testing each level before walking up to integrate the next.\n\n**Language:** Go\n**Binary:** single binary \u2014 the only `main` package in the entire codebase\nmust be `cmd/platform/main.go`. There must be no other `main` packages.\nComponent-level implementations must not create their own `cmd/` directories\nor standalone binaries. `cmd/platform/main.go` starts both listeners.\n**Storage:** in-memory (no database required)\n**Testing requirements:**\n- Unit tests at each functional level (each atomic component must have unit tests)\n- End-to-end acceptance tests at each integrate step:\n  - INTERNAL integrate: verify the component's contract against its API;\n    do not create a standalone binary \u2014 use `net/http/httptest` or similar\n  - TOP integrate (this task): create `cmd/platform/main.go` as the sole\n    binary entry point; start both listeners and verify all endpoints pass",
   "output_dir": "/Users/david/Go/src/github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/platform-monolith/output",
-  "active_role": "ARCHITECT",
+  "active_role": "DECOMPOSE_HANDLER",
   "execution_log": [
     {
       "role": "ACCEPTANCE_SPEC_WRITER",
@@ -64,6 +77,19 @@
       "tokens_out": 4076,
       "tokens_cached": 31620,
       "outcome": "ARCHITECT_DECOMPOSITION_READY"
+    },
+    {
+      "role": "DECOMPOSE_HANDLER",
+      "agent": "internal",
+      "n": 1,
+      "description": "build-1",
+      "start": "2026-04-05T02:06:10.614896",
+      "end": "2026-04-05T02:06:11.632927",
+      "elapsed_s": 1.018031,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "tokens_cached": 0,
+      "outcome": "HANDLER_SUBTASKS_READY"
     }
   ]
 }
