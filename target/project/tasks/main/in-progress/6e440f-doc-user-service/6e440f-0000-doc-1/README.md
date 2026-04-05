@@ -11,6 +11,7 @@
 | 5 | DOC_ARCHITECT | claude | userservice | 15:42:23 | 27s | 4 | 1,474 | 48,461 |
 | 6 | DECOMPOSE_HANDLER | internal | userservice | 15:42:23 | 0s | 0 | 0 | 0 |
 | 7 | DOC_ARCHITECT | claude | handlers | 15:43:14 | 50s | 6 | 2,471 | 91,562 |
+| 8 | POST_DOC_HANDLER | internal | handlers | 15:43:14 | 0s | 0 | 0 | 0 |
 
 ## Subtasks
 

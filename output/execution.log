@@ -112,3 +112,8 @@ HANDOFF: decomposed into 3 components (level=INTERNAL), first: 6e440f-0000-handl
 [2026-04-05T15:43:14.317846] DOC_ARCHITECT/claude
 OUTCOME: DOC_ARCHITECT_ATOMIC_DONE
 HANDOFF: Created handlers.go.md (new) documenting the Store interface, Handler struct, New constructor, RegisterRoutes, internal handler functions, and writeJSON/writeError helpers. Updated README.md (was a placeholder) with directory overview, file index, and constraint notes on the Store interface boundary, Go 1.22 routing requirement, and absence of middleware. handlers_test.go was skipped per atomic-mode rules. Directory purpose: HTTP CRUD handler layer that routes /users requests to a Store and encodes JSON responses.
+
+============================================================
+[2026-04-05T15:43:14.508095] POST_DOC_HANDLER/internal
+OUTCOME: POST_DOC_HANDLER_ATOMIC_PASS
+HANDOFF: linted 2 file(s) — all passed
