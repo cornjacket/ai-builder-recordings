@@ -1,25 +1,8 @@
-# lifecycle
-
-## Goal
-
-In-memory user store and token-based authentication handler for the IAM listener.
-
-Endpoints:
-POST /users {"username":string,"password":string} → 201 {"id":string,"username":string} or 400;
-GET /users/{id} → 200 {"id":string,"username":string} or 404;
-DELETE /users/{id} → 200 or 404;
-POST /auth/login {"username":string,"password":string} → 200 {"token":string} or 401;
-POST /auth/logout header Authorization:Bearer <token> → 200 or 401.
-
-In-memory stores: UserStore map[id]→{id string, username string, passwordHash string}, TokenStore map[token]→userID string. IDs generated with crypto/rand or math/rand UUID. Passwords hashed with bcrypt or sha256. Exposes an http.Handler (or *http.ServeMux) for registration by integrate-iam.
-
-## Context
-
-### Level 1 — fbc6d9-0000-build-1
-
-### Level 2 — fbc6d9-0001-iam
-Identity and access management listener (port 8082) composed of two sub-components — lifecycle (user CRUD and authentication) and authz-rbac (roles and permission checks) — that together handle all ten IAM HTTP endpoints.
-
+Now I have everything needed. The module is at Go 1.21, so method-prefix ServeMux patterns aren't available — path parameters must be extracted manually. Let me write the design documentation and emit the response.<response>
+  <outcome>ARCHITECT_DESIGN_READY</outcome>
+  <handoff>The lifecycle package (package name `lifecycle`, import path `github.com/cornjacket/platform-monolith/internal/iam/internal/iam/lifecycle`) exposes a single public constructor `Handler() *http.ServeMux` that wires five HTTP routes for user CRUD and token auth. Two in-memory stores (`UserStore` with dual maps by ID and username, `TokenStore` keyed by token) are each guarded by `sync.RWMutex`. Go 1.21 is the target — no method-prefix ServeMux patterns; method checking is done inside each handler, and `/users/{id}` path parameters are extracted by splitting `r.URL.Path`. UUIDs from `github.com/google/uuid` (already in go.mod). Passwords hashed with `golang.org/x/crypto/bcrypt` cost 12 (new dependency; IMPLEMENTOR must run `go get golang.org/x/crypto`). Two files: `lifecycle.go` (all stores, handler struct, route registration, handler methods) and `lifecycle_test.go` (table-driven HTTP tests via `httptest`).</handoff>
+  <documents_written>true</documents_written>
+  <design>
 ## Design
 
 **Language:** Go 1.21  
@@ -121,7 +104,8 @@ Each handler switches on `r.Method` and returns `405 Method Not Allowed` for une
 - DELETE cascades token invalidation: iterate TokenStore and remove any token whose value equals the deleted userID.
 - All JSON error responses use the shape `{"error":"<message>"}`.
 - `Handler()` is the only exported symbol; stores are not exported.
-
+</design>
+  <acceptance_criteria>
 ## Acceptance Criteria
 
 1. `POST /users` with `{"username":"alice","password":"secret"}` returns HTTP 201 and a JSON body containing `"id"` (non-empty string) and `"username":"alice"`; the body must not contain any password field.
@@ -141,10 +125,6 @@ Each handler switches on `r.Method` and returns `405 Method Not Allowed` for une
 15. `POST /auth/logout` with `Authorization: Token <token>` (wrong scheme) returns HTTP 401.
 16. After `DELETE /users/{id}`, a `POST /auth/logout` using a token that was issued for that user before deletion returns HTTP 401 (token was cascade-invalidated).
 17. Running `go test -race ./...` from the module root targeting this package produces no data-race warnings when concurrent requests are made to the handler.
-
-## Test Command
-
-```
-cd /Users/david/Go/src/github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/platform-monolith/output && go test -race ./internal/iam/internal/iam/lifecycle/...
-```
-
+</acceptance_criteria>
+  <test_command>cd /Users/david/Go/src/github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/platform-monolith/output &amp;&amp; go test -race ./internal/iam/internal/iam/lifecycle/...</test_command>
+</response>
