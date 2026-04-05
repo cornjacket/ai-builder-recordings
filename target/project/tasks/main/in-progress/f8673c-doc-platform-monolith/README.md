@@ -62,7 +62,7 @@ inline alongside the source files they document.
 
 <!-- When a subtask is finished, run complete-task.sh --parent to mark it [x] before moving on. -->
 <!-- subtask-list-start -->
-- [ ] [f8673c-0000-doc-1](f8673c-0000-doc-1/)
+- [x] [X-f8673c-0000-doc-1](X-f8673c-0000-doc-1/)
 <!-- subtask-list-end -->
 
 ## Notes

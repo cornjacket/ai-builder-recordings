@@ -43,10 +43,11 @@
 | 37 | LEAF_COMPLETE_HANDLER | internal | integrate-internal | 15:37:01 | 0s | 0 | 0 | 0 |
 | 38 | DOC_INTEGRATOR | claude | integrate-platform-monolith | 15:38:25 | 1m 23s | 8 | 3,935 | 154,490 |
 | 39 | POST_DOC_HANDLER | internal | integrate-platform-monolith | 15:38:25 | 0s | 0 | 0 | 0 |
+| 40 | LEAF_COMPLETE_HANDLER | internal | integrate-platform-monolith | 15:38:25 | 0s | 0 | 0 | 0 |
 
 ## Subtasks
 
 - [x] f8673c-0000-cmd
 - [x] f8673c-0001-internal
-- [ ] f8673c-0002-integrate-platform-monolith
+- [x] f8673c-0002-integrate-platform-monolith
 
