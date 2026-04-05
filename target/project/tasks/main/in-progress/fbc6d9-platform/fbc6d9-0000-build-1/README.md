@@ -8,6 +8,7 @@
 | 2 | ARCHITECT | claude | build-1 | 02:06:10 | 1m 07s | 4 | 4,076 | 31,620 |
 | 3 | DECOMPOSE_HANDLER | internal | build-1 | 02:06:11 | 1s | 0 | 0 | 0 |
 | 4 | ARCHITECT | claude | metrics | 02:07:49 | 1m 37s | 8 | 5,650 | 126,628 |
+| 5 | DOCUMENTER_POST_ARCHITECT | internal | metrics | 02:07:49 | 0s | 0 | 0 | 0 |
 
 ## Subtasks
 

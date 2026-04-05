@@ -61,3 +61,8 @@ HANDOFF: decomposed into 3 components (level=TOP), first: fbc6d9-0000-metrics
 [2026-04-05T02:07:49.441220] ARCHITECT/claude
 OUTCOME: ARCHITECT_DESIGN_READY
 HANDOFF: The metrics component is a Go package `metrics` at `internal/metrics/`. Three source files: store.go (EventStore with Add/List, sync.RWMutex, returns []Event{} never nil), handlers.go (PostEvent and GetEvents constructor functions returning http.HandlerFunc, validate Type ∈ {"click-mouse","submit-form"}, 400 on bad input or bad JSON, 405 on wrong method, 201/200 on success), routes.go (NewRouter(*EventStore) http.Handler using net/http ServeMux). Event struct fields: ID/Type/UserID/Payload with json tags id/type/userId/payload. UUID generation via github.com/google/uuid. Tests use net/http/httptest covering all status-code paths and a concurrent-Add race test.
+
+============================================================
+[2026-04-05T02:07:49.627633] DOCUMENTER_POST_ARCHITECT/internal
+OUTCOME: DOCUMENTER_DONE
+HANDOFF: no .md files found to index
