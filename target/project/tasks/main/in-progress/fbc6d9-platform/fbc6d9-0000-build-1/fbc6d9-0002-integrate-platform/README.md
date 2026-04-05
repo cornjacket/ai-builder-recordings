@@ -1,5 +1,4 @@
-<!-- This file is managed by the ai-builder pipeline. Do not hand-edit. -->
-# Task: integrate-platform
+# integrate-platform
 
 ## Goal
 
@@ -29,26 +28,3 @@ POST /authz/check body:{"userId":"<string>","permission":"<string>"} → 200 {"a
 ### Level 1 — fbc6d9-0000-build-1
 
 
-## Components
-
-_To be completed by the ARCHITECT._
-
-## Design
-
-_To be completed by the ARCHITECT._
-
-## Acceptance Criteria
-
-_To be completed by the ARCHITECT._
-
-## Test Command
-
-_To be completed by the ARCHITECT._
-
-## Suggested Tools
-
-_To be completed by the ARCHITECT._
-
-## Notes
-
-_None._
