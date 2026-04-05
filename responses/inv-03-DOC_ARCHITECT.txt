@@ -1,0 +1,23 @@
+The `cmd` output directory contains one subdirectory (`platform/`) and a stub `README.md` at the top level. `platform/` holds only `main.go` and `main_test.go` — no further subdirs, so it is atomic. The `platform` binary wires together the `metrics` and `iam` internal services and starts them on ports 8081 and 8082 respectively. `main_test.go` will be skipped per policy. No source files exist at the `cmd` level itself (only the stub `README.md`). No generated files, vendor dirs, or hidden dirs to skip.
+
+<response>
+  <outcome>DOC_ARCHITECT_DECOMPOSITION_READY</outcome>
+  <handoff>The `cmd` output directory contains one subdirectory (`platform/`) and a stub `README.md` at the top level. `platform/` holds only `main.go` and `main_test.go` — no further subdirs, making it atomic. `main_test.go` is skipped per policy. There are no source files at the `cmd` level itself (the existing `README.md` is a stub doc file, not source). No vendor, generated, or hidden directories were found. The integrate step must replace the stub `README.md` at `cmd/` level.</handoff>
+  <components>
+    <component>
+      <name>platform</name>
+      <complexity>atomic</complexity>
+      <source_dir>platform</source_dir>
+      <description>Entry point binary — starts the metrics service on :8081 and the IAM service on :8082 by wiring together the internal packages</description>
+    </component>
+    <component>
+      <name>integrate-cmd</name>
+      <complexity>atomic</complexity>
+      <source_dir>.</source_dir>
+      <description>Cross-component synthesis: README.md for the cmd directory summarising the platform binary and its two service endpoints</description>
+    </component>
+  </components>
+</response>
+
+OUTCOME: DONE
+HANDOFF: Decomposed the `cmd` output directory (decompose mode). Found one atomic subdir `platform/` containing `main.go` and `main_test.go` (`main_test.go` skipped). No source files exist at the `cmd` level — only a stub `README.md`. Two components emitted: `platform` (atomic, documents `main.go`) and `integrate-cmd` (atomic, `source_dir: "."`, produces the cmd-level `README.md`). The next agent handling `platform` should document the `main()` entry point, its concurrent goroutine pattern for `metrics`, and its imports of `internal/iam` and `internal/metrics`.
