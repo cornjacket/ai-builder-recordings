@@ -15,5 +15,5 @@ Internal service packages subtree — contains `metrics` (event store + HTTP han
 
 - [x] f8673c-0000-authz
 - [x] f8673c-0001-lifecycle
-- [ ] f8673c-0002-integrate-iam
+- [x] f8673c-0002-integrate-iam
 

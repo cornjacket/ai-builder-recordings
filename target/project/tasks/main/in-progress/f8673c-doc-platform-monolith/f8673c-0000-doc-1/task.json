@@ -318,6 +318,19 @@
       "tokens_out": 0,
       "tokens_cached": 0,
       "outcome": "POST_DOC_HANDLER_INTEGRATE_PASS"
+    },
+    {
+      "role": "LEAF_COMPLETE_HANDLER",
+      "agent": "internal",
+      "n": 5,
+      "description": "integrate-iam",
+      "start": "2026-04-05T15:32:15.130635",
+      "end": "2026-04-05T15:32:16.704669",
+      "elapsed_s": 1.574034,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "tokens_cached": 0,
+      "outcome": "HANDLER_SUBTASKS_READY"
     }
   ]
 }
