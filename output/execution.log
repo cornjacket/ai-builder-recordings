@@ -96,3 +96,8 @@ HANDOFF: indexed 1 doc(s) into README.md (1 design, 0 implementation)
 [2026-04-05T01:17:48.740339] IMPLEMENTOR/claude
 OUTCOME: IMPLEMENTOR_IMPLEMENTATION_DONE
 HANDOFF: Implemented the `store` package at `internal/userservice/store` with `store.go` (User struct, Store struct, New, Create, Get, Update, Delete, newUUID) and `store_test.go` (table-driven tests for all CRUD hit/miss cases plus a 50-goroutine concurrency test). A `go.mod` was initialised at the output root (module `github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/user-service`) since none existed. A companion `store.md` documents the design decisions. All stdlib-only; compile check passes cleanly.
+
+============================================================
+[2026-04-05T01:17:48.957077] DOCUMENTER_POST_IMPLEMENTOR/internal
+OUTCOME: DOCUMENTER_DONE
+HANDOFF: indexed 2 doc(s) into README.md (1 design, 1 implementation)

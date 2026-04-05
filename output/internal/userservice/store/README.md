@@ -59,3 +59,8 @@ packages are required.
 |------|-------------|
 | concurrency.md | Documents the locking strategy for the Store type, explaining which operations |
 
+### Implementation Notes
+| File | Description |
+|------|-------------|
+| store.md | Documents the design and key decisions of the thread-safe in-memory User store |
+
