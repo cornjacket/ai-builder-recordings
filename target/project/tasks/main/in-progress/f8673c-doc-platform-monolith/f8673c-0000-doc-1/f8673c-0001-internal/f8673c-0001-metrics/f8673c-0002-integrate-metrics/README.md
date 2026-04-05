@@ -1,5 +1,4 @@
-<!-- This file is managed by the ai-builder pipeline. Do not hand-edit. -->
-# Task: integrate-metrics
+# integrate-metrics
 
 ## Goal
 
@@ -15,26 +14,3 @@ Internal service packages subtree — contains `metrics` (event store + HTTP han
 ### Level 3 — f8673c-0001-metrics
 Metrics package — contains handlers and store sub-packages alongside a parent-level metrics.go; pre-existing README.md is present
 
-## Components
-
-_To be completed by the ARCHITECT._
-
-## Design
-
-_To be completed by the ARCHITECT._
-
-## Acceptance Criteria
-
-_To be completed by the ARCHITECT._
-
-## Test Command
-
-_To be completed by the ARCHITECT._
-
-## Suggested Tools
-
-_To be completed by the ARCHITECT._
-
-## Notes
-
-_None._

@@ -383,6 +383,19 @@
       "tokens_out": 0,
       "tokens_cached": 0,
       "outcome": "POST_DOC_HANDLER_ATOMIC_PASS"
+    },
+    {
+      "role": "LEAF_COMPLETE_HANDLER",
+      "agent": "internal",
+      "n": 6,
+      "description": "handlers",
+      "start": "2026-04-05T15:33:40.289672",
+      "end": "2026-04-05T15:33:40.986584",
+      "elapsed_s": 0.696912,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "tokens_cached": 0,
+      "outcome": "HANDLER_SUBTASKS_READY"
     }
   ]
 }
