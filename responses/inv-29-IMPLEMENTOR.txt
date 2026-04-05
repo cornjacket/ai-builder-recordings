@@ -1,0 +1,11 @@
+Now I have everything I need. Let me write `iam.go` and `iam_test.go`.Now let me look at the lifecycle and authz handlers to understand their request/response shapes for writing the tests.Now I'll write the test file.Now write the companion `.md` and run a syntax check:Clean compile. Let me also verify the test file compiles:
+Both `go build` and `go vet` pass cleanly.
+
+<response>
+  <outcome>IMPLEMENTOR_IMPLEMENTATION_DONE</outcome>
+  <handoff>Implemented `internal/iam/iam.go` (package `iam`) with a single `NewMux()` function that calls `lifecycle.Handler()` and `authz.Handler()`, registers lifecycle on `/users`, `/auth/login`, `/auth/logout`, registers authz on `/roles`, `/authz/check`, and installs a `/users/` catch-all `HandleFunc` that routes to authz when the path ends in `/roles` and to lifecycle otherwise. Also wrote `iam_test.go` with four test functions covering: nil-check, lifecycle round-trip (create/get/login/logout/delete), authz round-trip (create role/list/assign/get user roles/check), and explicit subpath routing verification. Companion `iam.go.md` documents key design decisions. All files compile and vet clean (`go build ./internal/iam/...`, `go vet ./internal/iam/...` both exit 0).</handoff>
+  <documents_written>true</documents_written>
+</response>
+
+OUTCOME: IMPLEMENTOR_IMPLEMENTATION_DONE
+HANDOFF: Implemented `internal/iam/iam.go` (package `iam`) with `NewMux()` that wires lifecycle and authz sub-muxes: lifecycle handles `/users`, `/auth/login`, `/auth/logout`; authz handles `/roles`, `/authz/check`; a `/users/` catch-all `HandleFunc` routes to authz when `r.URL.Path` ends in `/roles`, otherwise to lifecycle. Wrote `iam_test.go` with tests for nil-check, lifecycle round-trip, authz round-trip, and explicit subpath routing disambiguation. Companion `iam.go.md` documents the suffix-check design and no-global-state guarantee. Both `go build` and `go vet` exit 0.
