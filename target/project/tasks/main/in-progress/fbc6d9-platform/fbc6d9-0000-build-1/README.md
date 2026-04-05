@@ -27,6 +27,7 @@
 | 21 | DOCUMENTER_POST_ARCHITECT | internal | authz | 02:20:36 | 0s | 0 | 0 | 0 |
 | 22 | IMPLEMENTOR | claude | authz | 02:22:02 | 1m 26s | 8 | 6,634 | 139,603 |
 | 23 | DOCUMENTER_POST_IMPLEMENTOR | internal | authz | 02:22:03 | 0s | 0 | 0 | 0 |
+| 24 | SPEC_COVERAGE_CHECKER | internal | authz | 02:22:03 | 0s | 0 | 0 | 0 |
 
 ## Subtasks
 
