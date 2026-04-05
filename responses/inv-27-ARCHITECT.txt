@@ -1,16 +1,33 @@
-# integrate-iam
+Now I have a clear picture. Let me check the exact package location to confirm import paths.**Design summary:**
 
-## Goal
+The `lifecycle` and `authz` packages both expose `Handler() *http.ServeMux` (not `New()`). Both internally register `/users/` — lifecycle for `GET/DELETE /users/{id}`, authz for `POST/GET /users/{id}/roles`. The wiring in `iam.go` cannot blindly forward all `/users/` traffic to one or the other; it needs a path-inspecting dispatcher.
 
-Wire lifecycle and authz handlers into a single http.ServeMux and expose it for the platform main.go. Create iam.go (package iam) in the output directory. It must instantiate lifecycle.New() and authz.New(), register their routes on a shared mux (route prefixes: /users and /auth go to lifecycle; /roles, /authz, and /users/ sub-paths for roles go to authz — use pattern matching carefully so /users/{id}/roles routes to authz while /users/{id} routes to lifecycle), and return the mux via a NewMux() function. No port binding here — the platform main.go calls http.ListenAndServe(":8082", iam.NewMux()). Task Level: INTERNAL.
+**Routing strategy:**
 
-## Context
+`NewMux()` obtains `lc := lifecycle.Handler()` and `az := authz.Handler()`, creates a fresh top-level `*http.ServeMux`, then registers:
 
-### Level 1 — fbc6d9-0000-build-1
+| Registration | Target |
+|---|---|
+| `/users` | `lc` |
+| `/auth/login`, `/auth/logout` | `lc` |
+| `/roles`, `/authz/check` | `az` |
+| `/users/` (catch-all) | custom `http.HandlerFunc` |
 
-### Level 2 — fbc6d9-0001-iam
-Identity and access management listener (port 8082) composed of two sub-components — lifecycle (user CRUD and authentication) and authz-rbac (roles and permission checks) — that together handle all ten IAM HTTP endpoints.
+The `/users/` handler checks `strings.HasSuffix(r.URL.Path, "/roles")`. If true it calls `az.ServeHTTP(w, r)`; otherwise `lc.ServeHTTP(w, r)`. Both sub-muxes receive the original unmodified request so their internal path-extraction logic (`strings.TrimPrefix`, `strings.Split`) continues to work correctly.
 
+**Import paths** (module root is `output/`, module is `github.com/cornjacket/platform-monolith`):
+- `github.com/cornjacket/platform-monolith/internal/iam/internal/iam/lifecycle`
+- `github.com/cornjacket/platform-monolith/internal/iam/internal/iam/authz`
+
+Go's `internal` visibility rule: code in `internal/iam/` is the parent of `internal/iam/internal/`, so `iam.go` (package `iam`) is allowed to import both.
+
+**No documentation written** — `integrate-` rule applies.
+
+<response>
+  <outcome>ARCHITECT_DESIGN_READY</outcome>
+  <handoff>Create `iam.go` (package `iam`) in the output directory `internal/iam/`. It calls `lifecycle.Handler()` and `authz.Handler()` to obtain two sub-muxes, then builds a single top-level `*http.ServeMux` returned by `NewMux()`. Exact registrations: `/users` and `/auth/login` and `/auth/logout` forward to the lifecycle mux; `/roles` and `/authz/check` forward to the authz mux; `/users/` is registered with a custom `http.HandlerFunc` that calls `az.ServeHTTP` when `r.URL.Path` ends in `/roles` and `lc.ServeHTTP` otherwise. No port binding — the caller does `http.ListenAndServe(":8082", iam.NewMux())`. Import paths: `github.com/cornjacket/platform-monolith/internal/iam/internal/iam/lifecycle` and `.../authz`.</handoff>
+  <documents_written>false</documents_written>
+  <design>
 ## Design
 
 **Language:** Go (module `github.com/cornjacket/platform-monolith`, `go 1.25.0`)
@@ -72,7 +89,8 @@ func NewMux() *http.ServeMux {
 1. Exercises the full happy-path round-trip (e.g. create user, then get user) to confirm routing reaches the correct handler.
 2. Confirms `/users/{id}/roles` reaches authz (not lifecycle).
 3. Confirms `/users/{id}` reaches lifecycle (not authz).
-
+  </design>
+  <acceptance_criteria>
 ## Acceptance Criteria
 
 1. `NewMux()` returns a non-nil `*http.ServeMux` with no panics.
@@ -88,10 +106,6 @@ func NewMux() *http.ServeMux {
 11. `POST /authz/check` with `{"userId":…,"permission":"read"}` → 200 with `{"allowed":true}` after assigning a role that has `"read"` permission.
 12. `GET /users/{id}` does NOT return a response handled by authz — specifically, it returns `{"id":…,"username":…}` (lifecycle shape), not a role array.
 13. `GET /users/{id}/roles` does NOT return a response handled by lifecycle — it returns a role array, not a user object.
-
-## Test Command
-
-```
-cd /Users/david/Go/src/github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/platform-monolith/output && go test ./internal/iam/...
-```
-
+  </acceptance_criteria>
+  <test_command>cd /Users/david/Go/src/github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/platform-monolith/output && go test ./internal/iam/...</test_command>
+</response>
