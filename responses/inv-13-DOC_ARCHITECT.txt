@@ -1,0 +1,34 @@
+The output directory contains subdirectories — this is **Decompose Mode**.
+- `authz/` — contains `authz.go` + `authz_test.go` only → **atomic**
+- `lifecycle/` — contains `lifecycle.go` + `lifecycle_test.go` only → **atomic**
+- Parent-level: `iam.go` (wires both sub-packages; documented by DOC_INTEGRATOR via `integrate-iam`)
+- Skipped: `authz_test.go`, `lifecycle_test.go` (test files per policy)
+- Pre-existing `README.md` is comprehensive; DOC_INTEGRATOR must evaluate it for staleness/completeness when handling `integrate-iam`
+
+<response>
+  <outcome>DOC_ARCHITECT_DECOMPOSITION_READY</outcome>
+  <handoff>Two subdirectories found: `authz/` (authz.go + authz_test.go — atomic) and `lifecycle/` (lifecycle.go + lifecycle_test.go — atomic). One parent-level source file exists: `iam.go`, which wires both sub-packages into a single http.Handler and will be documented by the integrate step. Test files `authz_test.go` and `lifecycle_test.go` are skipped per policy. A pre-existing `README.md` is present at the `iam/` level — it is comprehensive and covers all routes, design constraints, and sub-package roles; the integrate step must check it for staleness (it may be complete and require no changes). No vendor, generated, mocks, or hidden directories were found.</handoff>
+  <components>
+    <component>
+      <name>authz</name>
+      <complexity>atomic</complexity>
+      <source_dir>authz</source_dir>
+      <description>RBAC sub-package — manages roles, user-role assignments, and permission checks via in-memory store</description>
+    </component>
+    <component>
+      <name>lifecycle</name>
+      <complexity>atomic</complexity>
+      <source_dir>lifecycle</source_dir>
+      <description>User lifecycle sub-package — handles user CRUD, bcrypt-hashed password storage, and token-based auth sessions</description>
+    </component>
+    <component>
+      <name>integrate-iam</name>
+      <complexity>atomic</complexity>
+      <source_dir>.</source_dir>
+      <description>Cross-component synthesis: iam.go.md documenting the New() wiring function, and README.md (update if stale, leave if complete) for this directory</description>
+    </component>
+  </components>
+</response>
+
+OUTCOME: DONE
+HANDOFF: Decompose mode applied to the `iam` output directory. Two atomic subdirectories identified: `authz/` (RBAC store and permission-check handlers) and `lifecycle/` (user CRUD and token auth). Both contain only source files plus skipped test files. Parent-level `iam.go` wires the two sub-packages and is the subject of the `integrate-iam` step. A pre-existing and detailed `README.md` is present at `iam/` level — the integrate step must compare it against current source and update or leave unchanged accordingly. No files were written (decompose mode is planning only).
