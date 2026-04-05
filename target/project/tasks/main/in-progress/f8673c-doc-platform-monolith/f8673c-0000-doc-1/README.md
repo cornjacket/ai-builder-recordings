@@ -21,6 +21,7 @@
 | 15 | DOC_ARCHITECT | claude | authz | 15:29:29 | 49s | 6 | 2,844 | 96,642 |
 | 16 | POST_DOC_HANDLER | internal | authz | 15:29:29 | 0s | 0 | 0 | 0 |
 | 17 | LEAF_COMPLETE_HANDLER | internal | authz | 15:29:30 | 0s | 0 | 0 | 0 |
+| 18 | DOC_ARCHITECT | claude | lifecycle | 15:30:30 | 59s | 6 | 2,983 | 98,630 |
 
 ## Subtasks
 

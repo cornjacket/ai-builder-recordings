@@ -18,5 +18,6 @@
   "name": "lifecycle",
   "goal": "User lifecycle sub-package \u2014 handles user CRUD, bcrypt-hashed password storage, and token-based auth sessions",
   "context": "### Level 1 \u2014 f8673c-0000-doc-1\n\n### Level 2 \u2014 f8673c-0001-internal\nInternal service packages subtree \u2014 contains `metrics` (event store + HTTP handlers) and `iam` (lifecycle + authz) as composite sub-packages\n\n### Level 3 \u2014 f8673c-0000-iam\nIAM package \u2014 contains lifecycle and authz sub-packages alongside a parent-level iam.go; pre-existing README.md is present",
-  "output_dir": "/Users/david/Go/src/github.com/cornjacket/ai-builder/establish-regression-recordings/sandbox/regressions/doc-platform-monolith/output/internal/iam/lifecycle"
+  "output_dir": "/Users/david/Go/src/github.com/cornjacket/ai-builder/establish-regression-recordings/sandbox/regressions/doc-platform-monolith/output/internal/iam/lifecycle",
+  "active_role": "DOC_ARCHITECT"
 }
