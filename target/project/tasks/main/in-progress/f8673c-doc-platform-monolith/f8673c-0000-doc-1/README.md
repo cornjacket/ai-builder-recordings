@@ -25,6 +25,7 @@
 | 19 | POST_DOC_HANDLER | internal | lifecycle | 15:30:30 | 0s | 0 | 0 | 0 |
 | 20 | LEAF_COMPLETE_HANDLER | internal | lifecycle | 15:30:31 | 0s | 0 | 0 | 0 |
 | 21 | DOC_INTEGRATOR | claude | integrate-iam | 15:32:14 | 1m 43s | 12 | 5,723 | 242,586 |
+| 22 | POST_DOC_HANDLER | internal | integrate-iam | 15:32:14 | 0s | 0 | 0 | 0 |
 
 ## Subtasks
 
