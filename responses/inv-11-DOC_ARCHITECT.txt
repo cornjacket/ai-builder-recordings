@@ -1,0 +1,39 @@
+The `internal` output directory contains two subdirectories (`iam/` and `metrics/`), confirming decompose mode. Let me verify the structure.
+**Structure analysis:**
+
+- `internal/` has two subdirs: `iam/` and `metrics/` → **decompose mode**
+- `iam/` contains `iam.go`, `README.md`, and subdirs `authz/` + `lifecycle/` → **composite**
+- `metrics/` contains `metrics.go`, `metrics_test.go`, `README.md`, and subdirs `handlers/` + `store/` → **composite**
+- Parent-level source files at `internal/`: none (only a stub `README.md` doc file)
+- `metrics_test.go` is skipped per policy
+- Pre-existing `README.md` files in both `iam/` and `metrics/` must be preserved/updated by downstream agents
+
+No documentation files are written in decompose mode.
+
+<response>
+  <outcome>DOC_ARCHITECT_DECOMPOSITION_READY</outcome>
+  <handoff>The `internal` output directory contains two subdirectories (`iam/` and `metrics/`), both composite. `iam/` holds `iam.go`, a pre-existing `README.md`, and two atomic subdirs (`authz/`, `lifecycle/`). `metrics/` holds `metrics.go`, a pre-existing `README.md`, `metrics_test.go` (skip), and two atomic subdirs (`handlers/`, `store/`). There are no source files at the `internal/` level itself — only a stub `README.md`. `iam` and `metrics` are both composite because each contains further subdirectories. Pre-existing `README.md` files in `iam/` and `metrics/` must be co-existed with gracefully by downstream agents (update if stale, leave if complete). Nothing was skipped beyond `metrics_test.go`.</handoff>
+  <components>
+    <component>
+      <name>iam</name>
+      <complexity>composite</complexity>
+      <source_dir>iam</source_dir>
+      <description>IAM package — contains lifecycle and authz sub-packages alongside a parent-level iam.go; pre-existing README.md is present</description>
+    </component>
+    <component>
+      <name>metrics</name>
+      <complexity>composite</complexity>
+      <source_dir>metrics</source_dir>
+      <description>Metrics package — contains handlers and store sub-packages alongside a parent-level metrics.go; pre-existing README.md is present</description>
+    </component>
+    <component>
+      <name>integrate-internal</name>
+      <complexity>atomic</complexity>
+      <source_dir>.</source_dir>
+      <description>Cross-component synthesis: data-flow.md and README.md for the internal directory, covering how iam and metrics relate</description>
+    </component>
+  </components>
+</response>
+
+OUTCOME: DONE
+HANDOFF: The `internal` output directory is composite — it contains `iam/` and `metrics/`, both composite (each has further subdirectories). No documentation was written (decompose mode is planning only). `iam/` has subdirs `authz/` and `lifecycle/` plus parent-level `iam.go` and a pre-existing `README.md`. `metrics/` has subdirs `handlers/` and `store/` plus parent-level `metrics.go` and a pre-existing `README.md`; `metrics_test.go` is skipped. The stub `README.md` at `internal/` root must be replaced by the integrate step. Pre-existing `README.md` files in both sub-packages must be treated as potentially stale and updated if needed rather than overwritten wholesale.
