@@ -1,0 +1,35 @@
+The output directory has subdirectories (`handlers/`, `store/`) — this is **decompose mode**.
+
+- `handlers/`: contains `handlers.go` + `handlers_test.go` — no subdirs → **atomic**
+- `store/`: contains `store.go` + `store_test.go` — no subdirs → **atomic**
+- Parent-level source file: `metrics.go` (will be handled by integrate step)
+- `metrics_test.go`: skipped per policy
+- Pre-existing `README.md`: comprehensive and complete — no changes needed here; integrate step must check it for staleness
+
+<response>
+  <outcome>DOC_ARCHITECT_DECOMPOSITION_READY</outcome>
+  <handoff>Two atomic subdirectories found: `handlers/` (handlers.go + handlers_test.go, no further subdirs) and `store/` (store.go + store_test.go, no further subdirs). One parent-level source file exists: `metrics.go`, which wires both sub-packages into an http.Handler and will be documented by the integrate step. Test files `handlers_test.go` and `store_test.go` are skipped per policy. A pre-existing `README.md` is present at the `metrics/` level — it is comprehensive, covering Purpose/Tags, file index, overview, API contract, and data model; the integrate step must check it for staleness but it may be complete and require no changes.</handoff>
+  <components>
+    <component>
+      <name>handlers</name>
+      <complexity>atomic</complexity>
+      <source_dir>handlers</source_dir>
+      <description>HTTP handlers for POST /events and GET /events — accepts a store.Storer interface and encodes/decodes JSON</description>
+    </component>
+    <component>
+      <name>store</name>
+      <complexity>atomic</complexity>
+      <source_dir>store</source_dir>
+      <description>In-memory event store with thread-safe Add and List operations; owns the Event struct and UUID generation</description>
+    </component>
+    <component>
+      <name>integrate-metrics</name>
+      <complexity>atomic</complexity>
+      <source_dir>.</source_dir>
+      <description>Cross-component synthesis: metrics.go.md, data-flow.md, and README.md (check pre-existing for staleness) for the metrics directory</description>
+    </component>
+  </components>
+</response>
+
+OUTCOME: DONE
+HANDOFF: The `metrics/` output directory is composite — two atomic subdirectories (`handlers/`, `store/`) were identified, each containing only `.go` source and test files. `metrics_test.go` at the parent level was skipped. `metrics.go` is the sole parent-level source file and will be documented by the integrate step. A comprehensive pre-existing `README.md` exists at the `metrics/` level covering Purpose/Tags, file index, overview, API contract, and data model — the integrate step should check it for staleness but is likely to find it complete. The decomposition is ready for the pipeline to dispatch atomic jobs for `handlers/`, `store/`, and then `integrate-metrics`.
