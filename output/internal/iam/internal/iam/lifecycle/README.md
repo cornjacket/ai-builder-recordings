@@ -36,3 +36,8 @@ See [api.md](api.md) for the full endpoint contract.
 |------|-------------|
 | api.md | Defines the HTTP request and response contract for all five lifecycle endpoints |
 
+### Implementation Notes
+| File | Description |
+|------|-------------|
+| lifecycle.go.md | Documents the design and implementation decisions for the lifecycle package, which owns user CRUD and session-token management for the IAM listener |
+

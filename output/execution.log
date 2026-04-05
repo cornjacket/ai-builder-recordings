@@ -243,3 +243,8 @@ HANDOFF: indexed 1 doc(s) into README.md (1 design, 0 implementation)
 [2026-04-05T02:16:04.134721] IMPLEMENTOR/claude
 OUTCOME: IMPLEMENTOR_IMPLEMENTATION_DONE
 HANDOFF: Implemented the `lifecycle` package in `output/internal/iam/internal/iam/lifecycle/` with two files: `lifecycle.go` (UserStore dual-indexed by ID and username, TokenStore, five HTTP handler methods, single exported `Handler() *http.ServeMux`) and `lifecycle_test.go` (table-driven tests covering all 17 acceptance criteria including concurrent-access test). Added `golang.org/x/crypto/bcrypt` via `go get`. Passwords are hashed at bcrypt cost 12; tokens are UUID strings; DELETE cascades token invalidation. A companion `lifecycle.go.md` documents design decisions. Both `go build` and `go vet` pass clean. The TESTER should run `go test -race ./internal/iam/internal/iam/lifecycle/...` from the module root to verify all acceptance criteria.
+
+============================================================
+[2026-04-05T02:16:04.456036] DOCUMENTER_POST_IMPLEMENTOR/internal
+OUTCOME: DOCUMENTER_DONE
+HANDOFF: indexed 2 doc(s) into README.md (1 design, 1 implementation)
