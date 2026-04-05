@@ -209,3 +209,8 @@ HANDOFF: decomposed into 3 components (level=INTERNAL), first: fbc6d9-0000-lifec
 [2026-04-05T02:14:16.892778] ARCHITECT/claude
 OUTCOME: ARCHITECT_DESIGN_READY
 HANDOFF: The lifecycle package (package name `lifecycle`, import path `github.com/cornjacket/platform-monolith/internal/iam/internal/iam/lifecycle`) exposes a single public constructor `Handler() *http.ServeMux` that wires five HTTP routes for user CRUD and token auth. Two in-memory stores (`UserStore` with dual maps by ID and username, `TokenStore` keyed by token) are each guarded by `sync.RWMutex`. Go 1.21 is the target — no method-prefix ServeMux patterns; method checking is done inside each handler, and `/users/{id}` path parameters are extracted by splitting `r.URL.Path`. UUIDs from `github.com/google/uuid` (already in go.mod). Passwords hashed with `golang.org/x/crypto/bcrypt` cost 12 (new dependency; IMPLEMENTOR must run `go get golang.org/x/crypto`). Two files: `lifecycle.go` (all stores, handler struct, route registration, handler methods) and `lifecycle_test.go` (table-driven HTTP tests via `httptest`).
+
+============================================================
+[2026-04-05T02:14:17.037335] DOCUMENTER_POST_ARCHITECT/internal
+OUTCOME: DOCUMENTER_DONE
+HANDOFF: indexed 1 doc(s) into README.md (1 design, 0 implementation)

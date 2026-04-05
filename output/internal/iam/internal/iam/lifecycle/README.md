@@ -28,3 +28,11 @@ IDs and tokens are generated with `github.com/google/uuid` (v4). Passwords are h
 - `golang.org/x/crypto/bcrypt` — must be added to `go.mod` (`go get golang.org/x/crypto`)
 
 See [api.md](api.md) for the full endpoint contract.
+
+## Documentation
+
+### Design
+| File | Description |
+|------|-------------|
+| api.md | Defines the HTTP request and response contract for all five lifecycle endpoints |
+

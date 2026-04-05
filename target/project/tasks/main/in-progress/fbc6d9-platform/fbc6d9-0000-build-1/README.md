@@ -17,6 +17,7 @@
 | 11 | ARCHITECT | claude | iam | 02:11:38 | 1m 28s | 9 | 5,398 | 146,749 |
 | 12 | DECOMPOSE_HANDLER | internal | iam | 02:11:39 | 0s | 0 | 0 | 0 |
 | 13 | ARCHITECT | claude | lifecycle | 02:14:16 | 2m 37s | 12 | 9,237 | 244,192 |
+| 14 | DOCUMENTER_POST_ARCHITECT | internal | lifecycle | 02:14:17 | 0s | 0 | 0 | 0 |
 
 ## Subtasks
 
