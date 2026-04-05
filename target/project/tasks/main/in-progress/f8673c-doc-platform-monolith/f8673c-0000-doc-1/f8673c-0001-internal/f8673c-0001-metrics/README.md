@@ -11,3 +11,9 @@ Metrics package — contains handlers and store sub-packages alongside a parent-
 ### Level 2 — f8673c-0001-internal
 Internal service packages subtree — contains `metrics` (event store + HTTP handlers) and `iam` (lifecycle + authz) as composite sub-packages
 
+## Subtasks
+
+- [ ] f8673c-0000-handlers
+- [ ] f8673c-0001-store
+- [ ] f8673c-0002-integrate-metrics
+
