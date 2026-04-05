@@ -1,0 +1,17 @@
+I have all the context I need from the handoff summaries. The root composite wraps `cmd/` (the binary) and `internal/` (the two services). I'll produce `README.md` and `data-flow.md` for the repository root. No `api.md` is needed — every route is fully documented within the sub-component docs.
+Both files are written. Let me verify they pass the linter rules mentally:
+
+- Both have `Purpose:` line ✓
+- Both have `Tags:` line ✓  
+- Both have a blank line between `Purpose:` and `Tags:` ✓
+- No empty sections (every `##` heading has prose before any sub-heading or next `##`) ✓
+- No placeholder text ✓
+
+<response>
+  <outcome>DOC_INTEGRATOR_DONE</outcome>
+  <handoff>Wrote 2 files to output/: (1) README.md — root-level directory index with Purpose/Tags header, 1-sentence composite description, component table linking to cmd/README.md and internal/README.md, and a link to data-flow.md; (2) data-flow.md — ASCII diagrams covering startup object-graph construction (how main() calls iam.New() and metrics.New() and mounts each handler on its own port in separate goroutines) and request-time routing through both iam (:8082, 10 routes across lifecycle and authz) and metrics (:8081, POST/GET /events), plus a cross-service isolation note explaining that neither service imports the other and client-level coordination via user ID strings is the only coupling. No api.md was produced because all routes are fully documented within their respective sub-component docs. The platform-monolith composite is a single Go binary (github.com/cornjacket/platform, Go 1.22) that co-hosts two independent in-memory HTTP services with no shared state.</handoff>
+  <documents_written>true</documents_written>
+</response>
+
+OUTCOME: DONE
+HANDOFF: Wrote 2 files to the output root: README.md (directory index with component table linking to cmd/ and internal/, plus a link to data-flow.md) and data-flow.md (ASCII diagrams for startup object-graph construction showing how main() calls iam.New() and metrics.New() and starts each on its own goroutine/port, plus request-time routing paths for both services, and a cross-service isolation note). No api.md was produced at this level because every HTTP route is already fully documented within the iam and metrics sub-component docs. The platform-monolith is now fully documented from leaf to root: module github.com/cornjacket/platform (Go 1.22) runs two independent in-memory HTTP services (iam :8082, metrics :8081) from a single binary with no cross-service Go coupling.

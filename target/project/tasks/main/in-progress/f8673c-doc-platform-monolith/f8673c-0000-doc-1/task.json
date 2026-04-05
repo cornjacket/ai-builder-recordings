@@ -513,6 +513,19 @@
       "tokens_out": 0,
       "tokens_cached": 0,
       "outcome": "HANDLER_INTEGRATE_READY"
+    },
+    {
+      "role": "DOC_INTEGRATOR",
+      "agent": "claude",
+      "n": 5,
+      "description": "integrate-platform-monolith",
+      "start": "2026-04-05T15:37:01.567304",
+      "end": "2026-04-05T15:38:25.178026",
+      "elapsed_s": 83.610722,
+      "tokens_in": 8,
+      "tokens_out": 3935,
+      "tokens_cached": 154490,
+      "outcome": "DOC_INTEGRATOR_DONE"
     }
   ]
 }
