@@ -1,0 +1,11 @@
+Now I have everything needed from the handoff summaries. I'll write the two synthesis docs for `cmd/`.Both files are written. Let me do a quick self-lint check:
+Both files pass. All `##` sections have prose under them and no empty sections exist.
+
+<response>
+  <outcome>DOC_INTEGRATOR_DONE</outcome>
+  <handoff>Wrote cmd/README.md (replaced the placeholder stub with a proper directory index: Purpose/Tags header, 1-sentence composite description, component table linking to platform/README.md, and a link to the synthesis doc) and cmd/data-flow.md (ASCII diagrams covering startup wiring and request routing through both HTTP servers, plus failure propagation notes). The cmd composite provides the single runnable binary that wires internal/metrics (:8081) and internal/iam (:8082) together.</handoff>
+  <documents_written>true</documents_written>
+</response>
+
+OUTCOME: DONE
+HANDOFF: Replaced the placeholder `cmd/README.md` stub with a proper directory-level index (Purpose/Tags header, composite description, component table pointing to `platform/README.md`, link to synthesis doc) and wrote `cmd/data-flow.md` covering startup wiring (how `main()` obtains handlers from `internal/metrics` and `internal/iam`), request routing (each handler owns its own port independently after construction), and failure propagation (no graceful shutdown; any bind or runtime error kills the process via `log.Fatalf`). Both files pass all linter rules. The next agent should be aware that `cmd/` has no HTTP routes of its own — routing is entirely delegated to the internal packages — so no `api.md` is needed at this level.

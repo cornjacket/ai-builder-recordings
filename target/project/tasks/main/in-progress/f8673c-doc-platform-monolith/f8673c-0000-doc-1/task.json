@@ -123,6 +123,19 @@
       "tokens_out": 0,
       "tokens_cached": 0,
       "outcome": "HANDLER_INTEGRATE_READY"
+    },
+    {
+      "role": "DOC_INTEGRATOR",
+      "agent": "claude",
+      "n": 1,
+      "description": "integrate-cmd",
+      "start": "2026-04-05T15:26:19.621337",
+      "end": "2026-04-05T15:27:13.736922",
+      "elapsed_s": 54.115585,
+      "tokens_in": 8,
+      "tokens_out": 2625,
+      "tokens_cached": 125372,
+      "outcome": "DOC_INTEGRATOR_DONE"
     }
   ]
 }

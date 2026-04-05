@@ -11,6 +11,7 @@
 | 5 | DOC_ARCHITECT | claude | platform | 15:26:12 | 46s | 6 | 1,630 | 88,622 |
 | 6 | POST_DOC_HANDLER | internal | platform | 15:26:13 | 0s | 0 | 0 | 0 |
 | 7 | LEAF_COMPLETE_HANDLER | internal | platform | 15:26:19 | 5s | 0 | 0 | 0 |
+| 8 | DOC_INTEGRATOR | claude | integrate-cmd | 15:27:13 | 54s | 8 | 2,625 | 125,372 |
 
 ## Subtasks
 
