@@ -1,0 +1,37 @@
+{
+  "task-type": "PIPELINE-SUBTASK",
+  "status": "\u2014",
+  "epic": "main",
+  "parent": "f8673c-doc-platform-monolith",
+  "tags": "\u2014",
+  "priority": "\u2014",
+  "created_at": "2026-04-05",
+  "completed_at": null,
+  "next-subtask-id": "0000",
+  "complexity": "\u2014",
+  "level": "TOP",
+  "depth": 0,
+  "last-task": false,
+  "stop-after": false,
+  "components": [],
+  "subtasks": [],
+  "goal": "Generate documentation for the platform-monolith source tree. Produce companion\n`.md` files for every source file, a `README.md` in every directory, and\ncross-component synthesis docs (`data-flow.md`, `api.md`) at composite levels.\n\nThe source tree is a Go HTTP service with two internal service packages:\n\n```\ncmd/platform/\n  main.go                            \u2190 service entry point (wires metrics + iam)\ninternal/\n  metrics/\n    metrics.go                       \u2190 package wiring: store + handlers\n    store/\n      store.go                       \u2190 in-memory event store\n    handlers/\n      handlers.go                    \u2190 HTTP handlers for POST/GET /events\n  iam/\n    iam.go                           \u2190 package wiring: lifecycle + authz\n    lifecycle/\n      lifecycle.go                   \u2190 user CRUD + token auth\n    authz/\n      authz.go                       \u2190 RBAC roles and permission checks\n```\n\nSome directories already have a `README.md` (`internal/iam/` and\n`internal/metrics/`). The pipeline must co-exist with these pre-existing docs \u2014\nit should add companion `.md` files and sub-directory `README.md` files where\nthey are missing, and produce synthesis docs at composite levels.",
+  "context": "This is a regression test for the ai-builder doc pipeline.\n\nThe pipeline must:\n- Traverse the source tree recursively\n- At each leaf directory (atomic): read source files, write companion `.md` files\n  and a `README.md` describing the package\n- At each composite directory (after all leaves complete): write cross-component\n  synthesis docs (`data-flow.md`, `api.md`, `README.md`) using the completed\n  sub-component handoff summaries\n- Never modify source files \u2014 only create `.md` files\n- Co-exist gracefully with pre-existing `.md` files in the source tree\n\nThe output directory IS the source tree. All generated `.md` files are written\ninline alongside the source files they document.",
+  "output_dir": "/Users/david/Go/src/github.com/cornjacket/ai-builder/establish-regression-recordings/sandbox/regressions/doc-platform-monolith/output",
+  "active_role": "DOC_ARCHITECT",
+  "execution_log": [
+    {
+      "role": "DOC_ARCHITECT",
+      "agent": "claude",
+      "n": 1,
+      "description": "doc-1",
+      "start": "2026-04-05T15:23:54.095309",
+      "end": "2026-04-05T15:24:38.274596",
+      "elapsed_s": 44.179287,
+      "tokens_in": 4,
+      "tokens_out": 2072,
+      "tokens_cached": 48415,
+      "outcome": "DOC_ARCHITECT_DECOMPOSITION_READY"
+    }
+  ]
+}

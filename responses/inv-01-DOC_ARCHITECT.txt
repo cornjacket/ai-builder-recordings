@@ -1,0 +1,48 @@
+The output directory contains subdirectories — I'm in **decompose mode**. Let me examine the tree fully before planning.
+
+The structure is:
+- `cmd/` → `platform/` (only source files inside: `main.go`, `main_test.go`) → **atomic**
+- `internal/` → `iam/` (has subdirs `authz/`, `lifecycle/`) → **composite**; `metrics/` (has subdirs `handlers/`, `store/`) → **composite**
+- `logs/` → pipeline log output only → **skip**
+- Root-level files: `go.mod`, `go.sum` (project module config), `current-job.txt`, `execution.log` (pipeline artifacts)
+
+**Skipped:**
+- `logs/` — pipeline artifacts, not source code
+- `current-job.txt`, `execution.log` — pipeline/meta files
+- `go.sum` — auto-generated dependency lock file
+- All `*_test.go` files (per rules)
+
+**Components:**
+1. `cmd` — composite (contains `platform/` subdir)
+2. `internal` — composite (contains `iam/` and `metrics/` subdirs)
+3. `integrate-platform-monolith` — atomic, `source_dir: "."` for root-level synthesis
+
+**Parent-level source files:** `go.mod` — module definition; will need to be noted for DOC_INTEGRATOR to cover in the root synthesis pass.
+
+<response>
+  <outcome>DOC_ARCHITECT_DECOMPOSITION_READY</outcome>
+  <handoff>The output directory root contains two source subdirectories (`cmd` and `internal`) and one pipeline-only directory (`logs`). `cmd` contains a single subdir `platform/` making it composite. `internal` contains `iam/` and `metrics/`, both of which have further subdirectories, making `internal` composite. Root-level source files are `go.mod` (module definition) and `go.sum` (auto-generated, skip). Pipeline artifacts `current-job.txt` and `execution.log` are also at root and should be skipped. `logs/` is skipped entirely as it contains only pipeline log output. Pre-existing `README.md` files exist in `internal/iam/` and `internal/metrics/` and must be co-existed with gracefully.</handoff>
+  <components>
+    <component>
+      <name>cmd</name>
+      <complexity>composite</complexity>
+      <source_dir>cmd</source_dir>
+      <description>Command entrypoint subtree — contains the `platform` binary which wires together the metrics and IAM internal services</description>
+    </component>
+    <component>
+      <name>internal</name>
+      <complexity>composite</complexity>
+      <source_dir>internal</source_dir>
+      <description>Internal service packages subtree — contains `metrics` (event store + HTTP handlers) and `iam` (lifecycle + authz) as composite sub-packages</description>
+    </component>
+    <component>
+      <name>integrate-platform-monolith</name>
+      <complexity>atomic</complexity>
+      <source_dir>.</source_dir>
+      <description>Cross-component synthesis: data-flow.md, api.md, and README.md for the repository root — covering go.mod module definition and how cmd, internal/metrics, and internal/iam compose into the full service</description>
+    </component>
+  </components>
+</response>
+
+OUTCOME: DONE
+HANDOFF: Operating in decompose mode on the repository root. Found two source subdirectories to recurse into: `cmd` (composite — contains `platform/` subdir with `main.go`) and `internal` (composite — contains `iam/` with `authz/`+`lifecycle/` subdirs, and `metrics/` with `handlers/`+`store/` subdirs). `logs/` was skipped as a pipeline artifact directory. Root-level files `go.mod` and `go.sum` exist alongside the subdirs; `go.sum` is auto-generated and should be skipped, `go.mod` should be noted for root synthesis. Pre-existing `README.md` files in `internal/iam/` and `internal/metrics/` must be co-existed with gracefully. The next agents should recurse into `cmd` (composite → needs its own decompose pass) and `internal` (composite → needs its own decompose pass), then the integrate step at root will produce `data-flow.md`, `api.md`, and `README.md` for the repository root.
