@@ -40,7 +40,7 @@
     },
     {
       "name": "fbc6d9-0001-authz",
-      "complete": false
+      "complete": true
     },
     {
       "name": "fbc6d9-0002-integrate-iam",

@@ -29,6 +29,7 @@
 | 23 | DOCUMENTER_POST_IMPLEMENTOR | internal | authz | 02:22:03 | 0s | 0 | 0 | 0 |
 | 24 | SPEC_COVERAGE_CHECKER | internal | authz | 02:22:03 | 0s | 0 | 0 | 0 |
 | 25 | TESTER | internal | authz | 02:22:05 | 2s | 0 | 0 | 0 |
+| 26 | LEAF_COMPLETE_HANDLER | internal | authz | 02:22:06 | 0s | 0 | 0 | 0 |
 
 ## Subtasks
 

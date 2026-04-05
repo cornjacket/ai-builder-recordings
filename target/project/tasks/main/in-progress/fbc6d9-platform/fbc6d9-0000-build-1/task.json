@@ -376,6 +376,19 @@
       "tokens_out": 0,
       "tokens_cached": 0,
       "outcome": "TESTER_TESTS_PASS"
+    },
+    {
+      "role": "LEAF_COMPLETE_HANDLER",
+      "agent": "internal",
+      "n": 3,
+      "description": "authz",
+      "start": "2026-04-05T02:22:05.943736",
+      "end": "2026-04-05T02:22:06.500437",
+      "elapsed_s": 0.556701,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "tokens_cached": 0,
+      "outcome": "HANDLER_SUBTASKS_READY"
     }
   ]
 }
