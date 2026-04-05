@@ -76,3 +76,12 @@ Registers `POST /events` and `GET /events` on a `http.NewServeMux()`. Method enf
 
 - `store_test.go`: verifies `Add` assigns a non-empty ID, stores the event, and `List` returns it; verifies concurrent `Add` calls do not race (run with `-race`).
 - `handlers_test.go`: uses `httptest.NewRecorder` and `httptest.NewRequest`; covers 201 on valid POST, 400 on invalid type, 400 on bad JSON, 200 array on GET (empty and non-empty), and 405 on wrong method for each endpoint.
+
+## Documentation
+
+### Implementation Notes
+| File | Description |
+|------|-------------|
+| handlers.go.md | HTTP handler constructors for the metrics service, implementing POST and GET for the /events endpoint |
+| store.go.md | Thread-safe in-memory store for frontend user interaction events, with Add and List operations |
+
