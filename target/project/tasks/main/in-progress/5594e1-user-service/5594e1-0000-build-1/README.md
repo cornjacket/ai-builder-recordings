@@ -7,6 +7,7 @@
 | 1 | ACCEPTANCE_SPEC_WRITER | claude | build-1 | 01:14:31 | 26s | 5 | 1,295 | 63,902 |
 | 2 | ARCHITECT | claude | build-1 | 01:15:31 | 59s | 7 | 3,146 | 93,883 |
 | 3 | DECOMPOSE_HANDLER | internal | build-1 | 01:15:33 | 1s | 0 | 0 | 0 |
+| 4 | ARCHITECT | claude | store | 01:16:41 | 1m 07s | 9 | 3,513 | 138,372 |
 
 ## Subtasks
 
