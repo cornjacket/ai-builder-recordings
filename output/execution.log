@@ -379,3 +379,8 @@ HANDOFF: ran on-task-complete.sh → NEXT /Users/david/Go/src/github.com/cornjac
 [2026-04-05T02:24:11.176144] ARCHITECT/claude
 OUTCOME: ARCHITECT_DESIGN_READY
 HANDOFF: Create `iam.go` (package `iam`) in the output directory `internal/iam/`. It calls `lifecycle.Handler()` and `authz.Handler()` to obtain two sub-muxes, then builds a single top-level `*http.ServeMux` returned by `NewMux()`. Exact registrations: `/users` and `/auth/login` and `/auth/logout` forward to the lifecycle mux; `/roles` and `/authz/check` forward to the authz mux; `/users/` is registered with a custom `http.HandlerFunc` that calls `az.ServeHTTP` when `r.URL.Path` ends in `/roles` and `lc.ServeHTTP` otherwise. No port binding — the caller does `http.ListenAndServe(":8082", iam.NewMux())`. Import paths: `github.com/cornjacket/platform-monolith/internal/iam/internal/iam/lifecycle` and `.../authz`.
+
+============================================================
+[2026-04-05T02:24:11.321405] DOCUMENTER_POST_ARCHITECT/internal
+OUTCOME: DOCUMENTER_DONE
+HANDOFF: documents_written=false; skipped
