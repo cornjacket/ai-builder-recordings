@@ -1,0 +1,11 @@
+The output directory is atomic (only source files, no subdirs). I need to:
+1. Create `main.go.md` (missing)
+2. Update `README.md` (stale placeholder)
+<response>
+  <outcome>DOC_ARCHITECT_ATOMIC_DONE</outcome>
+  <handoff>Created main.go.md (missing) covering the entry-point binary's main() function, its concurrency model, and its two non-stdlib dependencies. Updated README.md from a placeholder stub to a proper directory index with Purpose/Tags header, overview, file index table, and a note on the lack of graceful shutdown. main_test.go was skipped per policy. The platform directory is fully documented.</handoff>
+  <documents_written>true</documents_written>
+</response>
+
+OUTCOME: DONE
+HANDOFF: Atomic mode completed for `cmd/platform`. Created `main.go.md` from scratch documenting the `main()` entry point, its concurrent server startup pattern (metrics on :8081 in a goroutine, IAM on :8082 on the main goroutine), and its dependencies on `internal/iam` and `internal/metrics`. Replaced the placeholder `README.md` with a proper directory-level index including Purpose/Tags header, one-sentence overview, file index table with link to `main.go.md`, and a concurrency/shutdown note. `main_test.go` was skipped per policy. No source files were modified. The next agent (DOC_INTEGRATOR for `cmd/`) should synthesise a `cmd/README.md` covering the `platform` subdir; the existing stub at that level was noted in prior handoffs.
