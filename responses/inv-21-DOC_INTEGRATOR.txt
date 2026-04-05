@@ -1,0 +1,16 @@
+Now let me check the output directory and any existing files:Now let me read iam.go to understand the wiring function:I have all the context I need. Let me produce the three files: `iam.go.md`, updated `README.md`, and `data-flow.md`.Now update the README — it needs a blank line between Purpose and Tags, a proper component table, and links to the synthesis docs:All three files are written. Let me do a quick self-lint check:
+All three files pass the linter checks:
+- `Purpose:` present on all three
+- `Tags:` present on all three
+- Blank line between `Purpose:` and `Tags:` on all three
+- No empty sections (all `##` headings have prose beneath them)
+- No placeholder text
+
+<response>
+  <outcome>DOC_INTEGRATOR_DONE</outcome>
+  <handoff>Wrote 3 files to output/internal/iam/: (1) iam.go.md — documents New()'s wiring sequence, public API, and dependencies; (2) data-flow.md — ASCII diagrams for startup wiring and request-time routing, plus the cross-component coupling pattern (client passes lifecycle user IDs to authz via HTTP); (3) README.md — replaced the pre-existing file with a proper directory index including component table linking to authz/, lifecycle/, and iam.go.md, a link to data-flow.md, and the full route summary. The iam composite provides a single http.Handler that composes independent lifecycle and authz sub-packages onto one ServeMux bound to :8082.</handoff>
+  <documents_written>true</documents_written>
+</response>
+
+OUTCOME: DONE
+HANDOFF: Produced three files in output/internal/iam/. iam.go.md documents the New() wiring function — its two-step construct-then-register pattern, wiring sequence, and imports. data-flow.md provides ASCII diagrams for startup wiring and request-time routing, and explains the only cross-component coupling path (client fetches a user ID from lifecycle, then passes it as a string to authz endpoints — no direct package import between sub-packages). README.md was updated from the pre-existing file to a proper directory index with a blank line between Purpose and Tags (linter requirement), a component table linking to authz/README.md, lifecycle/README.md, and iam.go.md, and a link to data-flow.md. All three files pass linter rules (Purpose, Tags, blank line, no empty sections, no placeholders). The next agent (integrating internal/) should know that iam/ is now fully documented with synthesis docs in place.

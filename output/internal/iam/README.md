@@ -1,25 +1,24 @@
 # iam
 
-Purpose: Identity and access management service for the platform. Exposes user lifecycle (registration, authentication) and RBAC authorisation over HTTP on port 8082.
-Tags: architecture, design
+Purpose: Identity and access management composite — exposes user lifecycle and RBAC authorisation as a single `http.Handler` on port 8082.
 
-## File Index
+Tags: architecture, overview
 
-| File | Description |
-|------|-------------|
-| `iam.go` | Package entry point; `New()` wires sub-components and returns `http.Handler` |
-| `lifecycle/lifecycle.go` | In-memory user store and token session management; registers `/users` and `/auth` routes |
-| `authz/authz.go` | In-memory role store and user-role assignments; registers `/roles`, `/users/{id}/roles`, and `/authz/check` routes |
+## Components
+
+| Component | Description |
+|-----------|-------------|
+| [lifecycle/](lifecycle/README.md) | In-memory user CRUD, bcrypt password hashing, and bearer-token session management |
+| [authz/](authz/README.md) | In-memory RBAC — role definitions, user-role assignments, and permission checks |
+| [iam.go](iam.go.md) | Wiring layer — `New()` composes both sub-packages onto a single `ServeMux` |
+
+## Synthesis Docs
+
+- [data-flow.md](data-flow.md) — how requests and data move between lifecycle, authz, and the wiring layer
 
 ## Overview
 
-The `iam` package is an internal composite composed of two atomic sub-packages:
-
-- **lifecycle** — owns user CRUD and auth tokens. Users are stored in a `map[string]User` keyed by UUID. Passwords are stored as bcrypt hashes. Login issues an opaque token (UUID); logout invalidates it. All state is guarded by a `sync.RWMutex`.
-
-- **authz** — owns RBAC. Roles have a name and a set of permission strings. Users can be assigned multiple roles. `POST /authz/check` resolves whether a user has a given permission by walking their assigned roles. State is in-memory with its own mutex. Role IDs assigned as UUIDs. User IDs are opaque strings (no direct import of lifecycle — loose coupling via string IDs).
-
-- **integrate** (`iam.go`) — instantiates both sub-packages, registers all routes on a single `http.ServeMux`, and returns the mux as `http.Handler`. The top-level `main.go` binds this handler to `:8082`.
+The `iam` package is a composite of two independent sub-packages, assembled by `iam.go`. `lifecycle` owns user registration, authentication, and session tokens. `authz` owns role definitions and permission resolution. Neither sub-package imports the other; cross-component coupling flows through the HTTP surface via shared string user IDs.
 
 ### Route Summary
 
@@ -38,6 +37,6 @@ The `iam` package is an internal composite composed of two atomic sub-packages:
 
 ### Design Constraints
 
-- No external database; all state lives in process memory.
+- No external database; all state lives in process memory and is lost on restart.
 - Go module: `github.com/cornjacket/platform`; packages at `internal/iam`, `internal/iam/lifecycle`, `internal/iam/authz`.
-- The `integrate` component does not add a subdirectory — `iam.go` lives directly in the output directory alongside the sub-package directories.
+- `iam.go` is the only place the two sub-packages are composed; neither sub-package imports the other.
