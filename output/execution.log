@@ -146,3 +146,8 @@ HANDOFF: ran on-task-complete.sh → NEXT /Users/david/Go/src/github.com/cornjac
 [2026-04-05T15:28:00.874788] DOC_ARCHITECT/claude
 OUTCOME: DOC_ARCHITECT_DECOMPOSITION_READY
 HANDOFF: The `internal` output directory contains two subdirectories (`iam/` and `metrics/`), both composite. `iam/` holds `iam.go`, a pre-existing `README.md`, and two atomic subdirs (`authz/`, `lifecycle/`). `metrics/` holds `metrics.go`, a pre-existing `README.md`, `metrics_test.go` (skip), and two atomic subdirs (`handlers/`, `store/`). There are no source files at the `internal/` level itself — only a stub `README.md`. `iam` and `metrics` are both composite because each contains further subdirectories. Pre-existing `README.md` files in `iam/` and `metrics/` must be co-existed with gracefully by downstream agents (update if stale, leave if complete). Nothing was skipped beyond `metrics_test.go`.
+
+============================================================
+[2026-04-05T15:28:01.934784] DECOMPOSE_HANDLER/internal
+OUTCOME: HANDLER_SUBTASKS_READY
+HANDOFF: decomposed into 3 components (level=INTERNAL), first: f8673c-0000-iam

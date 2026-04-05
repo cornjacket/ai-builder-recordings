@@ -15,6 +15,7 @@
 | 9 | POST_DOC_HANDLER | internal | integrate-cmd | 15:27:13 | 0s | 0 | 0 | 0 |
 | 10 | LEAF_COMPLETE_HANDLER | internal | integrate-cmd | 15:27:15 | 1s | 0 | 0 | 0 |
 | 11 | DOC_ARCHITECT | claude | internal | 15:28:00 | 45s | 7 | 2,153 | 107,715 |
+| 12 | DECOMPOSE_HANDLER | internal | internal | 15:28:01 | 0s | 0 | 0 | 0 |
 
 ## Subtasks
 
