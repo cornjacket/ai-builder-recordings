@@ -1,0 +1,9 @@
+Atomic mode — `store/` contains only source files. I'll create `store.go.md` and update `README.md`.
+<response>
+  <outcome>DOC_ARCHITECT_ATOMIC_DONE</outcome>
+  <handoff>Created store.go.md (new) documenting the User model, Store struct, New constructor, and all four CRUD methods (Create/Get/Update/Delete) including their locking strategy. Updated README.md (was a placeholder) with directory overview, file index, and constraint notes on ID assignment, Update ID-preservation behaviour, in-process-only persistence, and RWMutex read/write strategy. store_test.go was skipped per atomic-mode rules. Directory purpose: thread-safe in-memory CRUD store for User records, UUID-keyed, consumed by the handlers package via its Store interface.</handoff>
+  <documents_written>true</documents_written>
+</response>
+
+OUTCOME: DONE
+HANDOFF: Created `store.go.md` (new) documenting the `User` model type, `Store` struct, `New` constructor, and all four CRUD methods (`Create`, `Get`, `Update`, `Delete`) — including their individual locking strategies (read lock for `Get`, write lock for mutating methods) and the UUID-assignment behaviour on `Create`. Updated `README.md` (was a stub placeholder) with a directory overview, file index linking to `store.go.md`, and four explicit invariants: ID assignment is internal to the store, `Update` preserves the original ID, data is in-process only (no persistence), and the RWMutex read/write split. `store_test.go` was skipped per atomic-mode rules. Both files pass all linter rules (Purpose/Tags headers present, no empty sections, no placeholder text).
