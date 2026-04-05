@@ -14,6 +14,6 @@ Composite subtree containing the userservice package with handlers and store sub
 ## Subtasks
 
 - [x] 6e440f-0000-handlers
-- [ ] 6e440f-0001-store
+- [x] 6e440f-0001-store
 - [ ] 6e440f-0002-integrate-userservice
 
