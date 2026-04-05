@@ -229,3 +229,8 @@ HANDOFF: Wrote README.md (directory index with component table linking to userse
 [2026-04-05T15:45:57.458157] POST_DOC_HANDLER/internal
 OUTCOME: POST_DOC_HANDLER_INTEGRATE_PASS
 HANDOFF: linted 2 file(s) — all passed
+
+============================================================
+[2026-04-05T15:45:59.054501] LEAF_COMPLETE_HANDLER/internal
+OUTCOME: HANDLER_INTEGRATE_READY
+HANDOFF: ran on-task-complete.sh → NEXT /Users/david/Go/src/github.com/cornjacket/ai-builder/establish-regression-recordings/sandbox/regressions/doc-user-service/target/project/tasks/main/in-progress/6e440f-doc-user-service/6e440f-0000-doc-1/6e440f-0001-integrate-user-service/README.md

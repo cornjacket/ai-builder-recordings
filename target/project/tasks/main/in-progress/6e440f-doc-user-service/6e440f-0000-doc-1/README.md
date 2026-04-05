@@ -21,9 +21,10 @@
 | 15 | LEAF_COMPLETE_HANDLER | internal | integrate-userservice | 15:45:08 | 1s | 0 | 0 | 0 |
 | 16 | DOC_INTEGRATOR | claude | integrate-internal | 15:45:57 | 48s | 9 | 2,117 | 148,177 |
 | 17 | POST_DOC_HANDLER | internal | integrate-internal | 15:45:57 | 0s | 0 | 0 | 0 |
+| 18 | LEAF_COMPLETE_HANDLER | internal | integrate-internal | 15:45:59 | 1s | 0 | 0 | 0 |
 
 ## Subtasks
 
-- [ ] 6e440f-0000-internal
+- [x] 6e440f-0000-internal
 - [ ] 6e440f-0001-integrate-user-service
 

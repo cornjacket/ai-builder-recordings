@@ -1,1 +1,1 @@
-/Users/david/Go/src/github.com/cornjacket/ai-builder/establish-regression-recordings/sandbox/regressions/doc-user-service/target/project/tasks/main/in-progress/6e440f-doc-user-service/6e440f-0000-doc-1/6e440f-0000-internal/6e440f-0001-integrate-internal/README.md
+/Users/david/Go/src/github.com/cornjacket/ai-builder/establish-regression-recordings/sandbox/regressions/doc-user-service/target/project/tasks/main/in-progress/6e440f-doc-user-service/6e440f-0000-doc-1/6e440f-0001-integrate-user-service/README.md
