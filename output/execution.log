@@ -101,3 +101,8 @@ HANDOFF: Implemented the `store` package at `internal/userservice/store` with `s
 [2026-04-05T01:17:48.957077] DOCUMENTER_POST_IMPLEMENTOR/internal
 OUTCOME: DOCUMENTER_DONE
 HANDOFF: indexed 2 doc(s) into README.md (1 design, 1 implementation)
+
+============================================================
+[2026-04-05T01:17:49.137879] SPEC_COVERAGE_CHECKER/internal
+OUTCOME: SPEC_COVERAGE_CHECKER_PASS
+HANDOFF: No acceptance-spec.json in output_dir — skipping coverage check.

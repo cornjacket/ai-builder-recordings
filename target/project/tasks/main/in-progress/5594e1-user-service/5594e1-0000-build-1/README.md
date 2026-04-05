@@ -11,6 +11,7 @@
 | 5 | DOCUMENTER_POST_ARCHITECT | internal | store | 01:16:41 | 0s | 0 | 0 | 0 |
 | 6 | IMPLEMENTOR | claude | store | 01:17:48 | 1m 07s | 9 | 3,839 | 154,964 |
 | 7 | DOCUMENTER_POST_IMPLEMENTOR | internal | store | 01:17:48 | 0s | 0 | 0 | 0 |
+| 8 | SPEC_COVERAGE_CHECKER | internal | store | 01:17:49 | 0s | 0 | 0 | 0 |
 
 ## Subtasks
 
