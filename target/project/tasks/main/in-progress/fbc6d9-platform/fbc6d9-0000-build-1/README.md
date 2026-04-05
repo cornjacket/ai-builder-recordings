@@ -43,10 +43,11 @@
 | 37 | DOCUMENTER_POST_IMPLEMENTOR | internal | integrate-platform | 02:29:58 | 0s | 0 | 0 | 0 |
 | 38 | SPEC_COVERAGE_CHECKER | internal | integrate-platform | 02:29:58 | 0s | 0 | 0 | 0 |
 | 39 | TESTER | internal | integrate-platform | 02:30:02 | 4s | 0 | 0 | 0 |
+| 40 | LEAF_COMPLETE_HANDLER | internal | integrate-platform | 02:30:02 | 0s | 0 | 0 | 0 |
 
 ## Subtasks
 
 - [x] fbc6d9-0000-metrics
 - [x] fbc6d9-0001-iam
-- [ ] fbc6d9-0002-integrate-platform
+- [x] fbc6d9-0002-integrate-platform
 

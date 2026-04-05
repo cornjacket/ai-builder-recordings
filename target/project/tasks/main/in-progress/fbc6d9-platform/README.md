@@ -71,7 +71,7 @@ or standalone binaries. `cmd/platform/main.go` starts both listeners.
 
 <!-- When a subtask is finished, run complete-task.sh --parent to mark it [x] before moving on. -->
 <!-- subtask-list-start -->
-- [ ] [fbc6d9-0000-build-1](fbc6d9-0000-build-1/)
+- [x] [X-fbc6d9-0000-build-1](X-fbc6d9-0000-build-1/)
 <!-- subtask-list-end -->
 
 ## Notes
