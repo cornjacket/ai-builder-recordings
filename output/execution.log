@@ -497,3 +497,8 @@ HANDOFF: ran on-task-complete.sh → NEXT /Users/david/Go/src/github.com/cornjac
 [2026-04-05T15:38:25.178450] DOC_INTEGRATOR/claude
 OUTCOME: DOC_INTEGRATOR_DONE
 HANDOFF: Wrote 2 files to output/: (1) README.md — root-level directory index with Purpose/Tags header, 1-sentence composite description, component table linking to cmd/README.md and internal/README.md, and a link to data-flow.md; (2) data-flow.md — ASCII diagrams covering startup object-graph construction (how main() calls iam.New() and metrics.New() and mounts each handler on its own port in separate goroutines) and request-time routing through both iam (:8082, 10 routes across lifecycle and authz) and metrics (:8081, POST/GET /events), plus a cross-service isolation note explaining that neither service imports the other and client-level coordination via user ID strings is the only coupling. No api.md was produced because all routes are fully documented within their respective sub-component docs. The platform-monolith composite is a single Go binary (github.com/cornjacket/platform, Go 1.22) that co-hosts two independent in-memory HTTP services with no shared state.
+
+============================================================
+[2026-04-05T15:38:25.321617] POST_DOC_HANDLER/internal
+OUTCOME: POST_DOC_HANDLER_INTEGRATE_PASS
+HANDOFF: linted 2 file(s) — all passed

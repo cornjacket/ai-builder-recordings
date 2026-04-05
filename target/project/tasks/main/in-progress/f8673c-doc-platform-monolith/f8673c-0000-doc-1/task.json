@@ -526,6 +526,19 @@
       "tokens_out": 3935,
       "tokens_cached": 154490,
       "outcome": "DOC_INTEGRATOR_DONE"
+    },
+    {
+      "role": "POST_DOC_HANDLER",
+      "agent": "internal",
+      "n": 10,
+      "description": "integrate-platform-monolith",
+      "start": "2026-04-05T15:38:25.319870",
+      "end": "2026-04-05T15:38:25.321504",
+      "elapsed_s": 0.001634,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "tokens_cached": 0,
+      "outcome": "POST_DOC_HANDLER_INTEGRATE_PASS"
     }
   ]
 }
