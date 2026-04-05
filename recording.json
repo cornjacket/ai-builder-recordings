@@ -1,0 +1,298 @@
+{
+  "recorded_at": "2026-04-05T15:38:26.270890",
+  "ai_builder_commit": "e4195235b9c0942fbb7adb0383f3138096c84dcd",
+  "task_hex_id": "f8673c",
+  "prompt_hashes": {
+    "ai-builder/orchestrator/machines/doc/roles/DOC_ARCHITECT.md": "sha256:c77b6bbb0f25636b7dfe15fa6560009b6b6e7fb3e9000aeb27d4b53ab28a9d86",
+    "ai-builder/orchestrator/machines/doc/roles/DOC_INTEGRATOR.md": "sha256:cbdc274722e59020ee53dfadd6ca4d7c8229d71a12616bbe673f93bc6ddf5a7c"
+  },
+  "invocations": [
+    {
+      "n": 1,
+      "role": "DOC_ARCHITECT",
+      "outcome": "DOC_ARCHITECT_DECOMPOSITION_READY",
+      "commit": "35cacc3813341e754b1450f0a8c97c011ed3800f",
+      "ai": true
+    },
+    {
+      "n": 2,
+      "role": "DECOMPOSE_HANDLER",
+      "outcome": "HANDLER_SUBTASKS_READY",
+      "commit": "95c990fba293c5a8e042b211d78ee4a1983870ed",
+      "ai": false
+    },
+    {
+      "n": 3,
+      "role": "DOC_ARCHITECT",
+      "outcome": "DOC_ARCHITECT_DECOMPOSITION_READY",
+      "commit": "9821aed79329edad74676bb3c2074bbde3be8d79",
+      "ai": true
+    },
+    {
+      "n": 4,
+      "role": "DECOMPOSE_HANDLER",
+      "outcome": "HANDLER_SUBTASKS_READY",
+      "commit": "0418a8eb86b687703116953b3b38c83838597641",
+      "ai": false
+    },
+    {
+      "n": 5,
+      "role": "DOC_ARCHITECT",
+      "outcome": "DOC_ARCHITECT_ATOMIC_DONE",
+      "commit": "89a613e97adc3c0b49ddf795a097d3c6ebbdd5ea",
+      "ai": true
+    },
+    {
+      "n": 6,
+      "role": "POST_DOC_HANDLER",
+      "outcome": "POST_DOC_HANDLER_ATOMIC_PASS",
+      "commit": "0a213c8c88feb69fc855317e76e8dbfb00deda88",
+      "ai": false
+    },
+    {
+      "n": 7,
+      "role": "LEAF_COMPLETE_HANDLER",
+      "outcome": "HANDLER_INTEGRATE_READY",
+      "commit": "45ae32e3da991189c7122988c13ae6f5e625970d",
+      "ai": false
+    },
+    {
+      "n": 8,
+      "role": "DOC_INTEGRATOR",
+      "outcome": "DOC_INTEGRATOR_DONE",
+      "commit": "d165bdd2316a4f31a72b33c7632a7fa6bd8854fc",
+      "ai": true
+    },
+    {
+      "n": 9,
+      "role": "POST_DOC_HANDLER",
+      "outcome": "POST_DOC_HANDLER_INTEGRATE_PASS",
+      "commit": "9ae1343192b92642694bc4876b2e622cf5d40c6b",
+      "ai": false
+    },
+    {
+      "n": 10,
+      "role": "LEAF_COMPLETE_HANDLER",
+      "outcome": "HANDLER_SUBTASKS_READY",
+      "commit": "ab23204cd0fa3ae0d0364ff1049a594140104acc",
+      "ai": false
+    },
+    {
+      "n": 11,
+      "role": "DOC_ARCHITECT",
+      "outcome": "DOC_ARCHITECT_DECOMPOSITION_READY",
+      "commit": "d6de2fbf89ea5bdabac511d9a35835274ac59b23",
+      "ai": true
+    },
+    {
+      "n": 12,
+      "role": "DECOMPOSE_HANDLER",
+      "outcome": "HANDLER_SUBTASKS_READY",
+      "commit": "6a173c843181e321b5e5a4079bd63d9b06dafc5b",
+      "ai": false
+    },
+    {
+      "n": 13,
+      "role": "DOC_ARCHITECT",
+      "outcome": "DOC_ARCHITECT_DECOMPOSITION_READY",
+      "commit": "4b2a54431366a5fd25e4ade04931e7fb33f2384a",
+      "ai": true
+    },
+    {
+      "n": 14,
+      "role": "DECOMPOSE_HANDLER",
+      "outcome": "HANDLER_SUBTASKS_READY",
+      "commit": "6d58e2abbedfc6e8682352a993f00039a15fb088",
+      "ai": false
+    },
+    {
+      "n": 15,
+      "role": "DOC_ARCHITECT",
+      "outcome": "DOC_ARCHITECT_ATOMIC_DONE",
+      "commit": "c2e469e59f4ac9a47ac2ab81c706d7b42043f137",
+      "ai": true
+    },
+    {
+      "n": 16,
+      "role": "POST_DOC_HANDLER",
+      "outcome": "POST_DOC_HANDLER_ATOMIC_PASS",
+      "commit": "85cc3a5fc8441b4a4e8f2f9e3a1d0dc0b83041ab",
+      "ai": false
+    },
+    {
+      "n": 17,
+      "role": "LEAF_COMPLETE_HANDLER",
+      "outcome": "HANDLER_SUBTASKS_READY",
+      "commit": "619c2e0b0bed1c3c6f799601cf448d17770c22b7",
+      "ai": false
+    },
+    {
+      "n": 18,
+      "role": "DOC_ARCHITECT",
+      "outcome": "DOC_ARCHITECT_ATOMIC_DONE",
+      "commit": "965544ec001925c535046de4bd0bfea5fd6f3a7d",
+      "ai": true
+    },
+    {
+      "n": 19,
+      "role": "POST_DOC_HANDLER",
+      "outcome": "POST_DOC_HANDLER_ATOMIC_PASS",
+      "commit": "3d5625269d1e0ac123aab542a31325c84dd76448",
+      "ai": false
+    },
+    {
+      "n": 20,
+      "role": "LEAF_COMPLETE_HANDLER",
+      "outcome": "HANDLER_INTEGRATE_READY",
+      "commit": "baf4ea02c4e718f6b1afb1b781f5552c935f80b8",
+      "ai": false
+    },
+    {
+      "n": 21,
+      "role": "DOC_INTEGRATOR",
+      "outcome": "DOC_INTEGRATOR_DONE",
+      "commit": "cf78de84a620dafcb1662fe0654411b5d1359bb5",
+      "ai": true
+    },
+    {
+      "n": 22,
+      "role": "POST_DOC_HANDLER",
+      "outcome": "POST_DOC_HANDLER_INTEGRATE_PASS",
+      "commit": "4510428629cf2dc0e0ca619b544f62b4f798a6ed",
+      "ai": false
+    },
+    {
+      "n": 23,
+      "role": "LEAF_COMPLETE_HANDLER",
+      "outcome": "HANDLER_SUBTASKS_READY",
+      "commit": "6512146ef41bb7060b7322e2f95bf54b3c8a042b",
+      "ai": false
+    },
+    {
+      "n": 24,
+      "role": "DOC_ARCHITECT",
+      "outcome": "DOC_ARCHITECT_DECOMPOSITION_READY",
+      "commit": "b50700511d45a9ade90299080bbee469064a9fc5",
+      "ai": true
+    },
+    {
+      "n": 25,
+      "role": "DECOMPOSE_HANDLER",
+      "outcome": "HANDLER_SUBTASKS_READY",
+      "commit": "7a33b7c16a7c343770acfc9064ea35611d0b041b",
+      "ai": false
+    },
+    {
+      "n": 26,
+      "role": "DOC_ARCHITECT",
+      "outcome": "DOC_ARCHITECT_ATOMIC_DONE",
+      "commit": "0c852fef41f6186e271e6d1ddd5251143a15b51c",
+      "ai": true
+    },
+    {
+      "n": 27,
+      "role": "POST_DOC_HANDLER",
+      "outcome": "POST_DOC_HANDLER_ATOMIC_PASS",
+      "commit": "10db6020f0ebf61943ff5706ce5ceb9aeb10e79b",
+      "ai": false
+    },
+    {
+      "n": 28,
+      "role": "LEAF_COMPLETE_HANDLER",
+      "outcome": "HANDLER_SUBTASKS_READY",
+      "commit": "3a9a3ee171fa996bfb6c3a0d3cadfa3c36ae3a14",
+      "ai": false
+    },
+    {
+      "n": 29,
+      "role": "DOC_ARCHITECT",
+      "outcome": "DOC_ARCHITECT_ATOMIC_DONE",
+      "commit": "9bf1106e35e94b86bbfc7e9859385b4be131c501",
+      "ai": true
+    },
+    {
+      "n": 30,
+      "role": "POST_DOC_HANDLER",
+      "outcome": "POST_DOC_HANDLER_ATOMIC_PASS",
+      "commit": "84d6f159830968f6e7178784d19c34e43383ffe5",
+      "ai": false
+    },
+    {
+      "n": 31,
+      "role": "LEAF_COMPLETE_HANDLER",
+      "outcome": "HANDLER_INTEGRATE_READY",
+      "commit": "7587c18d9cfcd661217bd203624c939f597aca79",
+      "ai": false
+    },
+    {
+      "n": 32,
+      "role": "DOC_INTEGRATOR",
+      "outcome": "DOC_INTEGRATOR_DONE",
+      "commit": "0c96965223619b3677e5bcbc04a9812c675bd9bc",
+      "ai": true
+    },
+    {
+      "n": 33,
+      "role": "POST_DOC_HANDLER",
+      "outcome": "POST_DOC_HANDLER_INTEGRATE_PASS",
+      "commit": "48aab5669d4b110e8a6d0585071931b4bee7c2a0",
+      "ai": false
+    },
+    {
+      "n": 34,
+      "role": "LEAF_COMPLETE_HANDLER",
+      "outcome": "HANDLER_INTEGRATE_READY",
+      "commit": "e74acb9c68284ee19a6c1af433490968098eaca8",
+      "ai": false
+    },
+    {
+      "n": 35,
+      "role": "DOC_INTEGRATOR",
+      "outcome": "DOC_INTEGRATOR_DONE",
+      "commit": "85e94356e2c6c725af725b7d428c2eb29247aba9",
+      "ai": true
+    },
+    {
+      "n": 36,
+      "role": "POST_DOC_HANDLER",
+      "outcome": "POST_DOC_HANDLER_INTEGRATE_PASS",
+      "commit": "f37aa4fb4231879dccd40159f67881e7e22885de",
+      "ai": false
+    },
+    {
+      "n": 37,
+      "role": "LEAF_COMPLETE_HANDLER",
+      "outcome": "HANDLER_INTEGRATE_READY",
+      "commit": "7a668ff95be9a798c013ca0b2ce097f485a6e459",
+      "ai": false
+    },
+    {
+      "n": 38,
+      "role": "DOC_INTEGRATOR",
+      "outcome": "DOC_INTEGRATOR_DONE",
+      "commit": "24cef5775b8aca69966d88b8f1100662a195becd",
+      "ai": true
+    },
+    {
+      "n": 39,
+      "role": "POST_DOC_HANDLER",
+      "outcome": "POST_DOC_HANDLER_INTEGRATE_PASS",
+      "commit": "4c81c0806149492afcb6aac7ecb9857ed3973230",
+      "ai": false
+    },
+    {
+      "n": 40,
+      "role": "LEAF_COMPLETE_HANDLER",
+      "outcome": "HANDLER_ALL_DONE",
+      "commit": "65dd811fe08650a57385eeca0a78646245ec388d",
+      "ai": false
+    },
+    {
+      "n": 41,
+      "role": "pipeline",
+      "outcome": "done",
+      "commit": "b14bc08d300d8b2250d250e6a8eab434b1156dd9",
+      "ai": false
+    }
+  ]
+}
