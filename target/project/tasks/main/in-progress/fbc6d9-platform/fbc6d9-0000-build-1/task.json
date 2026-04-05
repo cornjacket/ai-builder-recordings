@@ -428,6 +428,19 @@
       "tokens_out": 6270,
       "tokens_cached": 310075,
       "outcome": "IMPLEMENTOR_IMPLEMENTATION_DONE"
+    },
+    {
+      "role": "DOCUMENTER_POST_IMPLEMENTOR",
+      "agent": "internal",
+      "n": 4,
+      "description": "integrate-iam",
+      "start": "2026-04-05T02:25:45.995263",
+      "end": "2026-04-05T02:25:45.995519",
+      "elapsed_s": 0.000256,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "tokens_cached": 0,
+      "outcome": "DOCUMENTER_DONE"
     }
   ]
 }

@@ -33,6 +33,7 @@
 | 27 | ARCHITECT | claude | integrate-iam | 02:24:11 | 2m 04s | 9 | 7,601 | 166,657 |
 | 28 | DOCUMENTER_POST_ARCHITECT | internal | integrate-iam | 02:24:11 | 0s | 0 | 0 | 0 |
 | 29 | IMPLEMENTOR | claude | integrate-iam | 02:25:45 | 1m 34s | 14 | 6,270 | 310,075 |
+| 30 | DOCUMENTER_POST_IMPLEMENTOR | internal | integrate-iam | 02:25:45 | 0s | 0 | 0 | 0 |
 
 ## Subtasks
 

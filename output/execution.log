@@ -426,3 +426,8 @@ HANDOFF: documents_written=false; skipped
 [2026-04-05T02:25:45.810559] IMPLEMENTOR/claude
 OUTCOME: IMPLEMENTOR_IMPLEMENTATION_DONE
 HANDOFF: Implemented `internal/iam/iam.go` (package `iam`) with a single `NewMux()` function that calls `lifecycle.Handler()` and `authz.Handler()`, registers lifecycle on `/users`, `/auth/login`, `/auth/logout`, registers authz on `/roles`, `/authz/check`, and installs a `/users/` catch-all `HandleFunc` that routes to authz when the path ends in `/roles` and to lifecycle otherwise. Also wrote `iam_test.go` with four test functions covering: nil-check, lifecycle round-trip (create/get/login/logout/delete), authz round-trip (create role/list/assign/get user roles/check), and explicit subpath routing verification. Companion `iam.go.md` documents key design decisions. All files compile and vet clean (`go build ./internal/iam/...`, `go vet ./internal/iam/...` both exit 0).
+
+============================================================
+[2026-04-05T02:25:45.995653] DOCUMENTER_POST_IMPLEMENTOR/internal
+OUTCOME: DOCUMENTER_DONE
+HANDOFF: documents_written=false; skipped
