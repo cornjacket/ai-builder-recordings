@@ -7,18 +7,27 @@
   "priority": "\u2014",
   "created_at": "2026-04-05",
   "completed_at": null,
-  "next-subtask-id": "0000",
+  "next-subtask-id": "0002",
   "complexity": "\u2014",
   "level": "TOP",
   "depth": 0,
   "last-task": false,
   "stop-after": false,
   "components": [],
-  "subtasks": [],
+  "subtasks": [
+    {
+      "name": "6e440f-0000-internal",
+      "complete": false
+    },
+    {
+      "name": "6e440f-0001-integrate-user-service",
+      "complete": false
+    }
+  ],
   "goal": "Generate documentation for the user-service source tree. Produce companion `.md`\nfiles for every source file, a `README.md` in every directory, and cross-component\nsynthesis docs (`data-flow.md`) at composite levels.\n\nThe source tree is a Go HTTP service with the following structure:\n\n```\nmain.go                                    \u2190 service entry point\ninternal/userservice/\n  store/\n    store.go                               \u2190 in-memory user store\n  handlers/\n    handlers.go                            \u2190 HTTP CRUD handlers\n```",
   "context": "This is a regression test for the ai-builder doc pipeline.\n\nThe pipeline must:\n- Traverse the source tree recursively\n- At each leaf directory (atomic): read source files, write companion `.md` files\n  and a `README.md` describing the package\n- At each composite directory (after all leaves complete): write cross-component\n  synthesis docs (`data-flow.md`, `README.md`) using the completed sub-component\n  handoff summaries\n- Never modify source files \u2014 only create `.md` files\n\nThe output directory IS the source tree. All generated `.md` files are written\ninline alongside the source files they document.",
   "output_dir": "/Users/david/Go/src/github.com/cornjacket/ai-builder/establish-regression-recordings/sandbox/regressions/doc-user-service/output",
-  "active_role": "DOC_ARCHITECT",
+  "active_role": "DECOMPOSE_HANDLER",
   "execution_log": [
     {
       "role": "DOC_ARCHITECT",
@@ -32,6 +41,19 @@
       "tokens_out": 3215,
       "tokens_cached": 88620,
       "outcome": "DOC_ARCHITECT_DECOMPOSITION_READY"
+    },
+    {
+      "role": "DECOMPOSE_HANDLER",
+      "agent": "internal",
+      "n": 1,
+      "description": "doc-1",
+      "start": "2026-04-05T15:41:10.155303",
+      "end": "2026-04-05T15:41:10.625980",
+      "elapsed_s": 0.470677,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "tokens_cached": 0,
+      "outcome": "HANDLER_SUBTASKS_READY"
     }
   ]
 }

@@ -27,3 +27,8 @@
 [2026-04-05T15:41:09.983099] DOC_ARCHITECT/claude
 OUTCOME: DOC_ARCHITECT_DECOMPOSITION_READY
 HANDOFF: One subdirectory warrants documentation: `internal/` (composite), which nests `userservice/handlers/` (atomic — handlers.go) and `userservice/store/` (atomic — store.go). The `logs/` directory is a pipeline artefact and is skipped. One parent-level source file exists at the root: `main.go` (entry point that wires store and handlers into a ServeMux on :8080); it has no companion `.md` yet and must be documented by the integrate step. Skipped at root: `main_test.go`, `go.mod`, `go.sum`, `current-job.txt`, `execution.log`.
+
+============================================================
+[2026-04-05T15:41:10.626771] DECOMPOSE_HANDLER/internal
+OUTCOME: HANDLER_SUBTASKS_READY
+HANDOFF: decomposed into 2 components (level=TOP), first: 6e440f-0000-internal

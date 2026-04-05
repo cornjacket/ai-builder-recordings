@@ -5,3 +5,10 @@
 | # | Role | Agent | Description | Ended | Elapsed | Tokens In | Tokens Out | Tokens Cached |
 |---|------|-------|-------------|-------|---------|-----------|------------|---------------|
 | 1 | DOC_ARCHITECT | claude | doc-1 | 15:41:09 | 1m 04s | 6 | 3,215 | 88,620 |
+| 2 | DECOMPOSE_HANDLER | internal | doc-1 | 15:41:10 | 0s | 0 | 0 | 0 |
+
+## Subtasks
+
+- [ ] 6e440f-0000-internal
+- [ ] 6e440f-0001-integrate-user-service
+
