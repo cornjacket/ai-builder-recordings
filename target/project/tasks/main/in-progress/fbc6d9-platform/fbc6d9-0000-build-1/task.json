@@ -259,6 +259,19 @@
       "tokens_out": 0,
       "tokens_cached": 0,
       "outcome": "DOCUMENTER_DONE"
+    },
+    {
+      "role": "SPEC_COVERAGE_CHECKER",
+      "agent": "internal",
+      "n": 2,
+      "description": "lifecycle",
+      "start": "2026-04-05T02:16:04.770862",
+      "end": "2026-04-05T02:16:04.771817",
+      "elapsed_s": 0.000955,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "tokens_cached": 0,
+      "outcome": "SPEC_COVERAGE_CHECKER_PASS"
     }
   ]
 }

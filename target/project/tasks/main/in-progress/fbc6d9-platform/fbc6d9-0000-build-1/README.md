@@ -20,6 +20,7 @@
 | 14 | DOCUMENTER_POST_ARCHITECT | internal | lifecycle | 02:14:17 | 0s | 0 | 0 | 0 |
 | 15 | IMPLEMENTOR | claude | lifecycle | 02:16:04 | 1m 46s | 10 | 7,412 | 193,982 |
 | 16 | DOCUMENTER_POST_IMPLEMENTOR | internal | lifecycle | 02:16:04 | 0s | 0 | 0 | 0 |
+| 17 | SPEC_COVERAGE_CHECKER | internal | lifecycle | 02:16:04 | 0s | 0 | 0 | 0 |
 
 ## Subtasks
 
