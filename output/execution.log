@@ -352,3 +352,8 @@ HANDOFF: decomposed into 3 components (level=INTERNAL), first: f8673c-0000-handl
 [2026-04-05T15:33:40.006824] DOC_ARCHITECT/claude
 OUTCOME: DOC_ARCHITECT_ATOMIC_DONE
 HANDOFF: Created handlers.go.md (missing — covers Handler type, New constructor, PostEvents and GetEvents public API with parameter/return notes, key internals for the event-type allowlist and the request/response envelope types, and the store dependency). Updated README.md from a placeholder stub to a proper directory index with Purpose/Tags header, one-sentence overview, file index table linking to handlers.go.md, and four invariant notes (type allowlist, interface injection, no auth at this layer, silent encode errors). handlers_test.go was skipped per policy. The handlers directory is the HTTP layer of the metrics service — it owns POST /events and GET /events, delegating storage to a store.Storer.
+
+============================================================
+[2026-04-05T15:33:40.181293] POST_DOC_HANDLER/internal
+OUTCOME: POST_DOC_HANDLER_ATOMIC_PASS
+HANDOFF: linted 2 file(s) — all passed
