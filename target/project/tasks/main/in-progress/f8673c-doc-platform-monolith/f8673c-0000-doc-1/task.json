@@ -240,6 +240,19 @@
       "tokens_out": 0,
       "tokens_cached": 0,
       "outcome": "POST_DOC_HANDLER_ATOMIC_PASS"
+    },
+    {
+      "role": "LEAF_COMPLETE_HANDLER",
+      "agent": "internal",
+      "n": 3,
+      "description": "authz",
+      "start": "2026-04-05T15:29:29.716829",
+      "end": "2026-04-05T15:29:30.348155",
+      "elapsed_s": 0.631326,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "tokens_cached": 0,
+      "outcome": "HANDLER_SUBTASKS_READY"
     }
   ]
 }
