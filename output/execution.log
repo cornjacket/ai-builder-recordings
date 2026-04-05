@@ -238,3 +238,8 @@ HANDOFF: ran on-task-complete.sh → NEXT /Users/david/Go/src/github.com/cornjac
 [2026-04-05T15:30:30.549028] DOC_ARCHITECT/claude
 OUTCOME: DOC_ARCHITECT_ATOMIC_DONE
 HANDOFF: Created lifecycle.go.md (missing — covers User/Token/Store/Handler types, New() and RegisterRoutes() public API with route table, key internals for Store concurrency model, addUser duplicate detection, handleLogin username-enumeration avoidance, handleLogout token extraction, and the errDuplicate sentinel type, plus uuid and bcrypt dependencies). Updated README.md from a placeholder stub to a proper directory index with Purpose/Tags header, one-sentence overview, file index table linking to lifecycle.go.md, and five invariant notes (no persistence, username uniqueness, no token expiry, password hash never serialised, concurrency safety). lifecycle_test.go was skipped per policy. The lifecycle directory is the user-CRUD and session-token sub-package of internal/iam.
+
+============================================================
+[2026-04-05T15:30:30.696652] POST_DOC_HANDLER/internal
+OUTCOME: POST_DOC_HANDLER_ATOMIC_PASS
+HANDOFF: linted 2 file(s) — all passed
