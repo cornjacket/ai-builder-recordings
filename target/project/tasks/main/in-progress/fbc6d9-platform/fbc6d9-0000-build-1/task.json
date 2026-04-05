@@ -40,7 +40,7 @@
     },
     {
       "name": "fbc6d9-0001-iam",
-      "complete": false
+      "complete": true
     },
     {
       "name": "fbc6d9-0002-integrate-platform",
@@ -467,6 +467,19 @@
       "tokens_out": 0,
       "tokens_cached": 0,
       "outcome": "TESTER_TESTS_PASS"
+    },
+    {
+      "role": "LEAF_COMPLETE_HANDLER",
+      "agent": "internal",
+      "n": 4,
+      "description": "integrate-iam",
+      "start": "2026-04-05T02:25:59.275161",
+      "end": "2026-04-05T02:25:59.950733",
+      "elapsed_s": 0.675572,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "tokens_cached": 0,
+      "outcome": "HANDLER_SUBTASKS_READY"
     }
   ]
 }

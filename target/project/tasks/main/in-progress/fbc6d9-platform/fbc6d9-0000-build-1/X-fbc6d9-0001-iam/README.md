@@ -13,5 +13,5 @@ Identity and access management listener (port 8082) composed of two sub-componen
 
 - [x] fbc6d9-0000-lifecycle
 - [x] fbc6d9-0001-authz
-- [ ] fbc6d9-0002-integrate-iam
+- [x] fbc6d9-0002-integrate-iam
 
