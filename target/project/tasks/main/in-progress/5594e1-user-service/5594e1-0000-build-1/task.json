@@ -285,6 +285,19 @@
       "tokens_out": 3498,
       "tokens_cached": 73276,
       "outcome": "ARCHITECT_DESIGN_READY"
+    },
+    {
+      "role": "DOCUMENTER_POST_ARCHITECT",
+      "agent": "internal",
+      "n": 3,
+      "description": "integrate-user-service",
+      "start": "2026-04-05T01:21:52.355801",
+      "end": "2026-04-05T01:21:52.356799",
+      "elapsed_s": 0.000998,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "tokens_cached": 0,
+      "outcome": "DOCUMENTER_DONE"
     }
   ]
 }

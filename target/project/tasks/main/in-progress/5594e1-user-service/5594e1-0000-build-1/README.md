@@ -22,6 +22,7 @@
 | 16 | TESTER | internal | handlers | 01:20:50 | 2s | 0 | 0 | 0 |
 | 17 | LEAF_COMPLETE_HANDLER | internal | handlers | 01:20:51 | 0s | 0 | 0 | 0 |
 | 18 | ARCHITECT | claude | integrate-user-service | 01:21:52 | 1m 00s | 6 | 3,498 | 73,276 |
+| 19 | DOCUMENTER_POST_ARCHITECT | internal | integrate-user-service | 01:21:52 | 0s | 0 | 0 | 0 |
 
 ## Subtasks
 
