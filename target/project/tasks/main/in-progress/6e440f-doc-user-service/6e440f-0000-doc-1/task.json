@@ -93,6 +93,19 @@
       "tokens_out": 1474,
       "tokens_cached": 48461,
       "outcome": "DOC_ARCHITECT_DECOMPOSITION_READY"
+    },
+    {
+      "role": "DECOMPOSE_HANDLER",
+      "agent": "internal",
+      "n": 3,
+      "description": "userservice",
+      "start": "2026-04-05T15:42:23.327737",
+      "end": "2026-04-05T15:42:23.943179",
+      "elapsed_s": 0.615442,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "tokens_cached": 0,
+      "outcome": "HANDLER_SUBTASKS_READY"
     }
   ]
 }

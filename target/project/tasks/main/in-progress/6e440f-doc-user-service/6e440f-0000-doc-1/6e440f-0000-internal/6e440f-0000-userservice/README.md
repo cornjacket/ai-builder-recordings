@@ -11,3 +11,9 @@ Composite userservice package containing handlers (HTTP CRUD routes) and store (
 ### Level 2 — 6e440f-0000-internal
 Composite subtree containing the userservice package with handlers and store sub-packages
 
+## Subtasks
+
+- [ ] 6e440f-0000-handlers
+- [ ] 6e440f-0001-store
+- [ ] 6e440f-0002-integrate-userservice
+
