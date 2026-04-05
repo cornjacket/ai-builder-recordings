@@ -197,3 +197,8 @@ HANDOFF: No acceptance-spec.json in output_dir — skipping coverage check.
 [2026-04-05T01:20:50.590638] TESTER/internal
 OUTCOME: TESTER_TESTS_PASS
 HANDOFF: All tests passed.
+
+============================================================
+[2026-04-05T01:20:51.306763] LEAF_COMPLETE_HANDLER/internal
+OUTCOME: HANDLER_SUBTASKS_READY
+HANDOFF: ran on-task-complete.sh → NEXT /Users/david/Go/src/github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/user-service/target/project/tasks/main/in-progress/5594e1-user-service/5594e1-0000-build-1/5594e1-0002-integrate-user-service/README.md
