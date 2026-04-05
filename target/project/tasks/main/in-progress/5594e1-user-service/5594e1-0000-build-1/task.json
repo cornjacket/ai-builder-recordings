@@ -36,7 +36,7 @@
   "subtasks": [
     {
       "name": "5594e1-0000-store",
-      "complete": false
+      "complete": true
     },
     {
       "name": "5594e1-0001-handlers",
@@ -168,6 +168,19 @@
       "tokens_out": 0,
       "tokens_cached": 0,
       "outcome": "TESTER_TESTS_PASS"
+    },
+    {
+      "role": "LEAF_COMPLETE_HANDLER",
+      "agent": "internal",
+      "n": 1,
+      "description": "store",
+      "start": "2026-04-05T01:17:52.867217",
+      "end": "2026-04-05T01:17:56.609178",
+      "elapsed_s": 3.741961,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "tokens_cached": 0,
+      "outcome": "HANDLER_SUBTASKS_READY"
     }
   ]
 }

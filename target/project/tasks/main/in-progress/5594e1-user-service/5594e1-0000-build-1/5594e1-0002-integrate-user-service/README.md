@@ -1,5 +1,4 @@
-<!-- This file is managed by the ai-builder pipeline. Do not hand-edit. -->
-# Task: integrate-user-service
+# integrate-user-service
 
 ## Goal
 
@@ -10,26 +9,3 @@ Wire all components into a cohesive unit and verify this level's acceptance crit
 ### Level 1 — 5594e1-0000-build-1
 
 
-## Components
-
-_To be completed by the ARCHITECT._
-
-## Design
-
-_To be completed by the ARCHITECT._
-
-## Acceptance Criteria
-
-_To be completed by the ARCHITECT._
-
-## Test Command
-
-_To be completed by the ARCHITECT._
-
-## Suggested Tools
-
-_To be completed by the ARCHITECT._
-
-## Notes
-
-_None._
