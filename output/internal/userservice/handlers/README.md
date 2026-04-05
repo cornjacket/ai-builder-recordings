@@ -44,3 +44,11 @@ type Store interface {
 ID extraction uses `r.PathValue("id")` (Go 1.22+ ServeMux). JSON decode errors on request bodies return 400. All JSON responses set `Content-Type: application/json`.
 
 See [api.md](api.md) for the full endpoint contract.
+
+## Documentation
+
+### Design
+| File | Description |
+|------|-------------|
+| api.md | Full HTTP API contract for the user management handlers |
+

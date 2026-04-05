@@ -150,3 +150,8 @@ HANDOFF: ran on-task-complete.sh → NEXT /Users/david/Go/src/github.com/cornjac
 [2026-04-05T01:19:33.443297] ARCHITECT/claude
 OUTCOME: ARCHITECT_DESIGN_READY
 HANDOFF: The handlers package lives at `internal/userservice/handlers`. `New(s Store) http.Handler` registers four routes on a `net/http.ServeMux` using Go 1.22+ pattern matching and returns the mux. A `Store` interface is defined locally mirroring the concrete `*store.Store` methods (Create/Get/Update/Delete). Request bodies decode into unexported `createRequest`/`updateRequest` structs; responses encode from a `userResponse` struct with JSON tags `id`, `name`, `email`. Status codes: 201 POST success, 200 GET/PUT success, 204 DELETE success, 404 + `{}` body for not-found, 400 for malformed JSON. All JSON responses carry `Content-Type: application/json`. IDs are extracted via `r.PathValue("id")`.
+
+============================================================
+[2026-04-05T01:19:33.674960] DOCUMENTER_POST_ARCHITECT/internal
+OUTCOME: DOCUMENTER_DONE
+HANDOFF: indexed 1 doc(s) into README.md (1 design, 0 implementation)
