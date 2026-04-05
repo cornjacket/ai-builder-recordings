@@ -1,0 +1,118 @@
+The task is clear. Let me design the `store` component and write the README.
+
+**Design:**
+
+- **Language:** Go
+- **Package:** `store` at `internal/userservice/store`
+- **Files:** `store.go` (implementation) + `store_test.go` (tests)
+- **Dependencies:** `sync` (stdlib), `github.com/google/uuid` for UUID generation
+
+**Data model:**
+```go
+type User struct {
+    ID    string
+    Name  string
+    Email string
+}
+```
+
+**Interface:**
+- `Create(user User) User` — ignores any incoming ID, assigns a new UUID, stores, returns record
+- `Get(id string) (User, bool)` — read lock
+- `Update(id string, user User) (User, bool)` — write lock; returns `(updated, true)` or `(User{}, false)` if not found; preserves ID
+- `Delete(id string) bool` — write lock; returns `false` if not found
+
+**Concurrency:** `sync.RWMutex` — `RLock/RUnlock` for `Get`, `Lock/Unlock` for `Create`, `Update`, `Delete`.
+
+**Struct:**
+```go
+type Store struct {
+    mu    sync.RWMutex
+    users map[string]User
+}
+```
+
+Now let me write the README to the output directory.Now let me determine the correct test command path by checking the module root.No `go.mod` yet — the IMPLEMENTOR will create it. The test command should target the store package relative to where `go.mod` will land (the output root).
+
+<response>
+  <outcome>ARCHITECT_DESIGN_READY</outcome>
+  <handoff>Implement a single Go package `store` at `internal/userservice/store`. Provide a `NewStore() *Store` constructor, a `User` struct with fields `ID`, `Name`, `Email` (all `string`), and four methods on `*Store`: `Create(User) User` (generates a UUID, ignores incoming ID), `Get(string) (User, bool)`, `Update(string, User) (User, bool)` (preserves original ID, returns false if not found), `Delete(string) bool` (returns false if not found). Guard all access with an embedded `sync.RWMutex` — read lock for `Get`, write lock for the other three. Use `github.com/google/uuid` for ID generation. No persistence.</handoff>
+  <documents_written>true</documents_written>
+  <design>
+## Design
+
+**Language:** Go
+
+**Package path:** `internal/userservice/store`
+
+**Files to produce:**
+- `store.go` — `User` struct, `Store` struct, `NewStore()`, and the four CRUD methods
+- `store_test.go` — unit + race tests
+
+**Dependencies:**
+- `sync` (stdlib) — `RWMutex`
+- `github.com/google/uuid` — UUID v4 generation
+
+**Data model:**
+```go
+type User struct {
+    ID    string
+    Name  string
+    Email string
+}
+```
+
+**Store struct:**
+```go
+type Store struct {
+    mu    sync.RWMutex
+    users map[string]User
+}
+
+func NewStore() *Store {
+    return &Store{users: make(map[string]User)}
+}
+```
+
+**Method signatures and behaviour:**
+
+```go
+// Create ignores user.ID, assigns a new UUID, stores and returns the record.
+func (s *Store) Create(user User) User
+
+// Get returns the record and true, or zero User and false if not found.
+func (s *Store) Get(id string) (User, bool)
+
+// Update replaces the record for id, preserving the original ID field.
+// Returns (updated User, true) on success; (zero User, false) if id not found.
+func (s *Store) Update(id string, user User) (User, bool)
+
+// Delete removes the record for id.
+// Returns true if the record existed, false if not found.
+func (s *Store) Delete(id string) bool
+```
+
+**Locking:**
+- `Get` → `RLock / RUnlock`
+- `Create`, `Update`, `Delete` → `Lock / Unlock` (via `defer`)
+
+**Constraints:**
+- `NewStore()` must be used; zero-value `Store` has nil map and panics on write.
+- `Create` always overwrites any `ID` supplied by the caller.
+- `Update` sets `user.ID = id` before storing, so the caller cannot drift the ID.
+  </design>
+  <acceptance_criteria>
+## Acceptance Criteria
+
+1. `Create` returns a `User` whose `ID` is a non-empty, valid UUID v4 string, regardless of what `ID` the caller passed in.
+2. After `Create`, `Get` with the returned ID returns the same record and `true`.
+3. `Get` with an unknown ID returns `(User{}, false)`.
+4. `Update` on an existing ID returns the updated record (with the original ID preserved) and `true`; a subsequent `Get` returns the new field values.
+5. `Update` on an unknown ID returns `(User{}, false)` and does not modify the store.
+6. `Delete` on an existing ID returns `true`; a subsequent `Get` returns `false`.
+7. `Delete` on an unknown ID returns `false`.
+8. Two concurrent `Create` calls produce two distinct UUIDs and both records are retrievable.
+9. Running the tests with `-race` produces no data race warnings.
+  </acceptance_criteria>
+  <test_command>cd /Users/david/Go/src/github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/user-service/output &amp;&amp; go test -race ./internal/userservice/store/...</test_command>
+</response>

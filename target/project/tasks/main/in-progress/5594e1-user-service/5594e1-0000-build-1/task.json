@@ -1,0 +1,37 @@
+{
+  "task-type": "PIPELINE-SUBTASK",
+  "status": "\u2014",
+  "epic": "main",
+  "parent": "5594e1-user-service",
+  "tags": "\u2014",
+  "priority": "\u2014",
+  "created_at": "2026-04-05",
+  "completed_at": null,
+  "next-subtask-id": "0000",
+  "complexity": "\u2014",
+  "level": "TOP",
+  "depth": 0,
+  "last-task": false,
+  "stop-after": false,
+  "components": [],
+  "subtasks": [],
+  "goal": "Build a user management HTTP service in Go with the following API:\n\n- `POST /users` \u2014 create a user (JSON body), return the created user with generated ID\n- `GET /users/{id}` \u2014 retrieve user by ID; return 404 if not found\n- `PUT /users/{id}` \u2014 update user by ID; return 404 if not found\n- `DELETE /users/{id}` \u2014 delete user by ID; return 404 if not found\n\nPort: 8080. Response format: JSON. Storage: in-memory. No authentication.",
+  "context": "This is a regression test for the ai-builder decomposition pipeline.\nThe pipeline must decompose this service into components, implement each\none, and verify the assembled service passes the acceptance criteria.",
+  "output_dir": "/Users/david/Go/src/github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/user-service/output",
+  "active_role": "ACCEPTANCE_SPEC_WRITER",
+  "execution_log": [
+    {
+      "role": "ACCEPTANCE_SPEC_WRITER",
+      "agent": "claude",
+      "n": 1,
+      "description": "build-1",
+      "start": "2026-04-05T01:14:05.286028",
+      "end": "2026-04-05T01:14:31.411195",
+      "elapsed_s": 26.125167,
+      "tokens_in": 5,
+      "tokens_out": 1295,
+      "tokens_cached": 63902,
+      "outcome": "ACCEPTANCE_SPEC_WRITER_DONE"
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+The `deleteUser` success case should write 204 with no body — using `writeJSON` with `nil` would emit `null\n`. Let me fix that:Now write the test file:Now write the companion doc:
+<response>
+  <outcome>IMPLEMENTOR_IMPLEMENTATION_DONE</outcome>
+  <handoff>Implemented handlers.go and handlers_test.go in internal/userservice/handlers. handlers.go defines the Store interface, Handler struct, New constructor, Register (Go 1.22 method-qualified patterns), four handler methods, and a writeJSON helper. deleteUser sets Content-Type and WriteHeader(204) directly (not via writeJSON) to avoid emitting a null body. handlers_test.go uses a mockStore with deterministic IDs and table-driven tests covering all success and error paths for all four endpoints. go vet passes cleanly. A companion handlers.go.md documents the design decisions.</handoff>
+  <documents_written>true</documents_written>
+</response>
+
+OUTCOME: IMPLEMENTOR_IMPLEMENTATION_DONE
+HANDOFF: Implemented `handlers.go` and `handlers_test.go` in `internal/userservice/handlers`. The `Store` interface, `Handler` struct, `New` constructor, `Register` (Go 1.22 method-qualified route patterns), four handler methods, and a `writeJSON` helper are all in `handlers.go`. The 204 DELETE success path sets `Content-Type` and `WriteHeader(204)` directly rather than via `writeJSON` to avoid writing a `null` body. `handlers_test.go` uses a deterministic `mockStore` with table-driven tests covering all nine acceptance criteria scenarios. `go vet` passes cleanly. A companion `handlers.go.md` documents the key design decisions (no-body 204, header ordering, interface placement).

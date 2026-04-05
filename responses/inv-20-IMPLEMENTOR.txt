@@ -1,0 +1,9 @@
+Now I have everything I need. Let me write `main.go` and `main_test.go`.Build passes. Now write the companion doc for `main.go` (it has non-trivial wiring logic worth documenting per the instructions).
+<response>
+  <outcome>IMPLEMENTOR_IMPLEMENTATION_DONE</outcome>
+  <handoff>Wrote main.go and main_test.go to the output root. main.go wires store.NewStore() → handlers.New() → http.NewServeMux() → http.ListenAndServe(":8080"). main_test.go (package main) spins up an httptest.NewServer with the same wiring and exercises all six acceptance-criteria scenarios sequentially: POST /users (201 + non-empty id), GET /users/{id} (200 + matching fields), GET /users/{unknown-id} (404), PUT /users/{id} (200 + updated fields), DELETE /users/{id} (204), DELETE /users/{id} again (404). go build ./... exits 0. A companion main.go.md was written. The module path used throughout is github.com/cornjacket/user-service as declared in go.mod.</handoff>
+  <documents_written>true</documents_written>
+</response>
+
+OUTCOME: IMPLEMENTOR_IMPLEMENTATION_DONE
+HANDOFF: Wrote main.go and main_test.go to the output root. main.go wires store.NewStore() → handlers.New() → http.NewServeMux() → http.ListenAndServe(":8080"). main_test.go (package main) spins up an httptest.NewServer with the same wiring and exercises all six acceptance-criteria scenarios sequentially: POST /users (201 + non-empty id), GET /users/{id} (200 + matching fields), GET /users/{unknown-id} (404), PUT /users/{id} (200 + updated fields), DELETE /users/{id} (204), DELETE /users/{id} again (404). go build ./... exits 0. A companion main.go.md was written. The module path used throughout is github.com/cornjacket/user-service as declared in go.mod.

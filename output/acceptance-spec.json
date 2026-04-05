@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "endpoints": [
+    {
+      "method": "POST",
+      "path": "/users",
+      "status_codes": []
+    },
+    {
+      "method": "GET",
+      "path": "/users/{id}",
+      "status_codes": [404]
+    },
+    {
+      "method": "PUT",
+      "path": "/users/{id}",
+      "status_codes": [404]
+    },
+    {
+      "method": "DELETE",
+      "path": "/users/{id}",
+      "status_codes": [404]
+    }
+  ]
+}
