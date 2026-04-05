@@ -427,3 +427,8 @@ HANDOFF: Wrote 3 files to output/internal/metrics/: (1) metrics.go.md — docume
 [2026-04-05T15:35:51.175262] POST_DOC_HANDLER/internal
 OUTCOME: POST_DOC_HANDLER_INTEGRATE_PASS
 HANDOFF: linted 3 file(s) — all passed
+
+============================================================
+[2026-04-05T15:35:52.068877] LEAF_COMPLETE_HANDLER/internal
+OUTCOME: HANDLER_INTEGRATE_READY
+HANDOFF: ran on-task-complete.sh → NEXT /Users/david/Go/src/github.com/cornjacket/ai-builder/establish-regression-recordings/sandbox/regressions/doc-platform-monolith/target/project/tasks/main/in-progress/f8673c-doc-platform-monolith/f8673c-0000-doc-1/f8673c-0001-internal/f8673c-0002-integrate-internal/README.md
