@@ -21,6 +21,7 @@
 | 15 | SPEC_COVERAGE_CHECKER | internal | handlers | 01:20:48 | 0s | 0 | 0 | 0 |
 | 16 | TESTER | internal | handlers | 01:20:50 | 2s | 0 | 0 | 0 |
 | 17 | LEAF_COMPLETE_HANDLER | internal | handlers | 01:20:51 | 0s | 0 | 0 | 0 |
+| 18 | ARCHITECT | claude | integrate-user-service | 01:21:52 | 1m 00s | 6 | 3,498 | 73,276 |
 
 ## Subtasks
 

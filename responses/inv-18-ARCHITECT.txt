@@ -1,91 +1,85 @@
-Now I have a complete picture. Let me note the key facts:
+Now I have a complete picture of both components. The `handlers.New(s Store) http.Handler` already registers all four routes and returns a ready `http.Handler`. The `store.New()` returns a `*Store` that satisfies the `handlers.Store` interface directly. `main.go` is trivial wiring.
 
-- Module path in `go.mod`: `github.com/cornjacket/user-service`
-- `store` package: constructor is `NewStore()`, not `New()`
-- `handlers` package: constructor is `New(s Store)` returning `*Handler`; wiring is via `h.Register(mux *http.ServeMux)` — there is no `NewMux` function (Goal description is inaccurate; I'll design against the actual API)
-- Output root is where `main.go` and `main_test.go` land
+**Design:**
 
-Design for `main.go`:
-1. `st := store.NewStore()`
-2. `h := handlers.New(st)`
-3. `mux := http.NewServeMux()`
-4. `h.Register(mux)`
-5. `http.ListenAndServe(":8080", mux)`
+- One file: `main.go` at the output root, `package main`
+- Imports: `net/http`, the store and handlers packages
+- `main()` calls `store.New()`, passes the result to `handlers.New()`, and calls `http.ListenAndServe(":8080", handler)`
+- One test file: `main_test.go` at the output root, `package main`, using `httptest.NewServer(handlers.New(store.New()))` to exercise all four endpoints end-to-end without binding port 8080
 
-The integration test uses `httptest.NewServer(mux)` to run all six acceptance criteria without touching the network, so the test binary needs no live port.
+The integration test covers the full CRUD lifecycle: POST → GET → PUT → GET (verify update) → DELETE → GET (verify 404). Unknown-ID paths for GET, PUT, DELETE each assert 404. This verifies all acceptance criteria without requiring the binary to actually run on a live port.
 
-`documents_written: false` — integrate components write no docs.
+No external dependencies beyond the standard library and the two internal packages already present.
 
 <response>
   <outcome>ARCHITECT_DESIGN_READY</outcome>
-  <handoff>Write two files to the output root. `main.go` (package main) imports store and handlers from `github.com/cornjacket/user-service/internal/userservice/store` and `…/handlers`, calls `store.NewStore()`, passes it to `handlers.New()`, registers routes on a fresh `http.NewServeMux()` via `h.Register(mux)`, then blocks on `http.ListenAndServe(":8080", mux)`. `main_test.go` (package main) spins up an `httptest.NewServer` with the same mux and exercises all six acceptance-criteria scenarios sequentially using `net/http` client calls and `encoding/json` decoding.</handoff>
+  <handoff>Write two files at the output root. First, main.go (package main): import net/http and the store and handlers packages, call store.New() to get a *Store, pass it to handlers.New() to get an http.Handler, then call http.ListenAndServe(":8080", handler). Second, main_test.go (package main): use httptest.NewServer(handlers.New(store.New())) to run a full CRUD lifecycle — POST /users (assert 201, non-empty id), GET /users/{id} (assert 200, correct fields), PUT /users/{id} (assert 200, updated fields), DELETE /users/{id} (assert 204), then GET and DELETE again with the same id (assert 404 each). Also assert 404 for GET/PUT/DELETE with a random unknown id. No external dependencies beyond stdlib and the two existing internal packages.</handoff>
   <documents_written>false</documents_written>
   <design>
 ## Design
 
-**Language:** Go (module `github.com/cornjacket/user-service`, Go 1.22+)
+**Language:** Go (module `github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/user-service`)
 
 **Files to produce** (both at the output root `/Users/david/Go/src/github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/user-service/output`):
 
-| File | Purpose |
-|------|---------|
-| `main.go` | Entry point; wires store → handler → mux; listens on :8080 |
-| `main_test.go` | End-to-end integration tests using httptest.NewServer |
+### `main.go`
 
-### main.go
-
-```
+```go
 package main
 
 import (
     "net/http"
 
-    "github.com/cornjacket/user-service/internal/userservice/handlers"
-    "github.com/cornjacket/user-service/internal/userservice/store"
+    "github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/user-service/internal/userservice/handlers"
+    "github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/user-service/internal/userservice/store"
 )
 
 func main() {
-    st := store.NewStore()
-    h  := handlers.New(st)
-    mux := http.NewServeMux()
-    h.Register(mux)
-    http.ListenAndServe(":8080", mux)
+    s := store.New()
+    h := handlers.New(s)
+    http.ListenAndServe(":8080", h)
 }
 ```
 
-### main_test.go
+`*store.Store` satisfies `handlers.Store` directly — no adapter needed.
 
-Package `main`. Uses `httptest.NewServer` so no live port is needed. Test sequence:
+### `main_test.go`
 
-1. POST `/users` with `{"name":"Alice","email":"alice@example.com"}` → assert 201, capture `id`.
-2. GET `/users/{id}` → assert 200, body matches name and email.
-3. GET `/users/{unknown-id}` (e.g. a fresh UUID) → assert 404.
-4. PUT `/users/{id}` with `{"name":"Bob","email":"bob@example.com"}` → assert 200, body has updated fields.
-5. DELETE `/users/{id}` → assert 204.
-6. DELETE `/users/{id}` again (now gone) → assert 404.
+`package main`, integration test using `httptest.NewServer(handlers.New(store.New()))`. Tests never bind port 8080; they hit the test server's URL. The test covers:
 
-All JSON is decoded with `encoding/json`; response bodies are closed after each request.
+1. POST /users → 201, response body has `id`, `name`, `email`
+2. GET /users/{id} (known) → 200, correct fields
+3. PUT /users/{id} (known) → 200, updated fields
+4. GET /users/{id} (verify update stuck) → 200
+5. DELETE /users/{id} → 204
+6. GET /users/{id} (after delete) → 404
+7. DELETE /users/{id} (after delete) → 404
+8. GET /users/nonexistent → 404
+9. PUT /users/nonexistent → 404
 
-### Dependencies
+No external test libraries; use `encoding/json`, `net/http`, `strings`, `testing`.
 
-- `github.com/google/uuid` — already in `go.mod` (used by the store)
-- Standard library only for main.go and test
+**Dependencies:** stdlib only + two internal packages already implemented.
 
-### Constraints
-
-- The Goal mentions `handlers.NewMux(store)` — that function does not exist. The actual handlers API is `handlers.New(s Store)` + `h.Register(mux)`. Design follows the real implementation.
-- `store.NewStore()` is the correct constructor (not `store.New()`).
-- The module path in `go.mod` is `github.com/cornjacket/user-service`; imports must use this path regardless of the physical directory location.
-</design>
+**Constraints:**
+- `handlers.New` already registers all routes; `main.go` must not re-register them.
+- The `*store.Store` concrete type satisfies the `handlers.Store` interface without any casting — pass it directly.
+- `http.ListenAndServe` return value can be ignored or logged; silence is fine for this service.
+  </design>
   <acceptance_criteria>
 ## Acceptance Criteria
 
-1. `POST /users` with a valid JSON body `{"name":"Alice","email":"alice@example.com"}` returns HTTP 201 and a JSON body containing a non-empty `id` field.
-2. `GET /users/{id}` using the id from criterion 1 returns HTTP 200 and a JSON body with `id`, `name` ("Alice"), and `email` ("alice@example.com") matching the created record.
-3. `GET /users/{unknown-id}` (an id that was never created) returns HTTP 404.
-4. `PUT /users/{id}` using the id from criterion 1 with body `{"name":"Bob","email":"bob@example.com"}` returns HTTP 200 and a JSON body with updated `name` and `email` fields.
-5. `DELETE /users/{id}` using the id from criterion 1 returns HTTP 204.
-6. `DELETE /users/{id}` using the same id as criterion 5 (now deleted) returns HTTP 404.
+1. `go build ./...` succeeds with no errors.
+2. POST /users with `{"name":"Alice","email":"alice@example.com"}` returns HTTP 201 with a JSON body containing a non-empty `id` string, `"name":"Alice"`, and `"email":"alice@example.com"`.
+3. GET /users/{id} using the id from criterion 2 returns HTTP 200 with the same `id`, `name`, and `email`.
+4. GET /users/{id} with an id that was never created returns HTTP 404.
+5. PUT /users/{id} using the id from criterion 2 with `{"name":"Bob","email":"bob@example.com"}` returns HTTP 200 with `"name":"Bob"` and `"email":"bob@example.com"`.
+6. PUT /users/{id} with an id that was never created returns HTTP 404.
+7. DELETE /users/{id} using the id from criterion 2 returns HTTP 204.
+8. DELETE /users/{id} using the same id a second time returns HTTP 404.
+9. GET /users/{id} using the deleted id returns HTTP 404.
+10. All non-204 responses have `Content-Type: application/json`.
+11. `go test ./...` passes with all tests green.
   </acceptance_criteria>
-  <test_command>cd /Users/david/Go/src/github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/user-service/output && go test ./...</test_command>
+  <test_command>cd /Users/david/Go/src/github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/user-service/output &amp;&amp; go test ./...</test_command>
 </response>
