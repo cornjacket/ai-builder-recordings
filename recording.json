@@ -1,0 +1,299 @@
+{
+  "recorded_at": "2026-04-05T02:30:03.212309",
+  "ai_builder_commit": "b59c4afb07b428bf4eb856391ff282814ef9cf41",
+  "task_hex_id": "fbc6d9",
+  "prompt_hashes": {
+    "ai-builder/orchestrator/machines/builder/roles/ACCEPTANCE_SPEC_WRITER.md": "sha256:6f2e581bc9ec135b6d426786c678ad09e113392f7db39fd0a5ca07e637efad07",
+    "ai-builder/orchestrator/machines/builder/roles/ARCHITECT.md": "sha256:166787d5e015216d36f7f9ff53e88845b9fd7885cd1e0302326d9b4bc7a4d6f4",
+    "ai-builder/orchestrator/machines/builder/roles/IMPLEMENTOR.md": "sha256:763282f2e3305fe2b1bf9f8938cf93c7f70732bd43ae1647c96200fad590dda5"
+  },
+  "invocations": [
+    {
+      "n": 1,
+      "role": "ACCEPTANCE_SPEC_WRITER",
+      "outcome": "ACCEPTANCE_SPEC_WRITER_DONE",
+      "commit": "f045b79160404918268f7768a4f6d01ecbcce4ab",
+      "ai": true
+    },
+    {
+      "n": 2,
+      "role": "ARCHITECT",
+      "outcome": "ARCHITECT_DECOMPOSITION_READY",
+      "commit": "1a05a0243e96d49275dee7aaf08405d8fdfd6cb1",
+      "ai": true
+    },
+    {
+      "n": 3,
+      "role": "DECOMPOSE_HANDLER",
+      "outcome": "HANDLER_SUBTASKS_READY",
+      "commit": "f89adeb4a14b4e7adadaa36020e57b6adcb269df",
+      "ai": false
+    },
+    {
+      "n": 4,
+      "role": "ARCHITECT",
+      "outcome": "ARCHITECT_DESIGN_READY",
+      "commit": "6441bcd67d33ddb8a21c75d4cc345d009dd043ef",
+      "ai": true
+    },
+    {
+      "n": 5,
+      "role": "DOCUMENTER_POST_ARCHITECT",
+      "outcome": "DOCUMENTER_DONE",
+      "commit": "ab4483d51194df5598f3884c74e34b9a391f377d",
+      "ai": false
+    },
+    {
+      "n": 6,
+      "role": "IMPLEMENTOR",
+      "outcome": "IMPLEMENTOR_IMPLEMENTATION_DONE",
+      "commit": "6b33c8df5d05a3abd8c75ae83c9a88441a8e5599",
+      "ai": true
+    },
+    {
+      "n": 7,
+      "role": "DOCUMENTER_POST_IMPLEMENTOR",
+      "outcome": "DOCUMENTER_DONE",
+      "commit": "49d3f8e5a8945c74cafa60acdac9c0ca08fbb3a7",
+      "ai": false
+    },
+    {
+      "n": 8,
+      "role": "SPEC_COVERAGE_CHECKER",
+      "outcome": "SPEC_COVERAGE_CHECKER_PASS",
+      "commit": "557d8d708fe4c2828d925f71f068c8a78f208312",
+      "ai": false
+    },
+    {
+      "n": 9,
+      "role": "TESTER",
+      "outcome": "TESTER_TESTS_PASS",
+      "commit": "2ffcd84f655880a25ce4102b759de620695b3ec5",
+      "ai": false
+    },
+    {
+      "n": 10,
+      "role": "LEAF_COMPLETE_HANDLER",
+      "outcome": "HANDLER_SUBTASKS_READY",
+      "commit": "57509f7176f15cb554840b32b4e6001ddc66d770",
+      "ai": false
+    },
+    {
+      "n": 11,
+      "role": "ARCHITECT",
+      "outcome": "ARCHITECT_DECOMPOSITION_READY",
+      "commit": "f1f255dd982f7040fe87fa9e13c320861b0b2009",
+      "ai": true
+    },
+    {
+      "n": 12,
+      "role": "DECOMPOSE_HANDLER",
+      "outcome": "HANDLER_SUBTASKS_READY",
+      "commit": "0f5e4e4592bd3527dc70079439500a2490f7745f",
+      "ai": false
+    },
+    {
+      "n": 13,
+      "role": "ARCHITECT",
+      "outcome": "ARCHITECT_DESIGN_READY",
+      "commit": "8bb9f55657f52952556afab42fe27692b615a7f7",
+      "ai": true
+    },
+    {
+      "n": 14,
+      "role": "DOCUMENTER_POST_ARCHITECT",
+      "outcome": "DOCUMENTER_DONE",
+      "commit": "31d48f1c7bc6c01bf62df62893cab63f801ce8fb",
+      "ai": false
+    },
+    {
+      "n": 15,
+      "role": "IMPLEMENTOR",
+      "outcome": "IMPLEMENTOR_IMPLEMENTATION_DONE",
+      "commit": "71f0fbc42f51bc62de85b4b82653a4d400ccefff",
+      "ai": true
+    },
+    {
+      "n": 16,
+      "role": "DOCUMENTER_POST_IMPLEMENTOR",
+      "outcome": "DOCUMENTER_DONE",
+      "commit": "546ef20d58201786e4c6f0e8e01dc6eb5e27381c",
+      "ai": false
+    },
+    {
+      "n": 17,
+      "role": "SPEC_COVERAGE_CHECKER",
+      "outcome": "SPEC_COVERAGE_CHECKER_PASS",
+      "commit": "943875233441ea8c0101e95893f9f6778d699fb1",
+      "ai": false
+    },
+    {
+      "n": 18,
+      "role": "TESTER",
+      "outcome": "TESTER_TESTS_PASS",
+      "commit": "3bf3ab95f7cfc715e567f199ca341d5d3ca2c625",
+      "ai": false
+    },
+    {
+      "n": 19,
+      "role": "LEAF_COMPLETE_HANDLER",
+      "outcome": "HANDLER_SUBTASKS_READY",
+      "commit": "9abfe99b52c86f4c44a4c0492d14372e3a59a8aa",
+      "ai": false
+    },
+    {
+      "n": 20,
+      "role": "ARCHITECT",
+      "outcome": "ARCHITECT_DESIGN_READY",
+      "commit": "33aa861d1d7f5f6b50a2d728b3b52d580de0b04b",
+      "ai": true
+    },
+    {
+      "n": 21,
+      "role": "DOCUMENTER_POST_ARCHITECT",
+      "outcome": "DOCUMENTER_DONE",
+      "commit": "d02596e8053fa0dceeef977f7eb7220f5a6f8a58",
+      "ai": false
+    },
+    {
+      "n": 22,
+      "role": "IMPLEMENTOR",
+      "outcome": "IMPLEMENTOR_IMPLEMENTATION_DONE",
+      "commit": "186db0163f21939fab9af497bbd3c876f11c0212",
+      "ai": true
+    },
+    {
+      "n": 23,
+      "role": "DOCUMENTER_POST_IMPLEMENTOR",
+      "outcome": "DOCUMENTER_DONE",
+      "commit": "07ec93814698515b6a357c09c4ac65b13de3441b",
+      "ai": false
+    },
+    {
+      "n": 24,
+      "role": "SPEC_COVERAGE_CHECKER",
+      "outcome": "SPEC_COVERAGE_CHECKER_PASS",
+      "commit": "aa23b7df77b72883b61a8f7580ea5f1d7b6a2377",
+      "ai": false
+    },
+    {
+      "n": 25,
+      "role": "TESTER",
+      "outcome": "TESTER_TESTS_PASS",
+      "commit": "72aef2f0db239591bf6f1406ceee29bf57f57602",
+      "ai": false
+    },
+    {
+      "n": 26,
+      "role": "LEAF_COMPLETE_HANDLER",
+      "outcome": "HANDLER_SUBTASKS_READY",
+      "commit": "a4858ccc9411260de934f882d37cf5606bb718fb",
+      "ai": false
+    },
+    {
+      "n": 27,
+      "role": "ARCHITECT",
+      "outcome": "ARCHITECT_DESIGN_READY",
+      "commit": "aecc08c50ee5388ebf36bbe2151b12a4319000ab",
+      "ai": true
+    },
+    {
+      "n": 28,
+      "role": "DOCUMENTER_POST_ARCHITECT",
+      "outcome": "DOCUMENTER_DONE",
+      "commit": "e928438eafe524b70888b3f6a0afffb00a5f7908",
+      "ai": false
+    },
+    {
+      "n": 29,
+      "role": "IMPLEMENTOR",
+      "outcome": "IMPLEMENTOR_IMPLEMENTATION_DONE",
+      "commit": "8448990c15cb2463d3a0c1ec7ad197f496f21dd2",
+      "ai": true
+    },
+    {
+      "n": 30,
+      "role": "DOCUMENTER_POST_IMPLEMENTOR",
+      "outcome": "DOCUMENTER_DONE",
+      "commit": "dee0714c913e2f6cee23d312e5713dca7685d071",
+      "ai": false
+    },
+    {
+      "n": 31,
+      "role": "SPEC_COVERAGE_CHECKER",
+      "outcome": "SPEC_COVERAGE_CHECKER_PASS",
+      "commit": "e19f76e5b99fc65e5b0e67a10fa8e711f094e316",
+      "ai": false
+    },
+    {
+      "n": 32,
+      "role": "TESTER",
+      "outcome": "TESTER_TESTS_PASS",
+      "commit": "2d70b998f9b302ff2e6950e47cf3b92bf060d0bf",
+      "ai": false
+    },
+    {
+      "n": 33,
+      "role": "LEAF_COMPLETE_HANDLER",
+      "outcome": "HANDLER_SUBTASKS_READY",
+      "commit": "e3033da0b1be906189bc276c35e7424f49cfb891",
+      "ai": false
+    },
+    {
+      "n": 34,
+      "role": "ARCHITECT",
+      "outcome": "ARCHITECT_DESIGN_READY",
+      "commit": "bd6baea4ecd33049d429613f59a5414492f5495e",
+      "ai": true
+    },
+    {
+      "n": 35,
+      "role": "DOCUMENTER_POST_ARCHITECT",
+      "outcome": "DOCUMENTER_DONE",
+      "commit": "67f860dc41ed8c362950a548b6563aa1a9dd9974",
+      "ai": false
+    },
+    {
+      "n": 36,
+      "role": "IMPLEMENTOR",
+      "outcome": "IMPLEMENTOR_IMPLEMENTATION_DONE",
+      "commit": "ef5ef281b9731980c042c52dc77f807248271627",
+      "ai": true
+    },
+    {
+      "n": 37,
+      "role": "DOCUMENTER_POST_IMPLEMENTOR",
+      "outcome": "DOCUMENTER_DONE",
+      "commit": "328a3642dcf03f75f8dced73b8c249c918130499",
+      "ai": false
+    },
+    {
+      "n": 38,
+      "role": "SPEC_COVERAGE_CHECKER",
+      "outcome": "SPEC_COVERAGE_CHECKER_PASS",
+      "commit": "072f32a82ee9a565d9da59cbfa058ecbd12576c0",
+      "ai": false
+    },
+    {
+      "n": 39,
+      "role": "TESTER",
+      "outcome": "TESTER_TESTS_PASS",
+      "commit": "ec30569f41b8d05682ca229c27c034790c874f20",
+      "ai": false
+    },
+    {
+      "n": 40,
+      "role": "LEAF_COMPLETE_HANDLER",
+      "outcome": "HANDLER_ALL_DONE",
+      "commit": "6f4ba022b967e9018aeac69459be2cf40e6bcfdb",
+      "ai": false
+    },
+    {
+      "n": 41,
+      "role": "pipeline",
+      "outcome": "done",
+      "commit": "b92128c55081fcfac579cd4bf72dd6cf839c7f11",
+      "ai": false
+    }
+  ]
+}
