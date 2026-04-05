@@ -33,6 +33,7 @@
 | 27 | POST_DOC_HANDLER | internal | handlers | 15:33:40 | 0s | 0 | 0 | 0 |
 | 28 | LEAF_COMPLETE_HANDLER | internal | handlers | 15:33:40 | 0s | 0 | 0 | 0 |
 | 29 | DOC_ARCHITECT | claude | store | 15:34:29 | 48s | 6 | 2,006 | 98,513 |
+| 30 | POST_DOC_HANDLER | internal | store | 15:34:30 | 0s | 0 | 0 | 0 |
 
 ## Subtasks
 

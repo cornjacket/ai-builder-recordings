@@ -385,3 +385,8 @@ HANDOFF: ran on-task-complete.sh → NEXT /Users/david/Go/src/github.com/cornjac
 [2026-04-05T15:34:29.996219] DOC_ARCHITECT/claude
 OUTCOME: DOC_ARCHITECT_ATOMIC_DONE
 HANDOFF: Created store.go.md (missing — covers Event model, Storer interface, New/Add/List public API, RWMutex concurrency model, compile-time interface assertion, and uuid dependency). Updated README.md from placeholder stub to proper directory index with Purpose/Tags header, one-sentence overview, file index table linking to store.go.md, and four invariant notes (no persistence, UUID overwrite on Add, List returns copy, append-only). store_test.go was skipped per policy. The store directory is the data-access layer of the metrics service — it owns the Event type, the Storer interface, and in-memory storage with concurrency safety.
+
+============================================================
+[2026-04-05T15:34:30.203551] POST_DOC_HANDLER/internal
+OUTCOME: POST_DOC_HANDLER_ATOMIC_PASS
+HANDOFF: linted 2 file(s) — all passed
