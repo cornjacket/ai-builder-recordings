@@ -23,6 +23,7 @@
 | 17 | LEAF_COMPLETE_HANDLER | internal | handlers | 01:20:51 | 0s | 0 | 0 | 0 |
 | 18 | ARCHITECT | claude | integrate-user-service | 01:21:52 | 1m 00s | 6 | 3,498 | 73,276 |
 | 19 | DOCUMENTER_POST_ARCHITECT | internal | integrate-user-service | 01:21:52 | 0s | 0 | 0 | 0 |
+| 20 | IMPLEMENTOR | claude | integrate-user-service | 01:22:59 | 1m 07s | 11 | 3,884 | 207,047 |
 
 ## Subtasks
 
