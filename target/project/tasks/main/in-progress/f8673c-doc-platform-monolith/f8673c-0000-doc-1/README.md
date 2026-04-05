@@ -29,6 +29,7 @@
 | 23 | LEAF_COMPLETE_HANDLER | internal | integrate-iam | 15:32:16 | 1s | 0 | 0 | 0 |
 | 24 | DOC_ARCHITECT | claude | metrics | 15:32:54 | 37s | 5 | 1,642 | 73,177 |
 | 25 | DECOMPOSE_HANDLER | internal | metrics | 15:32:55 | 0s | 0 | 0 | 0 |
+| 26 | DOC_ARCHITECT | claude | handlers | 15:33:40 | 44s | 6 | 2,133 | 97,805 |
 
 ## Subtasks
 

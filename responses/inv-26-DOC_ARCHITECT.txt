@@ -1,0 +1,9 @@
+The directory is atomic with only `handlers.go` (and `handlers_test.go` to skip). The `README.md` is a placeholder. I'll create `handlers.go.md` and update `README.md`.
+<response>
+  <outcome>DOC_ARCHITECT_ATOMIC_DONE</outcome>
+  <handoff>Created handlers.go.md (missing — covers Handler type, New constructor, PostEvents and GetEvents public API with parameter/return notes, key internals for the event-type allowlist and the request/response envelope types, and the store dependency). Updated README.md from a placeholder stub to a proper directory index with Purpose/Tags header, one-sentence overview, file index table linking to handlers.go.md, and four invariant notes (type allowlist, interface injection, no auth at this layer, silent encode errors). handlers_test.go was skipped per policy. The handlers directory is the HTTP layer of the metrics service — it owns POST /events and GET /events, delegating storage to a store.Storer.</handoff>
+  <documents_written>true</documents_written>
+</response>
+
+OUTCOME: DONE
+HANDOFF: Created `handlers.go.md` (new — documents the `Handler` type, `New` constructor, `PostEvents` and `GetEvents` methods with route/status-code details, the unexported `eventRequest`/`eventResponse` envelope types, the two-value event-type allowlist, and the `store` package dependency). Updated `README.md` from a one-line placeholder to a full directory index with Purpose/Tags header, overview paragraph, file index table, and four constraint/invariant notes. `handlers_test.go` was skipped per policy. The `handlers` package is the HTTP layer of the metrics service, owning `POST /events` and `GET /events` and delegating storage to `store.Storer`. The next agent (`store`) will document the storage sub-package, followed by the integrate step which must check and potentially update the pre-existing `metrics/README.md` and produce `metrics.go.md` and `data-flow.md`.

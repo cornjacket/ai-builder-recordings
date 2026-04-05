@@ -18,5 +18,6 @@
   "name": "handlers",
   "goal": "HTTP handlers for POST /events and GET /events \u2014 accepts a store.Storer interface and encodes/decodes JSON",
   "context": "### Level 1 \u2014 f8673c-0000-doc-1\n\n### Level 2 \u2014 f8673c-0001-internal\nInternal service packages subtree \u2014 contains `metrics` (event store + HTTP handlers) and `iam` (lifecycle + authz) as composite sub-packages\n\n### Level 3 \u2014 f8673c-0001-metrics\nMetrics package \u2014 contains handlers and store sub-packages alongside a parent-level metrics.go; pre-existing README.md is present",
-  "output_dir": "/Users/david/Go/src/github.com/cornjacket/ai-builder/establish-regression-recordings/sandbox/regressions/doc-platform-monolith/output/internal/metrics/handlers"
+  "output_dir": "/Users/david/Go/src/github.com/cornjacket/ai-builder/establish-regression-recordings/sandbox/regressions/doc-platform-monolith/output/internal/metrics/handlers",
+  "active_role": "DOC_ARCHITECT"
 }
