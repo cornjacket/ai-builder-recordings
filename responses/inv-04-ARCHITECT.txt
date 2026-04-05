@@ -1,23 +1,19 @@
-# metrics
+Now I have everything I need. Let me design the `metrics` component and write the README.
 
-## Goal
-
-In-memory metrics service for recording and listing frontend user interaction events. Serves on port 8081.
-
-HTTP API (verbatim from spec):
-POST /events — body: {"type":"click-mouse"|"submit-form","userId":"<string>","payload":{}} → 201 with event object {"id":"<string>","type":"<string>","userId":"<string>","payload":{}};
-GET /events → 200 JSON array of event objects, each with fields: id, type, userId, payload.
-
-Data model: Event{id string, type string, userId string, payload map[string]interface{}}.
-Store: thread-safe in-memory slice; IDs are generated UUIDs on POST.
-Package layout: store.go (EventStore with Add/List), handlers.go (PostEvent, GetEvents), routes.go (returns http.Handler).
-Unit tests must cover store and handler logic; handler tests use net/http/httptest.
-
-## Context
-
-### Level 1 — fbc6d9-0000-build-1
-
-
+**Design summary:**
+- Go package `metrics` at `internal/metrics/`
+- Three source files: `store.go`, `handlers.go`, `routes.go` plus two test files
+- `Event` struct with JSON tags matching spec field names exactly (`id`, `type`, `userId`, `payload`)
+- `EventStore` uses `sync.RWMutex` — write lock on `Add`, read lock on `List`
+- UUID generation via `github.com/google/uuid`
+- `PostEvent` validates `type` ∈ {`"click-mouse"`, `"submit-form"`}, returns 400 on bad input
+- `GetEvents` returns `[]Event{}` (not nil) so JSON encodes as `[]` not `null`
+- `routes.go` uses standard `net/http` ServeMux; method dispatch is checked inside handlers
+- Handler tests use `net/http/httptest.NewRecorder` and `httptest.NewRequest`<response>
+  <outcome>ARCHITECT_DESIGN_READY</outcome>
+  <handoff>The metrics component is a Go package `metrics` at `internal/metrics/`. Three source files: store.go (EventStore with Add/List, sync.RWMutex, returns []Event{} never nil), handlers.go (PostEvent and GetEvents constructor functions returning http.HandlerFunc, validate Type ∈ {"click-mouse","submit-form"}, 400 on bad input or bad JSON, 405 on wrong method, 201/200 on success), routes.go (NewRouter(*EventStore) http.Handler using net/http ServeMux). Event struct fields: ID/Type/UserID/Payload with json tags id/type/userId/payload. UUID generation via github.com/google/uuid. Tests use net/http/httptest covering all status-code paths and a concurrent-Add race test.</handoff>
+  <documents_written>true</documents_written>
+  <design>
 ## Design
 
 **Language:** Go
@@ -95,7 +91,8 @@ func NewRouter(store *EventStore) http.Handler {
 - `List` must initialise the return slice to `[]Event{}` (not nil) so JSON encodes as `[]` not `null`.
 - No persistence; store is purely in-memory and resets on restart.
 - The `NewRouter` return value is consumed by the integrate-platform wiring step which starts an `http.Server` on port 8081.
-
+  </design>
+  <acceptance_criteria>
 ## Acceptance Criteria
 
 1. `POST /events` with body `{"type":"click-mouse","userId":"u1","payload":{}}` returns HTTP 201 and a JSON object containing non-empty string `id`, `type` == `"click-mouse"`, `userId` == `"u1"`, and `payload` == `{}`.
@@ -106,10 +103,6 @@ func NewRouter(store *EventStore) http.Handler {
 6. `GET /events` after two posts returns HTTP 200 and a JSON array containing both event objects in insertion order, each with fields `id`, `type`, `userId`, `payload`.
 7. `GET /events` with method POST on the GET-only path (or vice-versa where method dispatch is in the mux) returns HTTP 405.
 8. Running `go test -race ./internal/metrics/...` from the module root passes with no failures and no race conditions detected.
-
-## Test Command
-
-```
-cd /Users/david/Go/src/github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/platform-monolith/output && go test -race ./internal/metrics/...
-```
-
+  </acceptance_criteria>
+  <test_command>cd /Users/david/Go/src/github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/platform-monolith/output && go test -race ./internal/metrics/...</test_command>
+</response>

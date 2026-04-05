@@ -90,6 +90,19 @@
       "tokens_out": 0,
       "tokens_cached": 0,
       "outcome": "HANDLER_SUBTASKS_READY"
+    },
+    {
+      "role": "ARCHITECT",
+      "agent": "claude",
+      "n": 2,
+      "description": "metrics",
+      "start": "2026-04-05T02:06:11.763704",
+      "end": "2026-04-05T02:07:49.440737",
+      "elapsed_s": 97.677033,
+      "tokens_in": 8,
+      "tokens_out": 5650,
+      "tokens_cached": 126628,
+      "outcome": "ARCHITECT_DESIGN_READY"
     }
   ]
 }
