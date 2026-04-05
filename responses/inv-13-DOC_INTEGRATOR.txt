@@ -1,0 +1,15 @@
+Now I have everything I need. I'll write the `README.md` and `data-flow.md` for the `userservice/` composite directory.
+Both files are written. Let me verify they pass the linter rules mentally:
+- `Purpose:` header: present on both
+- `Tags:` header: present on both
+- No empty sections: every `##` heading has prose before the next heading
+- No placeholder text: none
+
+<response>
+  <outcome>DOC_INTEGRATOR_DONE</outcome>
+  <handoff>Wrote README.md (directory index with component table and link to data-flow.md) and data-flow.md (ASCII diagram + prose covering the ServeMux→handlers→store→response path, the Store interface boundary, and concurrency strategy) for the userservice/ composite; this composite provides a complete in-process HTTP CRUD service whose handlers and store sub-packages are decoupled via an interface and wired together only in main.go.</handoff>
+  <documents_written>true</documents_written>
+</response>
+
+OUTCOME: DONE
+HANDOFF: Produced two synthesis docs for the `userservice/` composite: `README.md` (directory index with a component table linking to `handlers/README.md` and `store/README.md`, plus a link to `data-flow.md`) and `data-flow.md` (ASCII diagram showing the ServeMux → Handler → Store → JSON response path, plus prose on the Store interface boundary and the RWMutex concurrency model). Both files carry the required `Purpose:` / `Tags:` headers and contain no empty sections or placeholder text. The next agent (the `internal/` integrate step) should know that `userservice/` is now fully documented with its own synthesis layer, and should produce a `README.md` (and optionally `data-flow.md`) for the `internal/` directory that positions `userservice/` as its sole sub-package.

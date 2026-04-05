@@ -16,6 +16,7 @@
 | 10 | DOC_ARCHITECT | claude | store | 15:44:10 | 52s | 6 | 2,133 | 90,649 |
 | 11 | POST_DOC_HANDLER | internal | store | 15:44:11 | 0s | 0 | 0 | 0 |
 | 12 | LEAF_COMPLETE_HANDLER | internal | store | 15:44:12 | 0s | 0 | 0 | 0 |
+| 13 | DOC_INTEGRATOR | claude | integrate-userservice | 15:45:07 | 54s | 9 | 2,531 | 148,103 |
 
 ## Subtasks
 
