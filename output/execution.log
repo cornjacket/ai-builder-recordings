@@ -460,3 +460,8 @@ HANDOFF: Wrote 2 files to output/internal/: (1) README.md — replaced the place
 [2026-04-05T15:37:00.305188] POST_DOC_HANDLER/internal
 OUTCOME: POST_DOC_HANDLER_INTEGRATE_PASS
 HANDOFF: linted 2 file(s) — all passed
+
+============================================================
+[2026-04-05T15:37:01.407048] LEAF_COMPLETE_HANDLER/internal
+OUTCOME: HANDLER_INTEGRATE_READY
+HANDOFF: ran on-task-complete.sh → NEXT /Users/david/Go/src/github.com/cornjacket/ai-builder/establish-regression-recordings/sandbox/regressions/doc-platform-monolith/target/project/tasks/main/in-progress/f8673c-doc-platform-monolith/f8673c-0000-doc-1/f8673c-0002-integrate-platform-monolith/README.md

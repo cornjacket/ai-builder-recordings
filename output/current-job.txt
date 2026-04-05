@@ -1,1 +1,1 @@
-/Users/david/Go/src/github.com/cornjacket/ai-builder/establish-regression-recordings/sandbox/regressions/doc-platform-monolith/target/project/tasks/main/in-progress/f8673c-doc-platform-monolith/f8673c-0000-doc-1/f8673c-0001-internal/f8673c-0002-integrate-internal/README.md
+/Users/david/Go/src/github.com/cornjacket/ai-builder/establish-regression-recordings/sandbox/regressions/doc-platform-monolith/target/project/tasks/main/in-progress/f8673c-doc-platform-monolith/f8673c-0000-doc-1/f8673c-0002-integrate-platform-monolith/README.md

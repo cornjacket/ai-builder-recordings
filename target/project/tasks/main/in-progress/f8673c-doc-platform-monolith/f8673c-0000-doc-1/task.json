@@ -21,7 +21,7 @@
     },
     {
       "name": "f8673c-0001-internal",
-      "complete": false
+      "complete": true
     },
     {
       "name": "f8673c-0002-integrate-platform-monolith",
@@ -500,6 +500,19 @@
       "tokens_out": 0,
       "tokens_cached": 0,
       "outcome": "POST_DOC_HANDLER_INTEGRATE_PASS"
+    },
+    {
+      "role": "LEAF_COMPLETE_HANDLER",
+      "agent": "internal",
+      "n": 9,
+      "description": "integrate-internal",
+      "start": "2026-04-05T15:37:00.432950",
+      "end": "2026-04-05T15:37:01.406886",
+      "elapsed_s": 0.973936,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "tokens_cached": 0,
+      "outcome": "HANDLER_INTEGRATE_READY"
     }
   ]
 }
