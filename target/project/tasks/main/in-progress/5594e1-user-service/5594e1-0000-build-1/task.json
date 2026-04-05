@@ -155,6 +155,19 @@
       "tokens_out": 0,
       "tokens_cached": 0,
       "outcome": "SPEC_COVERAGE_CHECKER_PASS"
+    },
+    {
+      "role": "TESTER",
+      "agent": "internal",
+      "n": 1,
+      "description": "store",
+      "start": "2026-04-05T01:17:49.291117",
+      "end": "2026-04-05T01:17:52.686202",
+      "elapsed_s": 3.395085,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "tokens_cached": 0,
+      "outcome": "TESTER_TESTS_PASS"
     }
   ]
 }
