@@ -43,3 +43,8 @@ See [api.md](api.md) for the full endpoint contract.
 |------|-------------|
 | api.md | Defines the HTTP request and response contract for all five authz endpoints |
 
+### Implementation Notes
+| File | Description |
+|------|-------------|
+| authz.go.md | Documents the design and key decisions of the authz package's role store and RBAC handler |
+
