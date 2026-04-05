@@ -1,98 +1,117 @@
-Now let me check the store component's output to understand the Store interface.Let me check the existing handlers README and store README.Now I have everything needed. Let me write the README for the handlers component.<response>
+Now let me check the store output to understand its interface.Now I have everything I need. Let me write the README and design the handlers component.<response>
   <outcome>ARCHITECT_DESIGN_READY</outcome>
-  <handoff>The handlers package lives at internal/userservice/handlers within the module github.com/cornjacket/user-service. It defines a local Store interface (Create/Get/Update/Delete) satisfied by *store.Store, a Handler struct, a New constructor, and a Register(*http.ServeMux) method that mounts four method-specific routes using Go 1.22+ pattern syntax (e.g. "POST /users", "GET /users/{id}"). Local userRequest, userResponse, and errorResponse structs carry json struct tags. All four handler methods set Content-Type: application/json; POST returns 201, GET and PUT return 200 or 404 with {"error":"not found"}, DELETE returns 204 or 404. Bad JSON decode returns 400. Two files: handlers.go (all logic) and handlers_test.go (httptest-based table-driven tests). Imports: standard library only plus github.com/cornjacket/user-service/internal/userservice/store.</handoff>
+  <handoff>The handlers package lives at `internal/userservice/handlers`. `New(s Store) http.Handler` registers four routes on a `net/http.ServeMux` using Go 1.22+ pattern matching and returns the mux. A `Store` interface is defined locally mirroring the concrete `*store.Store` methods (Create/Get/Update/Delete). Request bodies decode into unexported `createRequest`/`updateRequest` structs; responses encode from a `userResponse` struct with JSON tags `id`, `name`, `email`. Status codes: 201 POST success, 200 GET/PUT success, 204 DELETE success, 404 + `{}` body for not-found, 400 for malformed JSON. All JSON responses carry `Content-Type: application/json`. IDs are extracted via `r.PathValue("id")`.</handoff>
   <documents_written>true</documents_written>
   <design>
 ## Design
 
-**Language:** Go  
-**Module:** `github.com/cornjacket/user-service`  
-**Package path:** `internal/userservice/handlers`
+**Language:** Go, standard library only (`net/http`, `encoding/json`).
 
-### Dependencies
+**Package:** `package handlers` at `internal/userservice/handlers`.
 
-- Standard library only (`encoding/json`, `net/http`)
-- `github.com/cornjacket/user-service/internal/userservice/store` — for the `store.User` type
+**Module:** `github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/user-service`
+
+**Dependencies:** Only `internal/userservice/store` (same module) for the `store.User` type.
 
 ### Files
 
-| File | Contents |
-|------|----------|
-| `handlers.go` | `Store` interface, `Handler` struct, `New`, `Register`, four handler methods |
-| `handlers_test.go` | Table-driven tests via `httptest.NewRecorder` |
+- `handlers.go` — all production code
+- `handlers_test.go` — tests using `net/http/httptest`
 
-### Store interface (defined in this package)
+### handlers.go structure
 
 ```go
+package handlers
+
+import (
+    "encoding/json"
+    "net/http"
+    "github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/user-service/internal/userservice/store"
+)
+
+// Store is the interface the handlers depend on.
 type Store interface {
-    Create(user store.User) store.User
+    Create(name, email string) store.User
     Get(id string) (store.User, bool)
-    Update(id string, user store.User) (store.User, bool)
+    Update(id, name, email string) (store.User, bool)
     Delete(id string) bool
 }
+
+// New registers all routes and returns the mux.
+func New(s Store) http.Handler { ... }
+
+// unexported request/response types
+type createRequest  struct { Name string `json:"name"`; Email string `json:"email"` }
+type updateRequest  struct { Name string `json:"name"`; Email string `json:"email"` }
+type userResponse   struct { ID string `json:"id"`; Name string `json:"name"`; Email string `json:"email"` }
 ```
 
-Satisfied by `*store.Store` from the sibling package without any changes to that package.
+### Route registration (Go 1.22+ ServeMux patterns)
 
-### Handler struct and constructor
-
-```go
-type Handler struct { store Store }
-func New(s Store) *Handler { return &Handler{store: s} }
+```
+mux.HandleFunc("POST /users",        handleCreate(s))
+mux.HandleFunc("GET /users/{id}",    handleGet(s))
+mux.HandleFunc("PUT /users/{id}",    handleUpdate(s))
+mux.HandleFunc("DELETE /users/{id}", handleDelete(s))
 ```
 
-### Register method
+### Handler behaviour
 
-Uses Go 1.22 method-qualified patterns so each handler receives only requests of the correct verb:
+**handleCreate:**
+1. `json.NewDecoder(r.Body).Decode(&req)` — on error → `w.WriteHeader(400)`; return
+2. `s.Create(req.Name, req.Email)` → user
+3. `w.Header().Set("Content-Type", "application/json")`, `w.WriteHeader(201)`
+4. `json.NewEncoder(w).Encode(userResponse{...})`
+
+**handleGet:**
+1. `id := r.PathValue("id")`
+2. `u, ok := s.Get(id)` — if !ok → write 404 + `{}`; return
+3. Write 200 + userResponse JSON
+
+**handleUpdate:**
+1. `id := r.PathValue("id")`
+2. `json.NewDecoder(r.Body).Decode(&req)` — on error → write 400; return
+3. `u, ok := s.Update(id, req.Name, req.Email)` — if !ok → write 404 + `{}`; return
+4. Write 200 + userResponse JSON
+
+**handleDelete:**
+1. `id := r.PathValue("id")`
+2. `ok := s.Delete(id)` — if !ok → write 404 + `{}`; return
+3. `w.WriteHeader(204)` (no body)
+
+### 404 helper
 
 ```go
-func (h *Handler) Register(mux *http.ServeMux) {
-    mux.HandleFunc("POST /users",        h.createUser)
-    mux.HandleFunc("GET /users/{id}",    h.getUser)
-    mux.HandleFunc("PUT /users/{id}",    h.updateUser)
-    mux.HandleFunc("DELETE /users/{id}", h.deleteUser)
+func writeNotFound(w http.ResponseWriter) {
+    w.Header().Set("Content-Type", "application/json")
+    w.WriteHeader(http.StatusNotFound)
+    w.Write([]byte("{}"))
 }
 ```
 
-### Local JSON types
+### JSON encoding note
 
-```go
-type userRequest  struct { Name  string `json:"name"`;  Email string `json:"email"` }
-type userResponse struct { ID string `json:"id"`; Name string `json:"name"`; Email string `json:"email"` }
-type errorResponse struct { Error string `json:"error"` }
-```
+Use `json.NewEncoder(w).Encode(v)` for responses (appends newline, which is acceptable). Set `Content-Type: application/json` before calling `WriteHeader`.
 
-### Handler logic
+### Constraints
 
-**createUser:** Set `Content-Type: application/json`. Decode body into `userRequest`; on error write 400 and return. Call `h.store.Create(store.User{Name, Email})`. Write 201 + JSON `userResponse`.
-
-**getUser:** Set `Content-Type: application/json`. `id := r.PathValue("id")`. Call `h.store.Get(id)`; if not found write 404 + `{"error":"not found"}` and return. Write 200 + JSON `userResponse`.
-
-**updateUser:** Set `Content-Type: application/json`. `id := r.PathValue("id")`. Decode body; on error write 400 and return. Call `h.store.Update(id, store.User{Name, Email})`; if not found write 404 + `{"error":"not found"}` and return. Write 200 + JSON `userResponse`.
-
-**deleteUser:** `id := r.PathValue("id")`. Call `h.store.Delete(id)`; if not found set `Content-Type: application/json`, write 404 + `{"error":"not found"}` and return. Set `Content-Type: application/json`, write 204 (no body).
-
-### Helper
-
-A private `writeJSON(w, status, v)` helper sets the header, calls `w.WriteHeader(status)`, and encodes `v` to avoid repetition.
-
-### Tests
-
-Use a `mockStore` struct implementing the `Store` interface. Each test case constructs an `httptest.NewRecorder`, calls the handler directly, and asserts status code, body, and `Content-Type` header.
+- Go 1.22+ required for `r.PathValue` and method-qualified mux patterns.
+- No third-party dependencies.
+- The `Store` interface is defined in this package — the caller passes a `*store.Store` which satisfies it structurally.
   </design>
   <acceptance_criteria>
 ## Acceptance Criteria
 
-1. `POST /users` with body `{"name":"Alice","email":"alice@example.com"}` returns HTTP 201, `Content-Type: application/json`, and a JSON body containing non-empty `id`, `name` equal to `"Alice"`, and `email` equal to `"alice@example.com"`.
-2. `POST /users` with a malformed JSON body (e.g. `{bad}`) returns HTTP 400 and `Content-Type: application/json`.
-3. `GET /users/{id}` where `{id}` matches a previously created record returns HTTP 200, `Content-Type: application/json`, and the correct `id`, `name`, and `email` fields.
-4. `GET /users/{id}` where `{id}` does not exist returns HTTP 404, `Content-Type: application/json`, and body `{"error":"not found"}`.
-5. `PUT /users/{id}` with a valid JSON body and an existing `{id}` returns HTTP 200, `Content-Type: application/json`, and the updated `name` and `email` with the same `id`.
-6. `PUT /users/{id}` with a valid JSON body and a non-existent `{id}` returns HTTP 404, `Content-Type: application/json`, and body `{"error":"not found"}`.
-7. `PUT /users/{id}` with a malformed JSON body returns HTTP 400 and `Content-Type: application/json`.
-8. `DELETE /users/{id}` where `{id}` exists returns HTTP 204, `Content-Type: application/json`, and no response body.
-9. `DELETE /users/{id}` where `{id}` does not exist returns HTTP 404, `Content-Type: application/json`, and body `{"error":"not found"}`.
-10. All tests pass with `go test ./internal/userservice/handlers/...` and no race conditions under `-race`.
+1. `POST /users` with body `{"name":"Alice","email":"alice@example.com"}` returns HTTP 201 and a JSON body containing `"name":"Alice"`, `"email":"alice@example.com"`, and a non-empty `"id"` field.
+2. `POST /users` with body `{invalid` returns HTTP 400.
+3. `GET /users/{id}` where `{id}` is the ID from criterion 1 returns HTTP 200 and the same JSON body (`id`, `name`, `email` matching).
+4. `GET /users/{id}` where `{id}` is an unknown UUID returns HTTP 404 with body `{}`.
+5. `PUT /users/{id}` (existing ID) with body `{"name":"Bob","email":"bob@example.com"}` returns HTTP 200 and JSON body with `"name":"Bob"`, `"email":"bob@example.com"`, and the same `id`.
+6. `PUT /users/{id}` (unknown ID) with valid body returns HTTP 404 with body `{}`.
+7. `PUT /users/{id}` with body `{invalid` returns HTTP 400.
+8. `DELETE /users/{id}` (existing ID) returns HTTP 204 with an empty body.
+9. `DELETE /users/{id}` (unknown ID) returns HTTP 404 with body `{}`.
+10. All non-204 JSON responses carry `Content-Type: application/json`.
   </acceptance_criteria>
-  <test_command>cd /Users/david/Go/src/github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/user-service/output && go test -race ./internal/userservice/handlers/...</test_command>
+  <test_command>cd /Users/david/Go/src/github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/user-service/output &amp;&amp; go test ./internal/userservice/handlers/...</test_command>
 </response>
