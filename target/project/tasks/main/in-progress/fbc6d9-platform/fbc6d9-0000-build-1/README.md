@@ -11,6 +11,7 @@
 | 5 | DOCUMENTER_POST_ARCHITECT | internal | metrics | 02:07:49 | 0s | 0 | 0 | 0 |
 | 6 | IMPLEMENTOR | claude | metrics | 02:10:05 | 2m 15s | 18 | 7,615 | 363,898 |
 | 7 | DOCUMENTER_POST_IMPLEMENTOR | internal | metrics | 02:10:05 | 0s | 0 | 0 | 0 |
+| 8 | SPEC_COVERAGE_CHECKER | internal | metrics | 02:10:05 | 0s | 0 | 0 | 0 |
 
 ## Subtasks
 

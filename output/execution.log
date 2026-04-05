@@ -121,3 +121,8 @@ HANDOFF: Implemented the `metrics` package at `internal/metrics/` with five file
 [2026-04-05T02:10:05.667554] DOCUMENTER_POST_IMPLEMENTOR/internal
 OUTCOME: DOCUMENTER_DONE
 HANDOFF: indexed 2 doc(s) into README.md (0 design, 2 implementation)
+
+============================================================
+[2026-04-05T02:10:05.775787] SPEC_COVERAGE_CHECKER/internal
+OUTCOME: SPEC_COVERAGE_CHECKER_PASS
+HANDOFF: No acceptance-spec.json in output_dir — skipping coverage check.
