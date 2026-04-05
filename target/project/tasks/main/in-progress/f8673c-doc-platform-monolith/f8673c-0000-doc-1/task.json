@@ -435,6 +435,19 @@
       "tokens_out": 0,
       "tokens_cached": 0,
       "outcome": "HANDLER_INTEGRATE_READY"
+    },
+    {
+      "role": "DOC_INTEGRATOR",
+      "agent": "claude",
+      "n": 3,
+      "description": "integrate-metrics",
+      "start": "2026-04-05T15:34:31.410931",
+      "end": "2026-04-05T15:35:51.027346",
+      "elapsed_s": 79.616415,
+      "tokens_in": 8,
+      "tokens_out": 4155,
+      "tokens_cached": 144530,
+      "outcome": "DOC_INTEGRATOR_DONE"
     }
   ]
 }

@@ -1,26 +1,26 @@
 # metrics
 
 Purpose: HTTP ingestion service that records frontend user interaction events in memory and exposes them for retrieval. Listens on port 8081.
-Tags: architecture, design
 
-## File Index
-
-| File | Description |
-|------|-------------|
-| `metrics.go` | Package-level `New()` constructor — wires store and handlers, returns an `http.Handler` |
-| `store/store.go` | In-memory event store with thread-safe Add and List operations |
-| `handlers/handlers.go` | HTTP handlers for POST /events and GET /events |
+Tags: architecture, overview
 
 ## Overview
 
-The metrics package is internally composed of two sub-packages:
+The metrics composite provides a single `http.Handler` (returned by `New()`) that wires an in-memory event store and an HTTP handler layer together onto one `ServeMux`. The only routes exposed are `POST /events` and `GET /events`.
 
-- **store** — owns the `Event` struct and all state. Generates UUIDs for new events. Safe for concurrent use via a `sync.RWMutex`.
-- **handlers** — pure HTTP layer. Accepts a `store.Storer` interface so it has no import cycle back to the parent package. Encodes/decodes JSON; returns the documented status codes.
+## Components
 
-The package-level `New()` function in `metrics.go` instantiates a `store.Store`, injects it into the handlers, registers routes on a fresh `http.ServeMux`, and returns the mux. The caller (`cmd/platform/main.go`) wraps the returned handler in an `http.Server` listening on `:8081`.
+| Component | Responsibility |
+|-----------|----------------|
+| [`handlers/`](handlers/README.md) | HTTP layer — decodes requests, enforces the event-type allowlist, delegates storage to a `store.Storer` |
+| [`store/`](store/README.md) | Data-access layer — owns the `Event` type, `Storer` interface, and thread-safe in-memory storage |
+| [`metrics.go`](metrics.go.md) | Package-level wiring — constructs store and handlers, registers routes, returns the composed `http.Handler` |
 
-### API contract
+## Synthesis Docs
+
+- [data-flow.md](data-flow.md) — startup wiring diagram and request-time paths for POST and GET
+
+## API Contract
 
 ```
 POST /events
@@ -33,7 +33,7 @@ GET /events
             200 [] when no events have been recorded
 ```
 
-### Data model
+## Data Model
 
 ```go
 type Event struct {

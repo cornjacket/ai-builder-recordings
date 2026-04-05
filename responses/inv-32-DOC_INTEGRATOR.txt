@@ -1,0 +1,16 @@
+Now I have all the context I need. Let me write the three files.
+All three files written. Quick self-check against linter rules:
+
+- `Purpose:` header present on all three ✓
+- `Tags:` header present on all three ✓
+- No empty sections (every `##` has prose before any sub-heading or next `##`) ✓
+- No placeholder text ✓
+
+<response>
+  <outcome>DOC_INTEGRATOR_DONE</outcome>
+  <handoff>Wrote 3 files to output/internal/metrics/: (1) metrics.go.md — documents New()'s three-step wiring sequence (store construction, handler injection, route registration), route table, and dependencies; (2) data-flow.md — ASCII diagrams for startup object-graph construction and request-time paths for both POST and GET, plus a note on the one-way store.Storer interface boundary; (3) README.md — replaced the pre-existing file with a proper directory index including component table linking to handlers/README.md, store/README.md, and metrics.go.md, a link to data-flow.md, and the full API contract and data model. The metrics composite provides a single http.Handler that composes an in-memory event store and an HTTP dispatch layer onto one ServeMux bound to :8081.</handoff>
+  <documents_written>true</documents_written>
+</response>
+
+OUTCOME: DONE
+HANDOFF: Wrote 3 files to output/internal/metrics/: metrics.go.md documents the New() wiring function (store construction → handler injection → route registration, with route table and dependency notes); data-flow.md covers startup object-graph construction and request-time paths for both POST /events and GET /events with ASCII diagrams, plus a note on the one-way store.Storer interface boundary keeping sub-packages independently testable; README.md replaced the pre-existing file with a proper directory index containing a component table (handlers/, store/, metrics.go), link to data-flow.md, and the preserved API contract and data model. The metrics composite provides a single http.Handler that composes independent store and handlers sub-packages onto one ServeMux bound to :8081.

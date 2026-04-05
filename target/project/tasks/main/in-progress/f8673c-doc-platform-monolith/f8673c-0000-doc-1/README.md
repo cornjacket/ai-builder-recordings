@@ -35,6 +35,7 @@
 | 29 | DOC_ARCHITECT | claude | store | 15:34:29 | 48s | 6 | 2,006 | 98,513 |
 | 30 | POST_DOC_HANDLER | internal | store | 15:34:30 | 0s | 0 | 0 | 0 |
 | 31 | LEAF_COMPLETE_HANDLER | internal | store | 15:34:31 | 0s | 0 | 0 | 0 |
+| 32 | DOC_INTEGRATOR | claude | integrate-metrics | 15:35:51 | 1m 19s | 8 | 4,155 | 144,530 |
 
 ## Subtasks
 
