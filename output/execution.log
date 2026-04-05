@@ -184,3 +184,8 @@ HANDOFF: ran on-task-complete.sh → NEXT /Users/david/Go/src/github.com/cornjac
 [2026-04-05T15:45:07.070141] DOC_INTEGRATOR/claude
 OUTCOME: DOC_INTEGRATOR_DONE
 HANDOFF: Wrote README.md (directory index with component table and link to data-flow.md) and data-flow.md (ASCII diagram + prose covering the ServeMux→handlers→store→response path, the Store interface boundary, and concurrency strategy) for the userservice/ composite; this composite provides a complete in-process HTTP CRUD service whose handlers and store sub-packages are decoupled via an interface and wired together only in main.go.
+
+============================================================
+[2026-04-05T15:45:07.284788] POST_DOC_HANDLER/internal
+OUTCOME: POST_DOC_HANDLER_INTEGRATE_PASS
+HANDOFF: linted 2 file(s) — all passed

@@ -17,6 +17,7 @@
 | 11 | POST_DOC_HANDLER | internal | store | 15:44:11 | 0s | 0 | 0 | 0 |
 | 12 | LEAF_COMPLETE_HANDLER | internal | store | 15:44:12 | 0s | 0 | 0 | 0 |
 | 13 | DOC_INTEGRATOR | claude | integrate-userservice | 15:45:07 | 54s | 9 | 2,531 | 148,103 |
+| 14 | POST_DOC_HANDLER | internal | integrate-userservice | 15:45:07 | 0s | 0 | 0 | 0 |
 
 ## Subtasks
 
