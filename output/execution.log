@@ -278,3 +278,9 @@ HANDOFF: All 4 endpoint(s) covered by test files.
 [2026-04-05T01:23:03.226458] TESTER/internal
 OUTCOME: TESTER_TESTS_PASS
 HANDOFF: All tests passed.
+
+============================================================
+[2026-04-05T01:23:03.988675] LEAF_COMPLETE_HANDLER/internal
+OUTCOME: HANDLER_ALL_DONE
+HANDOFF: ran on-task-complete.sh → DONE
+TOP_RENAME_PENDING: /Users/david/Go/src/github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/user-service/target/project/tasks/main/in-progress/5594e1-user-service/5594e1-0000-build-1

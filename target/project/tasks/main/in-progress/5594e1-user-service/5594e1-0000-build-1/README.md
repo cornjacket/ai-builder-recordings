@@ -27,10 +27,11 @@
 | 21 | DOCUMENTER_POST_IMPLEMENTOR | internal | integrate-user-service | 01:23:00 | 0s | 0 | 0 | 0 |
 | 22 | SPEC_COVERAGE_CHECKER | internal | integrate-user-service | 01:23:00 | 0s | 0 | 0 | 0 |
 | 23 | TESTER | internal | integrate-user-service | 01:23:03 | 2s | 0 | 0 | 0 |
+| 24 | LEAF_COMPLETE_HANDLER | internal | integrate-user-service | 01:23:03 | 0s | 0 | 0 | 0 |
 
 ## Subtasks
 
 - [x] 5594e1-0000-store
 - [x] 5594e1-0001-handlers
-- [ ] 5594e1-0002-integrate-user-service
+- [x] 5594e1-0002-integrate-user-service
 

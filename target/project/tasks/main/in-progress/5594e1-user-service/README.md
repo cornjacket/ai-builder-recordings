@@ -31,7 +31,7 @@ one, and verify the assembled service passes the acceptance criteria.
 
 <!-- When a subtask is finished, run complete-task.sh --parent to mark it [x] before moving on. -->
 <!-- subtask-list-start -->
-- [ ] [5594e1-0000-build-1](5594e1-0000-build-1/)
+- [x] [X-5594e1-0000-build-1](X-5594e1-0000-build-1/)
 <!-- subtask-list-end -->
 
 ## Notes
