@@ -224,3 +224,8 @@ HANDOFF: ran on-task-complete.sh → NEXT /Users/david/Go/src/github.com/cornjac
 [2026-04-05T15:45:57.214087] DOC_INTEGRATOR/claude
 OUTCOME: DOC_INTEGRATOR_DONE
 HANDOFF: Wrote README.md (directory index with component table linking to userservice/ and data-flow.md) and data-flow.md (ASCII diagram + prose covering main.go's role as the sole entry point into the internal/ boundary, the request path through handlers and store, and the interface-based decoupling between sub-packages) for the internal/ composite; this composite provides the Go internal-package boundary enclosing the full user CRUD service sub-tree.
+
+============================================================
+[2026-04-05T15:45:57.458157] POST_DOC_HANDLER/internal
+OUTCOME: POST_DOC_HANDLER_INTEGRATE_PASS
+HANDOFF: linted 2 file(s) — all passed
