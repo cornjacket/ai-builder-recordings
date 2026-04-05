@@ -25,6 +25,7 @@
 | 19 | DOCUMENTER_POST_ARCHITECT | internal | integrate-user-service | 01:21:52 | 0s | 0 | 0 | 0 |
 | 20 | IMPLEMENTOR | claude | integrate-user-service | 01:22:59 | 1m 07s | 11 | 3,884 | 207,047 |
 | 21 | DOCUMENTER_POST_IMPLEMENTOR | internal | integrate-user-service | 01:23:00 | 0s | 0 | 0 | 0 |
+| 22 | SPEC_COVERAGE_CHECKER | internal | integrate-user-service | 01:23:00 | 0s | 0 | 0 | 0 |
 
 ## Subtasks
 

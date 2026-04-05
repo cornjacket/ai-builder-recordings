@@ -324,6 +324,19 @@
       "tokens_out": 0,
       "tokens_cached": 0,
       "outcome": "DOCUMENTER_DONE"
+    },
+    {
+      "role": "SPEC_COVERAGE_CHECKER",
+      "agent": "internal",
+      "n": 3,
+      "description": "integrate-user-service",
+      "start": "2026-04-05T01:23:00.256692",
+      "end": "2026-04-05T01:23:00.265124",
+      "elapsed_s": 0.008432,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "tokens_cached": 0,
+      "outcome": "SPEC_COVERAGE_CHECKER_PASS"
     }
   ]
 }
