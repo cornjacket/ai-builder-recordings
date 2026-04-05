@@ -454,6 +454,19 @@
       "tokens_out": 0,
       "tokens_cached": 0,
       "outcome": "SPEC_COVERAGE_CHECKER_PASS"
+    },
+    {
+      "role": "TESTER",
+      "agent": "internal",
+      "n": 4,
+      "description": "integrate-iam",
+      "start": "2026-04-05T02:25:46.269302",
+      "end": "2026-04-05T02:25:59.106366",
+      "elapsed_s": 12.837064,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "tokens_cached": 0,
+      "outcome": "TESTER_TESTS_PASS"
     }
   ]
 }

@@ -35,6 +35,7 @@
 | 29 | IMPLEMENTOR | claude | integrate-iam | 02:25:45 | 1m 34s | 14 | 6,270 | 310,075 |
 | 30 | DOCUMENTER_POST_IMPLEMENTOR | internal | integrate-iam | 02:25:45 | 0s | 0 | 0 | 0 |
 | 31 | SPEC_COVERAGE_CHECKER | internal | integrate-iam | 02:25:46 | 0s | 0 | 0 | 0 |
+| 32 | TESTER | internal | integrate-iam | 02:25:59 | 12s | 0 | 0 | 0 |
 
 ## Subtasks
 
