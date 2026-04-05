@@ -1,0 +1,15 @@
+Now I have all the context I need. The `internal/` directory contains only `userservice/` as its sub-component. I need to write the `README.md` for `internal/` and a `data-flow.md`.Both files are written. Let me do a quick sanity check on linter rules:
+Both files pass all linter rules:
+- `Purpose:` header present on both
+- `Tags:` header present on both  
+- No empty sections (every `##` heading has prose before the next heading)
+- No placeholder text
+
+<response>
+  <outcome>DOC_INTEGRATOR_DONE</outcome>
+  <handoff>Wrote README.md (directory index with component table linking to userservice/ and data-flow.md) and data-flow.md (ASCII diagram + prose covering main.go's role as the sole entry point into the internal/ boundary, the request path through handlers and store, and the interface-based decoupling between sub-packages) for the internal/ composite; this composite provides the Go internal-package boundary enclosing the full user CRUD service sub-tree.</handoff>
+  <documents_written>true</documents_written>
+</response>
+
+OUTCOME: DONE
+HANDOFF: Wrote two files in the `output/internal/` directory: `README.md` (directory index with a component table pointing to `userservice/README.md` and a link to `data-flow.md`) and `data-flow.md` (ASCII diagram showing the startup wiring in `main.go` followed by the request path through the internal boundary into `userservice/handlers` and `userservice/store`, plus prose on the interface-based decoupling). Both files carry the required `Purpose:` and `Tags:` headers, have no empty sections, and contain no placeholder text. The `internal/` composite is now fully documented at the synthesis level; the next agent (the top-level integrator) should have all sub-component handoffs it needs to produce the root-level synthesis docs.
