@@ -22,6 +22,7 @@
 | 16 | DOC_INTEGRATOR | claude | integrate-internal | 15:45:57 | 48s | 9 | 2,117 | 148,177 |
 | 17 | POST_DOC_HANDLER | internal | integrate-internal | 15:45:57 | 0s | 0 | 0 | 0 |
 | 18 | LEAF_COMPLETE_HANDLER | internal | integrate-internal | 15:45:59 | 1s | 0 | 0 | 0 |
+| 19 | DOC_INTEGRATOR | claude | integrate-user-service | 15:47:25 | 1m 26s | 12 | 4,006 | 224,501 |
 
 ## Subtasks
 
