@@ -572,5 +572,15 @@
       "tokens_cached": 0,
       "outcome": "HANDLER_ALL_DONE"
     }
-  ]
+  ],
+  "run_summary": {
+    "start": "2026-04-05T02:04:30.265594",
+    "end": "2026-04-05T02:30:03.082696",
+    "elapsed_s": 1532.817102,
+    "total_tokens_in": 855,
+    "total_tokens_out": 82483,
+    "total_tokens_cached": 2395103,
+    "invocation_count": 40,
+    "warnings": []
+  }
 }
