@@ -422,3 +422,8 @@ HANDOFF: ran on-task-complete.sh → NEXT /Users/david/Go/src/github.com/cornjac
 [2026-04-05T15:35:51.027742] DOC_INTEGRATOR/claude
 OUTCOME: DOC_INTEGRATOR_DONE
 HANDOFF: Wrote 3 files to output/internal/metrics/: (1) metrics.go.md — documents New()'s three-step wiring sequence (store construction, handler injection, route registration), route table, and dependencies; (2) data-flow.md — ASCII diagrams for startup object-graph construction and request-time paths for both POST and GET, plus a note on the one-way store.Storer interface boundary; (3) README.md — replaced the pre-existing file with a proper directory index including component table linking to handlers/README.md, store/README.md, and metrics.go.md, a link to data-flow.md, and the full API contract and data model. The metrics composite provides a single http.Handler that composes an in-memory event store and an HTTP dispatch layer onto one ServeMux bound to :8081.
+
+============================================================
+[2026-04-05T15:35:51.175262] POST_DOC_HANDLER/internal
+OUTCOME: POST_DOC_HANDLER_INTEGRATE_PASS
+HANDOFF: linted 3 file(s) — all passed
