@@ -1,0 +1,76 @@
+Now I have everything I need. Let me think through the decomposition.
+
+## Decomposition Analysis
+
+**Platform structure:** single binary `cmd/platform/main.go`, two independent HTTP listeners (metrics on 8081, IAM on 8082). The context explicitly flags IAM as having two internal sub-components (lifecycle + authz-rbac).
+
+**Top-level components:**
+
+**1. `metrics` — atomic**
+Path: `internal/metrics`. Two endpoints (POST /events, GET /events), one in-memory store, HTTP handlers. Small enough to implement in a single pass.
+
+**2. `iam` — composite**
+Path: `internal/iam`. Ten endpoints across three logical groups (user lifecycle, authentication, RBAC). The prompt explicitly says IAM is "internally composed of two logical components." This needs further decomposition into lifecycle and authz-rbac sub-components before it can be implemented.
+
+**3. `integrate-platform` — atomic**
+The TOP-level integrate step. Writes `cmd/platform/main.go`, wires both listeners, and runs end-to-end acceptance tests covering all 12 endpoints from the spec.
+
+**Common parent path:** `internal/` — this is a Go language-convention directory (`internal`), so the documentation exception applies. I skip writing `README.md` and `theory-of-operation.md` at the composite level; each child will produce its own documentation when decomposed.
+
+**Description verbosity check:**
+- `metrics` is atomic + HTTP-handling → full API contract required, copied verbatim from acceptance-spec.md
+- `iam` is composite → one-line description sufficient
+- `integrate-platform` is the TOP integrate step → full wiring + all 12 endpoints from acceptance-spec.md required
+
+<response>
+  <outcome>ARCHITECT_DECOMPOSITION_READY</outcome>
+  <handoff>The platform decomposes into three top-level components: (1) metrics — an atomic in-memory event-recording service serving two endpoints on port 8081; (2) iam — a composite identity-and-access-management service serving ten endpoints on port 8082, itself requiring further decomposition into lifecycle and authz-rbac sub-components; and (3) integrate-platform — the TOP-level atomic wiring step that produces cmd/platform/main.go, starts both listeners in goroutines, and runs end-to-end acceptance tests against all 12 endpoints. The common parent directory is internal/, a Go convention directory, so no composite-level README or theory-of-operation is written at this pass — each child produces its own documentation when decomposed.</handoff>
+  <components>
+    <component>
+      <name>metrics</name>
+      <complexity>atomic</complexity>
+      <source_dir>internal/metrics</source_dir>
+      <description>In-memory metrics service for recording and listing frontend user interaction events. Serves on port 8081.
+
+HTTP API (verbatim from spec):
+POST /events — body: {"type":"click-mouse"|"submit-form","userId":"&lt;string&gt;","payload":{}} → 201 with event object {"id":"&lt;string&gt;","type":"&lt;string&gt;","userId":"&lt;string&gt;","payload":{}};
+GET /events → 200 JSON array of event objects, each with fields: id, type, userId, payload.
+
+Data model: Event{id string, type string, userId string, payload map[string]interface{}}.
+Store: thread-safe in-memory slice; IDs are generated UUIDs on POST.
+Package layout: store.go (EventStore with Add/List), handlers.go (PostEvent, GetEvents), routes.go (returns http.Handler).
+Unit tests must cover store and handler logic; handler tests use net/http/httptest.</description>
+    </component>
+    <component>
+      <name>iam</name>
+      <complexity>composite</complexity>
+      <source_dir>internal/iam</source_dir>
+      <description>Identity and access management listener (port 8082) composed of two sub-components — lifecycle (user CRUD and authentication) and authz-rbac (roles and permission checks) — that together handle all ten IAM HTTP endpoints.</description>
+    </component>
+    <component>
+      <name>integrate-platform</name>
+      <complexity>atomic</complexity>
+      <source_dir>.</source_dir>
+      <description>Wire the metrics and iam components into a single binary at cmd/platform/main.go. The binary starts the metrics HTTP listener on port 8081 and the IAM HTTP listener on port 8082 in separate goroutines, then blocks until a shutdown signal. There must be exactly one main package in the entire codebase.
+
+End-to-end acceptance tests (net/http against live listeners started in TestMain or a helper) must cover all 12 endpoints verbatim from the spec:
+
+Metrics listener (port 8081):
+POST /events body:{"type":"click-mouse","userId":"&lt;string&gt;","payload":{}} → 201 {"id":"&lt;string&gt;","type":"&lt;string&gt;","userId":"&lt;string&gt;","payload":{}};
+POST /events body:{"type":"submit-form","userId":"&lt;string&gt;","payload":{}} → 201 (same shape);
+GET /events → 200 JSON array containing previously posted events.
+
+IAM listener (port 8082):
+POST /users body:{"username":"&lt;string&gt;","password":"&lt;string&gt;"} → 201 {"id":"&lt;string&gt;","username":"&lt;string&gt;"} (no password field);
+GET /users/{id} → 200 {"id":"&lt;string&gt;","username":"&lt;string&gt;"} or 404;
+DELETE /users/{id} → 200/204 on existing user or 404 on missing;
+POST /auth/login body:{"username":"&lt;string&gt;","password":"&lt;string&gt;"} → 200 {"token":"&lt;string&gt;"};
+POST /auth/logout header:Authorization:Bearer &lt;token&gt; → 200/204;
+POST /roles body:{"name":"&lt;string&gt;","permissions":["&lt;string&gt;"]} → 201 {"id":"&lt;string&gt;","name":"&lt;string&gt;","permissions":["&lt;string&gt;"]};
+GET /roles → 200 JSON array;
+POST /users/{id}/roles body:{"roleId":"&lt;string&gt;"} → 200/201;
+GET /users/{id}/roles → 200 JSON array;
+POST /authz/check body:{"userId":"&lt;string&gt;","permission":"&lt;string&gt;"} → 200 {"allowed":&lt;bool&gt;}.</description>
+    </component>
+  </components>
+</response>
