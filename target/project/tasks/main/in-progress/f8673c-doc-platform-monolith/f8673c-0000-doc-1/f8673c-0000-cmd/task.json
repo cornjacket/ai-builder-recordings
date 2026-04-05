@@ -17,7 +17,7 @@
   "subtasks": [
     {
       "name": "f8673c-0000-platform",
-      "complete": false
+      "complete": true
     },
     {
       "name": "f8673c-0001-integrate-cmd",

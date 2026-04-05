@@ -78,3 +78,8 @@ HANDOFF: Created main.go.md (missing) covering the entry-point binary's main() f
 [2026-04-05T15:26:13.256531] POST_DOC_HANDLER/internal
 OUTCOME: POST_DOC_HANDLER_ATOMIC_PASS
 HANDOFF: linted 2 file(s) — all passed
+
+============================================================
+[2026-04-05T15:26:19.486523] LEAF_COMPLETE_HANDLER/internal
+OUTCOME: HANDLER_INTEGRATE_READY
+HANDOFF: ran on-task-complete.sh → NEXT /Users/david/Go/src/github.com/cornjacket/ai-builder/establish-regression-recordings/sandbox/regressions/doc-platform-monolith/target/project/tasks/main/in-progress/f8673c-doc-platform-monolith/f8673c-0000-doc-1/f8673c-0000-cmd/f8673c-0001-integrate-cmd/README.md

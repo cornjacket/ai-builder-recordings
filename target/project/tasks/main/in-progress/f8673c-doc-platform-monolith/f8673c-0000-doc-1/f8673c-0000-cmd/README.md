@@ -11,6 +11,6 @@ Command entrypoint subtree — contains the `platform` binary which wires togeth
 
 ## Subtasks
 
-- [ ] f8673c-0000-platform
+- [x] f8673c-0000-platform
 - [ ] f8673c-0001-integrate-cmd
 

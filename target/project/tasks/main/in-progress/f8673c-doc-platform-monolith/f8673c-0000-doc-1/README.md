@@ -10,6 +10,7 @@
 | 4 | DECOMPOSE_HANDLER | internal | cmd | 15:25:26 | 0s | 0 | 0 | 0 |
 | 5 | DOC_ARCHITECT | claude | platform | 15:26:12 | 46s | 6 | 1,630 | 88,622 |
 | 6 | POST_DOC_HANDLER | internal | platform | 15:26:13 | 0s | 0 | 0 | 0 |
+| 7 | LEAF_COMPLETE_HANDLER | internal | platform | 15:26:19 | 5s | 0 | 0 | 0 |
 
 ## Subtasks
 
