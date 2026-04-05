@@ -18,5 +18,6 @@
   "name": "internal",
   "goal": "Composite subtree containing the userservice package with handlers and store sub-packages",
   "context": "### Level 1 \u2014 6e440f-0000-doc-1\n",
-  "output_dir": "/Users/david/Go/src/github.com/cornjacket/ai-builder/establish-regression-recordings/sandbox/regressions/doc-user-service/output/internal"
+  "output_dir": "/Users/david/Go/src/github.com/cornjacket/ai-builder/establish-regression-recordings/sandbox/regressions/doc-user-service/output/internal",
+  "active_role": "DOC_ARCHITECT"
 }

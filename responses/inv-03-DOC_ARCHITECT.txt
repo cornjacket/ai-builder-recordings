@@ -1,0 +1,23 @@
+The output directory `internal/` contains one subdirectory (`userservice/`) — this is **Decompose Mode**. No parent-level source files exist at the `internal/` level (only a stub `README.md`). `userservice/` itself contains two subdirs (`handlers/` and `store/`), making it composite. No files to skip at this level.
+
+<response>
+  <outcome>DOC_ARCHITECT_DECOMPOSITION_READY</outcome>
+  <handoff>The `internal/` output directory contains one subdirectory: `userservice/`, which is composite (it nests `handlers/` and `store/`). No parent-level source files exist at the `internal/` level — only a stub `README.md` placeholder. The `logs/` directory is a pipeline artefact absent from the output tree and needs no action. The integrate step must produce a `README.md` for `internal/` describing the overall internal package layout.</handoff>
+  <components>
+    <component>
+      <name>userservice</name>
+      <complexity>composite</complexity>
+      <source_dir>userservice</source_dir>
+      <description>Composite userservice package containing handlers (HTTP CRUD routes) and store (in-memory data access) sub-packages</description>
+    </component>
+    <component>
+      <name>integrate-internal</name>
+      <complexity>atomic</complexity>
+      <source_dir>.</source_dir>
+      <description>Cross-component synthesis: README.md for the internal/ directory summarising the userservice sub-tree</description>
+    </component>
+  </components>
+</response>
+
+OUTCOME: DONE
+HANDOFF: Decomposed `internal/` (composite) into two components: `userservice` (composite — contains `handlers/` and `store/` subdirs, both atomic) and `integrate-internal` (atomic, source_dir `.`) which will produce the `README.md` for the `internal/` directory. No parent-level source files exist at the `internal/` level. No documentation files were written — this is a planning-only step. The next agent should recurse into `userservice/` before running the integrate step.

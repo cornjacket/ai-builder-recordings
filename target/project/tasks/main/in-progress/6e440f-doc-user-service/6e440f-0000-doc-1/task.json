@@ -54,6 +54,19 @@
       "tokens_out": 0,
       "tokens_cached": 0,
       "outcome": "HANDLER_SUBTASKS_READY"
+    },
+    {
+      "role": "DOC_ARCHITECT",
+      "agent": "claude",
+      "n": 2,
+      "description": "internal",
+      "start": "2026-04-05T15:41:10.758182",
+      "end": "2026-04-05T15:41:54.876491",
+      "elapsed_s": 44.118309,
+      "tokens_in": 7,
+      "tokens_out": 2107,
+      "tokens_cached": 104995,
+      "outcome": "DOC_ARCHITECT_DECOMPOSITION_READY"
     }
   ]
 }
