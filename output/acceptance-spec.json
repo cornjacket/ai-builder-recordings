@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "endpoints": [
+    {
+      "method": "POST",
+      "path": "/events",
+      "status_codes": [201]
+    },
+    {
+      "method": "GET",
+      "path": "/events",
+      "status_codes": [200]
+    },
+    {
+      "method": "POST",
+      "path": "/users",
+      "status_codes": [201]
+    },
+    {
+      "method": "GET",
+      "path": "/users/{id}",
+      "status_codes": [200, 404]
+    },
+    {
+      "method": "DELETE",
+      "path": "/users/{id}",
+      "status_codes": [200, 204, 404]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/login",
+      "status_codes": [200]
+    },
+    {
+      "method": "POST",
+      "path": "/auth/logout",
+      "status_codes": [200, 204]
+    },
+    {
+      "method": "POST",
+      "path": "/roles",
+      "status_codes": [201]
+    },
+    {
+      "method": "GET",
+      "path": "/roles",
+      "status_codes": [200]
+    },
+    {
+      "method": "POST",
+      "path": "/users/{id}/roles",
+      "status_codes": [200, 201]
+    },
+    {
+      "method": "GET",
+      "path": "/users/{id}/roles",
+      "status_codes": [200]
+    },
+    {
+      "method": "POST",
+      "path": "/authz/check",
+      "status_codes": [200]
+    }
+  ]
+}
