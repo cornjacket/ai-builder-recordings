@@ -40,6 +40,7 @@
 | 34 | ARCHITECT | claude | integrate-platform | 02:27:49 | 1m 49s | 735 | 6,422 | 102,527 |
 | 35 | DOCUMENTER_POST_ARCHITECT | internal | integrate-platform | 02:27:49 | 0s | 0 | 0 | 0 |
 | 36 | IMPLEMENTOR | claude | integrate-platform | 02:29:57 | 2m 07s | 13 | 9,455 | 334,292 |
+| 37 | DOCUMENTER_POST_IMPLEMENTOR | internal | integrate-platform | 02:29:58 | 0s | 0 | 0 | 0 |
 
 ## Subtasks
 
