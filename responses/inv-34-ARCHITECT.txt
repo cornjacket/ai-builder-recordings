@@ -1,33 +1,45 @@
-# integrate-platform
+Now I have all the context I need. Let me review the existing components before designing the wiring:
 
-## Goal
+- `internal/metrics`: exposes `NewEventStore() *EventStore` and `NewRouter(store *EventStore) http.Handler`
+- `internal/iam`: exposes `NewMux() *http.ServeMux` (wires lifecycle + authz internally)
+- Module: `github.com/cornjacket/platform-monolith`
+- Output root = repo root, so `cmd/platform/` goes under the output directory
 
-Wire the metrics and iam components into a single binary at cmd/platform/main.go. The binary starts the metrics HTTP listener on port 8081 and the IAM HTTP listener on port 8082 in separate goroutines, then blocks until a shutdown signal. There must be exactly one main package in the entire codebase.
+**Design:**
 
-End-to-end acceptance tests (net/http against live listeners started in TestMain or a helper) must cover all 12 endpoints verbatim from the spec:
+**Files:**
+1. `cmd/platform/main.go` — `package main`. Creates store + router for metrics, creates IAM mux, constructs two `http.Server` values (`:8081`, `:8082`), starts each in a goroutine, blocks on `signal.NotifyContext` for SIGINT/SIGTERM, then calls `Shutdown` on both.
+2. `cmd/platform/platform_test.go` — `package main_test`. `TestMain` creates fresh instances of `metrics.NewRouter(metrics.NewEventStore())` and `iam.NewMux()`, wraps each in an `httptest.NewServer`, sets package-level base URL vars, calls `m.Run()`, defers `Close()`. Individual test functions cover all 12 endpoints with real `net/http` calls.
 
-Metrics listener (port 8081):
-POST /events body:{"type":"click-mouse","userId":"<string>","payload":{}} → 201 {"id":"<string>","type":"<string>","userId":"<string>","payload":{}};
-POST /events body:{"type":"submit-form","userId":"<string>","payload":{}} → 201 (same shape);
-GET /events → 200 JSON array containing previously posted events.
+**Why `httptest.NewServer`:** Avoids fixed-port conflicts when tests run in CI alongside other processes. The constraint "net/http against live listeners" is satisfied — these are real TCP listeners. The binary's actual ports (8081/8082) are only used by `main.go` at runtime, not during tests.
 
-IAM listener (port 8082):
-POST /users body:{"username":"<string>","password":"<string>"} → 201 {"id":"<string>","username":"<string>"} (no password field);
-GET /users/{id} → 200 {"id":"<string>","username":"<string>"} or 404;
-DELETE /users/{id} → 200/204 on existing user or 404 on missing;
-POST /auth/login body:{"username":"<string>","password":"<string>"} → 200 {"token":"<string>"};
-POST /auth/logout header:Authorization:Bearer <token> → 200/204;
-POST /roles body:{"name":"<string>","permissions":["<string>"]} → 201 {"id":"<string>","name":"<string>","permissions":["<string>"]};
-GET /roles → 200 JSON array;
-POST /users/{id}/roles body:{"roleId":"<string>"} → 200/201;
-GET /users/{id}/roles → 200 JSON array;
-POST /authz/check body:{"userId":"<string>","permission":"<string>"} → 200 {"allowed":<bool>}.
+**No README.md** — this is `integrate-*`, `documents_written: false`.
 
-## Context
+**Spec reconciliation — all 12 endpoints:**
 
-### Level 1 — fbc6d9-0000-build-1
+| # | Endpoint | Listener | Covered |
+|---|----------|----------|---------|
+| 1 | POST /events (click-mouse) | 8081 | ✓ |
+| 2 | POST /events (submit-form) | 8081 | ✓ |
+| 3 | GET /events | 8081 | ✓ |
+| 4 | POST /users | 8082 | ✓ |
+| 5 | GET /users/{id} | 8082 | ✓ |
+| 6 | DELETE /users/{id} | 8082 | ✓ |
+| 7 | POST /auth/login | 8082 | ✓ |
+| 8 | POST /auth/logout | 8082 | ✓ |
+| 9 | POST /roles | 8082 | ✓ |
+| 10 | GET /roles | 8082 | ✓ |
+| 11 | POST /users/{id}/roles | 8082 | ✓ |
+| 12 | GET /users/{id}/roles | 8082 | ✓ |
+| 13 | POST /authz/check | 8082 | ✓ |
 
+Wait — the spec lists 12 endpoints; I count 13 above. Re-reading: POST /events appears once (tested with two different `type` values). That's 1 endpoint tested twice = 12 unique endpoints, 13 test cases total. All covered.
 
+<response>
+  <outcome>ARCHITECT_DESIGN_READY</outcome>
+  <handoff>The integrate-platform component produces two files in cmd/platform/: main.go (package main, runtime binary) and platform_test.go (package main_test, e2e tests). main.go instantiates metrics.NewEventStore() → metrics.NewRouter(store) → http.Server on :8081, and iam.NewMux() → http.Server on :8082, starts both in goroutines, then blocks on SIGINT/SIGTERM via signal.NotifyContext and gracefully shuts down both servers. platform_test.go uses TestMain to spin up httptest.NewServer instances wrapping the same constructors, sets package-level base URL vars, and runs 13 net/http test cases covering all 12 spec endpoints. No README is written (integrate step).</handoff>
+  <documents_written>false</documents_written>
+  <design>
 ## Design
 
 **Language:** Go. Module `github.com/cornjacket/platform-monolith`.
@@ -111,7 +123,8 @@ Individual test functions (`TestPostEventClickMouse`, `TestPostEventSubmitForm`,
 - The IAM state (users, roles, tokens) is fresh per test run because `TestMain` creates a new `iam.NewMux()` — each `httptest.NewServer` wraps a brand-new in-memory store.
 
 **Dependencies:** stdlib only (`net/http`, `net/http/httptest`, `encoding/json`, `os/signal`, `syscall`). No new external packages.
-
+  </design>
+  <acceptance_criteria>
 ## Acceptance Criteria
 
 1. `go build ./cmd/platform/...` succeeds with no errors.
@@ -130,10 +143,6 @@ Individual test functions (`TestPostEventClickMouse`, `TestPostEventSubmitForm`,
 14. POST `iamBase/users/{id}/roles` with `{"roleId":"<roleId>"}` (using valid user and role IDs) returns HTTP 200 or 201.
 15. GET `iamBase/users/{id}/roles` returns HTTP 200 and a JSON array containing the role assigned in criterion 14.
 16. POST `iamBase/authz/check` with `{"userId":"<id>","permission":"read"}` returns HTTP 200 and `{"allowed":true}` for a user with the admin role (which has "read" permission); returns `{"allowed":false}` for a permission not held.
-
-## Test Command
-
-```
-cd /Users/david/Go/src/github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/platform-monolith/output && go test ./cmd/platform/...
-```
-
+  </acceptance_criteria>
+  <test_command>cd /Users/david/Go/src/github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/platform-monolith/output &amp;&amp; go test ./cmd/platform/...</test_command>
+</response>
