@@ -65,3 +65,8 @@ HANDOFF: decomposed into 3 components (level=TOP), first: 5594e1-0000-store
 [2026-04-05T01:16:41.009041] ARCHITECT/claude
 OUTCOME: ARCHITECT_DESIGN_READY
 HANDOFF: Implement package `store` at `internal/userservice/store`. Define a `User` struct (`ID`, `Name`, `Email` strings) and a `Store` struct holding a `map[string]User` plus a `sync.RWMutex`. Provide `New() *Store`, `Create(name, email string) User` (generates a crypto/rand UUID v4, inserts, returns full User), `Get(id string) (User, bool)` (RLock), `Update(id, name, email string) (User, bool)` (Lock; false if missing), `Delete(id string) bool` (Lock; false if missing). UUID generation: fill 16 bytes from crypto/rand, set byte 6 high nibble to 0x40 (version 4) and byte 8 high two bits to 0x80 (variant), format as xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx. No external dependencies. Tests must cover Create returns a populated User with non-empty UUID; Get hit/miss; Update hit/miss (miss must not mutate); Delete hit/miss; concurrent goroutines do not race (run with -race).
+
+============================================================
+[2026-04-05T01:16:41.148816] DOCUMENTER_POST_ARCHITECT/internal
+OUTCOME: DOCUMENTER_DONE
+HANDOFF: indexed 1 doc(s) into README.md (1 design, 0 implementation)

@@ -51,3 +51,11 @@ formatting as the canonical `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx` string. No ex
 packages are required.
 
 **Locking strategy** — see [concurrency.md](concurrency.md) for details.
+
+## Documentation
+
+### Design
+| File | Description |
+|------|-------------|
+| concurrency.md | Documents the locking strategy for the Store type, explaining which operations |
+
