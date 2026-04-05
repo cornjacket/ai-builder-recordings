@@ -1,0 +1,50 @@
+I have the full picture. The `iam` composite decomposes into two atomic sub-components — `lifecycle` (user CRUD + auth) and `authz-rbac` (roles + permission checks) — plus an `integrate-iam` wiring step. Let me write the composite-level documentation and emit the decomposition.Both documentation files are written. Here is the decomposition:
+
+- **lifecycle** (atomic): user CRUD + token auth, five endpoints, fully self-contained in-memory stores.
+- **authz** (atomic): role management + RBAC permission evaluation, five endpoints, independently stores roles and user-role mappings.
+- **integrate-iam** (atomic, INTERNAL): registers both packages' handlers on a shared `http.ServeMux` and returns it to the platform wiring layer.
+
+The two sub-packages share no types and own their state independently; cross-validation of user IDs across packages is not required by the spec.
+
+<response>
+  <outcome>ARCHITECT_DECOMPOSITION_READY</outcome>
+  <handoff>The iam composite decomposes into two atomic sub-packages — lifecycle (user CRUD and token-based authentication) and authz (role management and RBAC permission checks) — plus an integrate-iam wiring step. Each sub-package owns its own in-memory state and is registered on a shared http.ServeMux by integrate-iam. No inter-package dependencies exist at compile time. Documentation written to internal/iam/.</handoff>
+  <components>
+    <component>
+      <name>lifecycle</name>
+      <complexity>atomic</complexity>
+      <source_dir>internal/iam/lifecycle</source_dir>
+      <description>In-memory user store and token-based authentication handler for the IAM listener.
+
+Endpoints:
+POST /users {"username":string,"password":string} → 201 {"id":string,"username":string} or 400;
+GET /users/{id} → 200 {"id":string,"username":string} or 404;
+DELETE /users/{id} → 200 or 404;
+POST /auth/login {"username":string,"password":string} → 200 {"token":string} or 401;
+POST /auth/logout header Authorization:Bearer &lt;token&gt; → 200 or 401.
+
+In-memory stores: UserStore map[id]→{id string, username string, passwordHash string}, TokenStore map[token]→userID string. IDs generated with crypto/rand or math/rand UUID. Passwords hashed with bcrypt or sha256. Exposes an http.Handler (or *http.ServeMux) for registration by integrate-iam.</description>
+    </component>
+    <component>
+      <name>authz</name>
+      <complexity>atomic</complexity>
+      <source_dir>internal/iam/authz</source_dir>
+      <description>In-memory role store and RBAC permission-check handler for the IAM listener.
+
+Endpoints:
+POST /roles {"name":string,"permissions":[]string} → 201 {"id":string,"name":string,"permissions":[]string} or 400;
+GET /roles → 200 [{"id":string,"name":string,"permissions":[]string}];
+POST /users/{id}/roles {"roleId":string} → 201 or 404;
+GET /users/{id}/roles → 200 [{"id":string,"name":string,"permissions":[]string}];
+POST /authz/check {"userId":string,"permission":string} → 200 {"allowed":bool}.
+
+In-memory stores: RoleStore map[id]→{id string, name string, permissions []string}, UserRoles map[userID]→[]roleID. Permission check walks the user's assigned roles and returns allowed:true if any role's permissions slice contains the requested permission. Exposes an http.Handler (or *http.ServeMux) for registration by integrate-iam.</description>
+    </component>
+    <component>
+      <name>integrate-iam</name>
+      <complexity>atomic</complexity>
+      <source_dir>.</source_dir>
+      <description>Wire lifecycle and authz handlers into a single http.ServeMux and expose it for the platform main.go. Create iam.go (package iam) in the output directory. It must instantiate lifecycle.New() and authz.New(), register their routes on a shared mux (route prefixes: /users and /auth go to lifecycle; /roles, /authz, and /users/ sub-paths for roles go to authz — use pattern matching carefully so /users/{id}/roles routes to authz while /users/{id} routes to lifecycle), and return the mux via a NewMux() function. No port binding here — the platform main.go calls http.ListenAndServe(":8082", iam.NewMux()). Task Level: INTERNAL.</description>
+    </component>
+  </components>
+</response>

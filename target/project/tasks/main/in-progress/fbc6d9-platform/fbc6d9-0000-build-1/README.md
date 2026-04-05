@@ -14,6 +14,7 @@
 | 8 | SPEC_COVERAGE_CHECKER | internal | metrics | 02:10:05 | 0s | 0 | 0 | 0 |
 | 9 | TESTER | internal | metrics | 02:10:06 | 0s | 0 | 0 | 0 |
 | 10 | LEAF_COMPLETE_HANDLER | internal | metrics | 02:10:09 | 3s | 0 | 0 | 0 |
+| 11 | ARCHITECT | claude | iam | 02:11:38 | 1m 28s | 9 | 5,398 | 146,749 |
 
 ## Subtasks
 
