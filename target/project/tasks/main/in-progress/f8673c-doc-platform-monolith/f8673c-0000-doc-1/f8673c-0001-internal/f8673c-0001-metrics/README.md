@@ -14,6 +14,6 @@ Internal service packages subtree — contains `metrics` (event store + HTTP han
 ## Subtasks
 
 - [x] f8673c-0000-handlers
-- [ ] f8673c-0001-store
+- [x] f8673c-0001-store
 - [ ] f8673c-0002-integrate-metrics
 
