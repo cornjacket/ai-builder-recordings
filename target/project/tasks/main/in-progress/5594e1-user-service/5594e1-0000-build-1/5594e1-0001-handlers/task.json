@@ -1,0 +1,22 @@
+{
+  "task-type": "PIPELINE-SUBTASK",
+  "status": "\u2014",
+  "epic": "main",
+  "parent": "5594e1-0000-build-1",
+  "tags": "\u2014",
+  "priority": "\u2014",
+  "created_at": "2026-04-05",
+  "completed_at": null,
+  "next-subtask-id": "0000",
+  "complexity": "atomic",
+  "level": "INTERNAL",
+  "depth": 1,
+  "last-task": false,
+  "stop-after": false,
+  "components": [],
+  "subtasks": [],
+  "name": "handlers",
+  "goal": "HTTP CRUD handlers for the user management API. Accepts a store interface and returns an http.Handler (or registers on a mux). Full API contract \u2014 POST /users {\"name\":string,\"email\":string} \u2192 201 {\"id\":string,\"name\":string,\"email\":string}; GET /users/{id} \u2192 200 {\"id\":string,\"name\":string,\"email\":string} or 404 {}; PUT /users/{id} {\"name\":string,\"email\":string} \u2192 200 {\"id\":string,\"name\":string,\"email\":string} or 404 {}; DELETE /users/{id} \u2192 204 (no body) or 404 {}. All request and response bodies are JSON. Returns 400 on malformed JSON request bodies.",
+  "context": "### Level 1 \u2014 5594e1-0000-build-1\n",
+  "output_dir": "/Users/david/Go/src/github.com/cornjacket/ai-builder/acceptance-spec/sandbox/regressions/user-service/output/internal/userservice/handlers"
+}
