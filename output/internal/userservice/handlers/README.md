@@ -52,3 +52,8 @@ See [api.md](api.md) for the full endpoint contract.
 |------|-------------|
 | api.md | Full HTTP API contract for the user management handlers |
 
+### Implementation Notes
+| File | Description |
+|------|-------------|
+| handlers.go.md | HTTP CRUD handlers for the user management API, wired to a Store interface |
+

@@ -17,6 +17,7 @@
 | 11 | ARCHITECT | claude | handlers | 01:19:33 | 1m 36s | 11 | 5,744 | 191,012 |
 | 12 | DOCUMENTER_POST_ARCHITECT | internal | handlers | 01:19:33 | 0s | 0 | 0 | 0 |
 | 13 | IMPLEMENTOR | claude | handlers | 01:20:48 | 1m 14s | 9 | 4,706 | 162,751 |
+| 14 | DOCUMENTER_POST_IMPLEMENTOR | internal | handlers | 01:20:48 | 0s | 0 | 0 | 0 |
 
 ## Subtasks
 

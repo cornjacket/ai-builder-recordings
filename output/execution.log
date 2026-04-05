@@ -182,3 +182,8 @@ HANDOFF: indexed 1 doc(s) into README.md (1 design, 0 implementation)
 [2026-04-05T01:20:48.005991] IMPLEMENTOR/claude
 OUTCOME: IMPLEMENTOR_IMPLEMENTATION_DONE
 HANDOFF: Implemented `internal/userservice/handlers` with `handlers.go` (Store interface, New function, four handler funcs, writeNotFound helper) and `handlers_test.go` (fakeStore + tests for all success and error paths). Used Go 1.22+ ServeMux method-qualified patterns and `r.PathValue`. Build and vet pass. Companion doc written at `handlers.go.md`.
+
+============================================================
+[2026-04-05T01:20:48.197737] DOCUMENTER_POST_IMPLEMENTOR/internal
+OUTCOME: DOCUMENTER_DONE
+HANDOFF: indexed 2 doc(s) into README.md (1 design, 1 implementation)

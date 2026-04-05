@@ -220,6 +220,19 @@
       "tokens_out": 4706,
       "tokens_cached": 162751,
       "outcome": "IMPLEMENTOR_IMPLEMENTATION_DONE"
+    },
+    {
+      "role": "DOCUMENTER_POST_IMPLEMENTOR",
+      "agent": "internal",
+      "n": 2,
+      "description": "handlers",
+      "start": "2026-04-05T01:20:48.196688",
+      "end": "2026-04-05T01:20:48.197626",
+      "elapsed_s": 0.000938,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "tokens_cached": 0,
+      "outcome": "DOCUMENTER_DONE"
     }
   ]
 }
