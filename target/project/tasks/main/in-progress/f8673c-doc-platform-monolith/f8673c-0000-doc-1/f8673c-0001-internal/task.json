@@ -1,0 +1,22 @@
+{
+  "task-type": "PIPELINE-SUBTASK",
+  "status": "\u2014",
+  "epic": "main",
+  "parent": "f8673c-0000-doc-1",
+  "tags": "\u2014",
+  "priority": "\u2014",
+  "created_at": "2026-04-05",
+  "completed_at": null,
+  "next-subtask-id": "0000",
+  "complexity": "composite",
+  "level": "INTERNAL",
+  "depth": 1,
+  "last-task": false,
+  "stop-after": false,
+  "components": [],
+  "subtasks": [],
+  "name": "internal",
+  "goal": "Internal service packages subtree \u2014 contains `metrics` (event store + HTTP handlers) and `iam` (lifecycle + authz) as composite sub-packages",
+  "context": "### Level 1 \u2014 f8673c-0000-doc-1\n",
+  "output_dir": "/Users/david/Go/src/github.com/cornjacket/ai-builder/establish-regression-recordings/sandbox/regressions/doc-platform-monolith/output/internal"
+}

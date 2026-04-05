@@ -5,3 +5,11 @@
 | # | Role | Agent | Description | Ended | Elapsed | Tokens In | Tokens Out | Tokens Cached |
 |---|------|-------|-------------|-------|---------|-----------|------------|---------------|
 | 1 | DOC_ARCHITECT | claude | doc-1 | 15:24:38 | 44s | 4 | 2,072 | 48,415 |
+| 2 | DECOMPOSE_HANDLER | internal | doc-1 | 15:24:39 | 1s | 0 | 0 | 0 |
+
+## Subtasks
+
+- [ ] f8673c-0000-cmd
+- [ ] f8673c-0001-internal
+- [ ] f8673c-0002-integrate-platform-monolith
+
