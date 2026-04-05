@@ -19,6 +19,7 @@
 | 13 | DOC_ARCHITECT | claude | iam | 15:28:38 | 36s | 5 | 1,775 | 70,270 |
 | 14 | DECOMPOSE_HANDLER | internal | iam | 15:28:39 | 0s | 0 | 0 | 0 |
 | 15 | DOC_ARCHITECT | claude | authz | 15:29:29 | 49s | 6 | 2,844 | 96,642 |
+| 16 | POST_DOC_HANDLER | internal | authz | 15:29:29 | 0s | 0 | 0 | 0 |
 
 ## Subtasks
 

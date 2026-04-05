@@ -203,3 +203,8 @@ HANDOFF: decomposed into 3 components (level=INTERNAL), first: f8673c-0000-authz
 [2026-04-05T15:29:29.473593] DOC_ARCHITECT/claude
 OUTCOME: DOC_ARCHITECT_ATOMIC_DONE
 HANDOFF: Created authz.go.md (missing — covers Role and UserRoleAssignment models, Handler public API, RegisterRoutes with route table, key internals for store concurrency and hasPermission logic, and uuid dependency). Updated README.md from a placeholder stub to a proper directory index with Purpose/Tags header, overview, file index table linking to authz.go.md, and four invariant notes (no persistence, append-only assignments, nil-safe permissions, role-existence enforcement). authz_test.go was skipped per policy. The authz directory is the RBAC sub-package of internal/iam — it owns roles, user-role assignments, and permission checks entirely in memory.
+
+============================================================
+[2026-04-05T15:29:29.603345] POST_DOC_HANDLER/internal
+OUTCOME: POST_DOC_HANDLER_ATOMIC_PASS
+HANDOFF: linted 2 file(s) — all passed
