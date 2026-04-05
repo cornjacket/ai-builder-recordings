@@ -396,6 +396,19 @@
       "tokens_out": 0,
       "tokens_cached": 0,
       "outcome": "HANDLER_SUBTASKS_READY"
+    },
+    {
+      "role": "DOC_ARCHITECT",
+      "agent": "claude",
+      "n": 10,
+      "description": "store",
+      "start": "2026-04-05T15:33:41.170398",
+      "end": "2026-04-05T15:34:29.995980",
+      "elapsed_s": 48.825582,
+      "tokens_in": 6,
+      "tokens_out": 2006,
+      "tokens_cached": 98513,
+      "outcome": "DOC_ARCHITECT_ATOMIC_DONE"
     }
   ]
 }
