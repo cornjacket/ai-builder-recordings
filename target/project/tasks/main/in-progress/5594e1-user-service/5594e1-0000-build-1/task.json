@@ -337,6 +337,19 @@
       "tokens_out": 0,
       "tokens_cached": 0,
       "outcome": "SPEC_COVERAGE_CHECKER_PASS"
+    },
+    {
+      "role": "TESTER",
+      "agent": "internal",
+      "n": 3,
+      "description": "integrate-user-service",
+      "start": "2026-04-05T01:23:00.520552",
+      "end": "2026-04-05T01:23:03.226061",
+      "elapsed_s": 2.705509,
+      "tokens_in": 0,
+      "tokens_out": 0,
+      "tokens_cached": 0,
+      "outcome": "TESTER_TESTS_PASS"
     }
   ]
 }
