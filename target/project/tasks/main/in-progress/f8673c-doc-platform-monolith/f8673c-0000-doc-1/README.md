@@ -38,6 +38,7 @@
 | 32 | DOC_INTEGRATOR | claude | integrate-metrics | 15:35:51 | 1m 19s | 8 | 4,155 | 144,530 |
 | 33 | POST_DOC_HANDLER | internal | integrate-metrics | 15:35:51 | 0s | 0 | 0 | 0 |
 | 34 | LEAF_COMPLETE_HANDLER | internal | integrate-metrics | 15:35:52 | 0s | 0 | 0 | 0 |
+| 35 | DOC_INTEGRATOR | claude | integrate-internal | 15:37:00 | 1m 07s | 7 | 3,127 | 118,701 |
 
 ## Subtasks
 

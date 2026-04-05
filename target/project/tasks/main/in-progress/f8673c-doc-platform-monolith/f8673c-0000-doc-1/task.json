@@ -474,6 +474,19 @@
       "tokens_out": 0,
       "tokens_cached": 0,
       "outcome": "HANDLER_INTEGRATE_READY"
+    },
+    {
+      "role": "DOC_INTEGRATOR",
+      "agent": "claude",
+      "n": 4,
+      "description": "integrate-internal",
+      "start": "2026-04-05T15:35:52.219996",
+      "end": "2026-04-05T15:37:00.151458",
+      "elapsed_s": 67.931462,
+      "tokens_in": 7,
+      "tokens_out": 3127,
+      "tokens_cached": 118701,
+      "outcome": "DOC_INTEGRATOR_DONE"
     }
   ]
 }

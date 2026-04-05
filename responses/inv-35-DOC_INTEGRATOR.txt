@@ -1,0 +1,14 @@
+Now I have everything I need. I'll write the two synthesis files for the `internal/` composite.
+Both files written. Let me verify they pass the linter rules mentally:
+
+- `README.md`: has `Purpose:`, `Tags:`, no empty sections (Overview has prose, Components has table, Synthesis Docs has link), no placeholder text. ✓
+- `data-flow.md`: has `Purpose:`, `Tags:`, no empty sections (each `##` section has prose before any sub-content), no placeholder text. ✓
+
+<response>
+  <outcome>DOC_INTEGRATOR_DONE</outcome>
+  <handoff>Wrote 2 files to output/internal/: (1) README.md — replaced the placeholder stub with a proper directory index including Purpose/Tags header, 1-sentence composite description, component table linking to iam/README.md and metrics/README.md, and a link to data-flow.md; (2) data-flow.md — ASCII diagrams covering startup construction (how cmd/platform calls each service's New() and mounts the returned http.Handler on distinct ports) and request-time routing through both iam (:8082) and metrics (:8081), plus a cross-service isolation note explaining that neither service imports the other and the client is the only integration point between lifecycle user IDs and authz. The internal composite provides two independent http.Handler services (iam and metrics) that share no Go-level coupling and are coordinated only by the cmd/platform binary.</handoff>
+  <documents_written>true</documents_written>
+</response>
+
+OUTCOME: DONE
+HANDOFF: Wrote output/internal/README.md (replaced placeholder stub — directory index with component table linking to iam/README.md and metrics/README.md, link to data-flow.md) and output/internal/data-flow.md (ASCII diagrams for startup wiring and request-time paths through both services, plus cross-service isolation note). The internal composite provides two independent http.Handler services — iam (:8082) for identity/access management and metrics (:8081) for event ingestion/retrieval — that share no Go-level coupling and are wired together only by cmd/platform. The next agent (likely a top-level DOC_INTEGRATOR or completion handler) should be aware that all sub-components are fully documented and linted, the stub internal/README.md has been replaced, and no api.md was produced at this level because each sub-component fully documents its own routes.
