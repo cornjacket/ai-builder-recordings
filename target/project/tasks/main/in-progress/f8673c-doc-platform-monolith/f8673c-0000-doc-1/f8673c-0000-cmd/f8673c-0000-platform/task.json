@@ -19,5 +19,5 @@
   "goal": "Entry point binary \u2014 starts the metrics service on :8081 and the IAM service on :8082 by wiring together the internal packages",
   "context": "### Level 1 \u2014 f8673c-0000-doc-1\n\n### Level 2 \u2014 f8673c-0000-cmd\nCommand entrypoint subtree \u2014 contains the `platform` binary which wires together the metrics and IAM internal services",
   "output_dir": "/Users/david/Go/src/github.com/cornjacket/ai-builder/establish-regression-recordings/sandbox/regressions/doc-platform-monolith/output/cmd/platform",
-  "active_role": "DOC_ARCHITECT"
+  "active_role": "POST_DOC_HANDLER"
 }
